@@ -7,12 +7,12 @@
 <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 <style>
   :root {
-    --bg-canvas: #08090a; --bg-panel: #0f1011; --bg-surface: #191a1b; --bg-elevated: #28282c;
-    --text-primary: #f7f8f8; --text-secondary: #d0d6e0; --text-tertiary: #8a8f98; --text-quaternary: #62666d;
-    --brand: #5e6ad2; --brand-accent: #7170ff; --brand-hover: #828fff;
-    --border-subtle: rgba(255,255,255,0.05); --border-standard: rgba(255,255,255,0.08); --border-solid: #23252a;
-    --surface-1: rgba(255,255,255,0.02); --surface-2: rgba(255,255,255,0.04); --surface-3: rgba(255,255,255,0.05);
-    --status-green: #10b981; --status-amber: #f59e0b; --status-red: #ef4444;
+    --bg-canvas: #ffffff; --bg-panel: #fafafa; --bg-surface: #f5f5f4; --bg-elevated: #eeedeb;
+    --text-primary: #292827; --text-secondary: #4a4946; --text-tertiary: #8a8f98; --text-quaternary: #9ca3af;
+    --brand: #292827; --brand-accent: #57534e; --brand-hover: #3d3d3a;
+    --border-subtle: #f0eee6; --border-standard: #dcd7d3; --border-solid: #dcd7d3;
+    --surface-1: #fafafa; --surface-2: #f5f5f4; --surface-3: #eeedeb;
+    --status-green: #059669; --status-amber: #d97706; --status-red: #dc2626;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { font-family: 'Inter var', Inter, -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif; font-feature-settings: 'cv01', 'ss03'; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
@@ -31,18 +31,18 @@
   .nav-section { padding: 4px 0; }
   .nav-section-label { padding: 12px 20px 4px; font-size: 10px; font-weight: 510; color: var(--text-quaternary); letter-spacing: 0.5px; text-transform: uppercase; }
   .nav-item { display: flex; align-items: center; gap: 10px; padding: 5px 10px; margin: 0 8px; border-radius: 5px; cursor: pointer; color: var(--text-tertiary); font-size: 13px; font-weight: 510; letter-spacing: -0.13px; transition: background 0.1s, color 0.1s; text-decoration: none; }
-  .nav-item:hover { background: rgba(255,255,255,0.03); color: var(--text-secondary); }
-  .nav-item.active { background: var(--surface-2); color: var(--text-primary); }
-  .nav-icon { width: 14px; height: 14px; flex-shrink: 0; opacity: 0.85; }
+  .nav-item:hover { background: rgba(0,0,0,0.06); color: var(--text-secondary); }
+  .nav-item.active { background: rgba(0,0,0,0.06); color: var(--text-primary); }
+  .nav-icon { width: 14px; height: 14px; flex-shrink: 0; opacity: 1; color: #292827; }
   .nav-item.active .nav-icon { opacity: 1; }
   .nav-label { flex: 1; }
-  .nav-badge { font-size: 11px; font-weight: 510; color: var(--text-tertiary); background: rgba(255,255,255,0.04); padding: 1px 6px; border-radius: 4px; letter-spacing: -0.13px; }
+  .nav-badge { font-size: 11px; font-weight: 510; color: var(--text-tertiary); background: rgba(0,0,0,0.06); padding: 1px 6px; border-radius: 4px; letter-spacing: -0.13px; }
   .sidebar-bottom-spacer { flex: 1; }
   .sidebar-bottom { padding: 8px 0 10px; border-top: 1px solid var(--border-subtle); }
-  .role-option:hover { background: rgba(255,255,255,0.04); }
-  .user-item:hover { background: rgba(255,255,255,0.03); }
+  .role-option:hover { background: rgba(0,0,0,0.06); }
+  .user-item:hover { background: rgba(0,0,0,0.06); }
   .user-item { display: flex; align-items: center; gap: 10px; padding: 8px 16px; }
-  .avatar { width: 24px; height: 24px; border-radius: 50%; background: var(--brand); color: white; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 590; }
+  .avatar { width: 24px; height: 24px; border-radius: 50%; background: #292827; color: white; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 590; }
   .user-info { flex: 1; min-width: 0; }
   .user-name { font-size: 12px; font-weight: 510; color: var(--text-secondary); letter-spacing: -0.13px; line-height: 1.3; }
   .user-role { font-size: 11px; font-weight: 400; color: var(--text-quaternary); letter-spacing: -0.13px; line-height: 1.3; }
@@ -56,12 +56,12 @@
   .btn { padding: 5px 10px; border-radius: 6px; font-size: 13px; font-weight: 510; letter-spacing: -0.13px; cursor: pointer; transition: background 0.12s, color 0.12s, border-color 0.12s; display: inline-flex; align-items: center; gap: 6px; text-decoration: none; font-family: inherit; }
   .btn-ghost { background: var(--surface-1); border: 1px solid var(--border-standard); color: var(--text-secondary); }
   .btn-ghost:hover { background: var(--surface-3); color: var(--text-primary); }
-  .btn-primary { background: var(--brand); border: 1px solid var(--brand); color: #ffffff; }
-  .btn-primary:hover { background: var(--brand-hover); border-color: var(--brand-hover); }
+  .btn-primary { background: #292827; border: 1px solid #292827; color: #ffffff; }
+  .btn-primary:hover { background: #3d3d3a; border-color: #3d3d3a; }
   .icon-btn { width: 32px; height: 32px; border-radius: 6px; background: var(--surface-1); border: 1px solid var(--border-standard); color: var(--text-tertiary); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.12s; }
   .icon-btn:hover { background: var(--surface-3); color: var(--text-primary); }
 
-  .content { flex: 1; overflow-y: auto; padding: 32px 40px 80px; }
+  .content { flex: 1; overflow-y: auto; padding: 40px 40px 80px; }
   .content-max { max-width: 1200px; margin: 0 auto; }
 
   .page-title { font-size: 24px; font-weight: 400; line-height: 1.33; letter-spacing: -0.288px; color: var(--text-primary); margin-bottom: 6px; }
@@ -111,13 +111,13 @@
     background: var(--surface-3); color: var(--text-tertiary);
   }
   .section-badge.amber {
-    background: rgba(245,158,11,0.14); color: var(--status-amber);
+    background: rgba(217,119,6,0.12); color: #292827;
   }
   .section-link {
     margin-left: auto; font-size: 11px; font-weight: 510;
     color: var(--text-tertiary); text-decoration: none; letter-spacing: -0.13px;
   }
-  .section-link:hover { color: var(--brand-accent); }
+  .section-link:hover { color: #292827; }
 
   /* Campaign cards row */
   .campaign-cards {
@@ -133,15 +133,15 @@
     border-radius: 8px; padding: 14px 16px;
     cursor: pointer; transition: all 0.15s;
   }
-  .campaign-card:hover { background: var(--surface-2); transform: translateY(-1px); border-color: rgba(255,255,255,0.12); }
+  .campaign-card:hover { background: var(--surface-2); transform: translateY(-1px); border-color: #ccc8c2; }
   .cc-name { font-size: 13px; font-weight: 510; color: var(--text-primary); letter-spacing: -0.13px; margin-bottom: 10px; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .cc-status-row { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; }
-  .cc-roas { font-size: 12px; font-weight: 590; color: var(--status-green); letter-spacing: -0.13px; font-variant-numeric: tabular-nums; }
+  .cc-roas { font-size: 12px; font-weight: 590; color: #059669; letter-spacing: -0.13px; font-variant-numeric: tabular-nums; }
   .cc-roas.muted { color: var(--text-quaternary); font-weight: 400; font-size: 11px; }
   .cc-progress-text { margin-left: auto; font-size: 11px; font-weight: 510; color: var(--text-tertiary); letter-spacing: -0.13px; font-variant-numeric: tabular-nums; }
   .cc-progress-bar { width: 100%; height: 3px; background: var(--surface-3); border-radius: 2px; overflow: hidden; margin-bottom: 8px; }
-  .cc-progress-fill { height: 100%; border-radius: 2px; background: var(--brand-accent); transition: width 0.3s; }
-  .cc-progress-fill.green { background: var(--status-green); }
+  .cc-progress-fill { height: 100%; border-radius: 2px; background: #57534e; transition: width 0.3s; }
+  .cc-progress-fill.green { background: #059669; }
   .cc-source { font-size: 11px; color: var(--text-quaternary); letter-spacing: -0.13px; }
 
   /* Status pills */
@@ -151,13 +151,13 @@
     font-size: 10px; font-weight: 510;
     letter-spacing: 0.4px; text-transform: uppercase; white-space: nowrap;
   }
-  .status-pill.live { background: rgba(16,185,129,0.1); color: var(--status-green); border: 1px solid rgba(16,185,129,0.3); }
-  .status-pill.review { background: rgba(245,158,11,0.1); color: var(--status-amber); border: 1px solid rgba(245,158,11,0.3); }
-  .status-pill.briefed { background: rgba(113,112,255,0.1); color: var(--brand-accent); border: 1px solid rgba(113,112,255,0.3); }
+  .status-pill.live { background: rgba(5,150,105,0.06); color: #059669; border: 1px solid rgba(5,150,105,0.25); }
+  .status-pill.review { background: rgba(217,119,6,0.06); color: #b45309; border: 1px solid rgba(217,119,6,0.25); }
+  .status-pill.briefed { background: rgba(0,0,0,0.04); color: #57534e; border: 1px solid rgba(0,0,0,0.1); }
   .status-pill.draft { background: var(--surface-3); color: var(--text-tertiary); border: 1px solid var(--border-standard); }
-  .status-pill.production { background: rgba(113,112,255,0.1); color: var(--brand-accent); border: 1px solid rgba(113,112,255,0.3); }
-  .status-pill.rising { background: rgba(16,185,129,0.1); color: var(--status-green); border: 1px solid rgba(16,185,129,0.3); }
-  .status-pill.peaking { background: rgba(245,158,11,0.1); color: var(--status-amber); border: 1px solid rgba(245,158,11,0.3); }
+  .status-pill.production { background: rgba(37,99,235,0.06); color: #2563eb; border: 1px solid rgba(37,99,235,0.2); }
+  .status-pill.rising { background: rgba(5,150,105,0.06); color: #059669; border: 1px solid rgba(5,150,105,0.25); }
+  .status-pill.peaking { background: rgba(217,119,6,0.06); color: #b45309; border: 1px solid rgba(217,119,6,0.25); }
 
   /* Action items */
   .action-list { display: flex; flex-direction: column; gap: 2px; }
@@ -174,8 +174,8 @@
     display: flex; align-items: center; justify-content: center;
     color: var(--text-tertiary); flex-shrink: 0;
   }
-  .action-icon.amber { color: var(--status-amber); }
-  .action-icon.green { color: var(--status-green); }
+  .action-icon.amber { color: #b45309; }
+  .action-icon.green { color: #059669; }
   .action-content { flex: 1; min-width: 0; }
   .action-title { font-size: 13px; font-weight: 510; color: var(--text-primary); letter-spacing: -0.13px; line-height: 1.3; }
   .action-meta { font-size: 11px; color: var(--text-quaternary); letter-spacing: -0.13px; margin-top: 2px; }
@@ -194,11 +194,11 @@
     border-radius: 8px; padding: 14px 16px;
   }
   .stat-value { font-size: 22px; font-weight: 590; color: var(--text-primary); letter-spacing: -0.24px; font-variant-numeric: tabular-nums; margin-bottom: 2px; }
-  .stat-value.green { color: var(--status-green); }
+  .stat-value.green { color: #059669; }
   .stat-label { font-size: 11px; font-weight: 510; color: var(--text-tertiary); letter-spacing: -0.13px; margin-bottom: 4px; }
   .stat-sub { font-size: 11px; font-weight: 400; color: var(--text-quaternary); letter-spacing: -0.13px; }
-  .stat-sub.amber { color: var(--status-amber); }
-  .stat-sub.green { color: var(--status-green); }
+  .stat-sub.amber { color: #b45309; }
+  .stat-sub.green { color: #059669; }
 
   /* Opportunity cards */
   .opp-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
@@ -207,13 +207,13 @@
     border-radius: 8px; padding: 14px 16px; cursor: pointer;
     transition: all 0.15s; display: flex; align-items: center; gap: 12px;
   }
-  .opp-card:hover { background: var(--surface-2); border-color: rgba(255,255,255,0.12); }
+  .opp-card:hover { background: var(--surface-2); border-color: #ccc8c2; }
   .opp-name { font-size: 13px; font-weight: 510; color: var(--text-primary); letter-spacing: -0.13px; flex: 1; }
   .opp-score {
     width: 32px; height: 32px; border-radius: 50%;
-    background: rgba(113,112,255,0.1); border: 1.5px solid rgba(113,112,255,0.3);
+    background: rgba(5,150,105,0.08); border: 1.5px solid rgba(5,150,105,0.25);
     display: flex; align-items: center; justify-content: center;
-    font-size: 11px; font-weight: 590; color: var(--brand-accent);
+    font-size: 11px; font-weight: 590; color: #059669;
     flex-shrink: 0;
   }
 
@@ -275,14 +275,14 @@
     padding: 5px 10px; border-radius: 6px; font-size: 12px; font-weight: 510;
     letter-spacing: -0.13px; cursor: pointer; font-family: inherit; transition: all 0.12s;
   }
-  .approve-btn.primary { background: var(--status-green); border: 1px solid var(--status-green); color: white; }
+  .approve-btn.primary { background: #059669; border: 1px solid var(--status-green); color: white; }
   .approve-btn.primary:hover { background: #0ea573; }
   .approve-btn.secondary { background: var(--surface-1); border: 1px solid var(--border-standard); color: var(--text-secondary); }
   .approve-btn.secondary:hover { background: var(--surface-3); color: var(--text-primary); }
 
   /* Palette dots */
   .palette-dots { display: flex; gap: 6px; align-items: center; margin-bottom: 8px; }
-  .palette-dot { width: 16px; height: 16px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.12); }
+  .palette-dot { width: 16px; height: 16px; border-radius: 50%; border: 1px solid #ccc8c2; }
 
   .brand-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
   .brand-tag {
@@ -372,22 +372,22 @@
 
   <div class="sidebar-bottom" style="position: relative;">
     <!-- Role picker popup -->
-    <div id="rolePicker" style="display: none; position: absolute; bottom: 100%; left: 8px; right: 8px; background: var(--bg-surface); border: 1px solid var(--border-standard); border-radius: 8px; box-shadow: 0 -8px 24px rgba(0,0,0,0.5); padding: 6px; margin-bottom: 6px; z-index: 50;">
+    <div id="rolePicker" style="display: none; position: absolute; bottom: 100%; left: 8px; right: 8px; background: var(--bg-surface); border: 1px solid var(--border-standard); border-radius: 8px; box-shadow: 0 -8px 24px rgba(0,0,0,0.3); padding: 6px; margin-bottom: 6px; z-index: 50;">
       <div style="font-size: 9px; font-weight: 510; color: var(--text-quaternary); text-transform: uppercase; letter-spacing: 0.5px; padding: 6px 8px 4px;">Switch user for demo</div>
       <div class="role-option" onclick="pickRole('cmo')" data-role="cmo" style="display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 6px; cursor: pointer; transition: background 0.1s;">
-        <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--brand); color: white; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 590; flex-shrink: 0;">K</div>
+        <div style="width: 28px; height: 28px; border-radius: 50%; background: #292827; color: white; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 590; flex-shrink: 0;">K</div>
         <div style="flex: 1;"><div style="font-size: 12px; font-weight: 510; color: var(--text-primary);">Kathy S.</div><div style="font-size: 11px; color: var(--text-tertiary);">CMO</div></div>
-        <svg class="role-check" width="12" height="12" viewBox="0 0 12 12" fill="none" style="color: var(--brand-accent);"><path d="M3 6l2.5 2.5L9 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg class="role-check" width="12" height="12" viewBox="0 0 12 12" fill="none" style="color: #292827;"><path d="M3 6l2.5 2.5L9 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
       <div class="role-option" onclick="pickRole('creative')" data-role="creative" style="display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 6px; cursor: pointer; transition: background 0.1s;">
-        <div style="width: 28px; height: 28px; border-radius: 50%; background: #10b981; color: white; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 590; flex-shrink: 0;">M</div>
+        <div style="width: 28px; height: 28px; border-radius: 50%; background: #059669; color: white; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 590; flex-shrink: 0;">M</div>
         <div style="flex: 1;"><div style="font-size: 12px; font-weight: 510; color: var(--text-primary);">Maya T.</div><div style="font-size: 11px; color: var(--text-tertiary);">Creative Lead</div></div>
-        <svg class="role-check" width="12" height="12" viewBox="0 0 12 12" fill="none" style="color: var(--brand-accent); display: none;"><path d="M3 6l2.5 2.5L9 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg class="role-check" width="12" height="12" viewBox="0 0 12 12" fill="none" style="color: #292827; display: none;"><path d="M3 6l2.5 2.5L9 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
       <div class="role-option" onclick="pickRole('regional')" data-role="regional" style="display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 6px; cursor: pointer; transition: background 0.1s;">
-        <div style="width: 28px; height: 28px; border-radius: 50%; background: #f59e0b; color: white; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 590; flex-shrink: 0;">R</div>
+        <div style="width: 28px; height: 28px; border-radius: 50%; background: #d97706; color: white; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 590; flex-shrink: 0;">R</div>
         <div style="flex: 1;"><div style="font-size: 12px; font-weight: 510; color: var(--text-primary);">Ryo K.</div><div style="font-size: 11px; color: var(--text-tertiary);">Regional Lead · Japan</div></div>
-        <svg class="role-check" width="12" height="12" viewBox="0 0 12 12" fill="none" style="color: var(--brand-accent); display: none;"><path d="M3 6l2.5 2.5L9 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg class="role-check" width="12" height="12" viewBox="0 0 12 12" fill="none" style="color: #292827; display: none;"><path d="M3 6l2.5 2.5L9 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
     </div>
 
@@ -524,7 +524,7 @@
             <button class="action-btn">Review</button>
           </div>
           <div class="action-row">
-            <div class="action-icon" style="color: var(--status-red);">
+            <div class="action-icon" style="color: #292827;">
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 3l5.5 9.5H2.5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M8 7v2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="8" cy="11" r="0.7" fill="currentColor"/></svg>
             </div>
             <div class="action-content">
@@ -797,7 +797,7 @@
         </div>
         <div class="regional-perf">
           <div class="regional-stat">
-            <div class="regional-stat-value" style="color: var(--status-green);">3.7x</div>
+            <div class="regional-stat-value" style="color: #292827;">3.7x</div>
             <div class="regional-stat-label">Region ROAS</div>
           </div>
           <div style="width: 1px; background: var(--border-subtle);"></div>

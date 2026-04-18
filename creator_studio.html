@@ -7,12 +7,12 @@
 <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 <style>
   :root {
-    --bg-canvas: #08090a; --bg-panel: #0f1011; --bg-surface: #191a1b; --bg-elevated: #28282c;
-    --text-primary: #f7f8f8; --text-secondary: #d0d6e0; --text-tertiary: #8a8f98; --text-quaternary: #62666d;
-    --brand: #5e6ad2; --brand-accent: #7170ff; --brand-hover: #828fff;
-    --border-subtle: rgba(255,255,255,0.05); --border-standard: rgba(255,255,255,0.08); --border-solid: #23252a;
-    --surface-1: rgba(255,255,255,0.02); --surface-2: rgba(255,255,255,0.04); --surface-3: rgba(255,255,255,0.05);
-    --status-green: #10b981; --status-amber: #f59e0b; --status-red: #ef4444;
+    --bg-canvas: #ffffff; --bg-panel: #fafafa; --bg-surface: #f5f5f4; --bg-elevated: #eeedeb;
+    --text-primary: #292827; --text-secondary: #4a4946; --text-tertiary: #8a8f98; --text-quaternary: #9ca3af;
+    --brand: #292827; --brand-accent: #57534e; --brand-hover: #3d3d3a;
+    --border-subtle: #f0eee6; --border-standard: #dcd7d3; --border-solid: #dcd7d3;
+    --surface-1: #fafafa; --surface-2: #f5f5f4; --surface-3: #eeedeb;
+    --status-green: #059669; --status-amber: #d97706; --status-red: #dc2626;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { font-family: 'Inter var', Inter, -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif; font-feature-settings: 'cv01', 'ss03'; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
@@ -31,16 +31,16 @@
   .nav-section { padding: 4px 0; }
   .nav-section-label { padding: 12px 20px 4px; font-size: 10px; font-weight: 510; color: var(--text-quaternary); letter-spacing: 0.5px; text-transform: uppercase; }
   .nav-item { display: flex; align-items: center; gap: 10px; padding: 5px 10px; margin: 0 8px; border-radius: 5px; cursor: pointer; color: var(--text-tertiary); font-size: 13px; font-weight: 510; letter-spacing: -0.13px; transition: background 0.1s, color 0.1s; text-decoration: none; }
-  .nav-item:hover { background: rgba(255,255,255,0.03); color: var(--text-secondary); }
-  .nav-item.active { background: var(--surface-2); color: var(--text-primary); }
-  .nav-icon { width: 14px; height: 14px; flex-shrink: 0; opacity: 0.85; }
+  .nav-item:hover { background: rgba(0,0,0,0.06); color: var(--text-secondary); }
+  .nav-item.active { background: rgba(0,0,0,0.06); color: var(--text-primary); }
+  .nav-icon { width: 14px; height: 14px; flex-shrink: 0; opacity: 1; color: #292827; }
   .nav-item.active .nav-icon { opacity: 1; }
   .nav-label { flex: 1; }
-  .nav-badge { font-size: 11px; font-weight: 510; color: var(--text-tertiary); background: rgba(255,255,255,0.04); padding: 1px 6px; border-radius: 4px; letter-spacing: -0.13px; }
+  .nav-badge { font-size: 11px; font-weight: 510; color: var(--text-tertiary); background: rgba(0,0,0,0.06); padding: 1px 6px; border-radius: 4px; letter-spacing: -0.13px; }
   .sidebar-bottom-spacer { flex: 1; }
   .sidebar-bottom { padding: 8px 0 10px; border-top: 1px solid var(--border-subtle); }
   .user-item { display: flex; align-items: center; gap: 10px; padding: 8px 16px; }
-  .avatar { width: 24px; height: 24px; border-radius: 50%; background: var(--brand); color: white; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 590; }
+  .avatar { width: 24px; height: 24px; border-radius: 50%; background: #292827; color: white; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 590; }
   .user-info { flex: 1; min-width: 0; }
   .user-name { font-size: 12px; font-weight: 510; color: var(--text-secondary); letter-spacing: -0.13px; line-height: 1.3; }
   .user-role { font-size: 11px; font-weight: 400; color: var(--text-quaternary); letter-spacing: -0.13px; line-height: 1.3; }
@@ -56,8 +56,8 @@
   .btn { padding: 5px 10px; border-radius: 6px; font-size: 13px; font-weight: 510; letter-spacing: -0.13px; cursor: pointer; transition: all 0.12s; display: inline-flex; align-items: center; gap: 6px; font-family: inherit; text-decoration: none; }
   .btn-ghost { background: var(--surface-1); border: 1px solid var(--border-standard); color: var(--text-secondary); }
   .btn-ghost:hover { background: var(--surface-3); color: var(--text-primary); }
-  .btn-primary { background: var(--brand); border: 1px solid var(--brand); color: #fff; }
-  .btn-primary:hover { background: var(--brand-hover); border-color: var(--brand-hover); }
+  .btn-primary { background: #292827; border: 1px solid #292827; color: #fff; }
+  .btn-primary:hover { background: #3d3d3a; border-color: #3d3d3a; }
 
   .content { flex: 1; overflow-y: auto; padding: 32px 40px 80px; width: 100%; }
   .content-max { max-width: 1200px; }
@@ -72,15 +72,15 @@
   .sl { font-size: 10px; font-weight: 510; color: var(--text-quaternary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
   .sl-badge { padding: 1px 6px; background: var(--surface-3); border-radius: 9999px; color: var(--text-tertiary); text-transform: none; letter-spacing: -0.13px; }
   .sl-link { margin-left: auto; font-size: 11px; color: var(--text-tertiary); text-decoration: none; text-transform: none; letter-spacing: -0.13px; }
-  .sl-link:hover { color: var(--brand-accent); }
+  .sl-link:hover { color: #292827; }
 
   /* Active brief strip */
   .brief-strip { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: var(--surface-1); border: 1px solid var(--border-standard); border-radius: 8px; margin-bottom: 20px; }
-  .brief-strip-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--brand-accent); flex-shrink: 0; }
+  .brief-strip-dot { width: 8px; height: 8px; border-radius: 50%; background: #57534e; flex-shrink: 0; }
   .brief-strip-text { font-size: 13px; font-weight: 510; color: var(--text-primary); letter-spacing: -0.13px; }
   .brief-strip-campaign { font-size: 11px; color: var(--text-tertiary); padding: 1px 7px; background: var(--surface-2); border: 1px solid var(--border-standard); border-radius: 9999px; letter-spacing: -0.13px; }
   .brief-strip-meta { margin-left: auto; font-size: 11px; color: var(--text-tertiary); letter-spacing: -0.13px; }
-  .brief-strip-link { font-size: 11px; color: var(--brand-accent); text-decoration: none; letter-spacing: -0.13px; margin-left: 8px; }
+  .brief-strip-link { font-size: 11px; color: #292827; text-decoration: none; letter-spacing: -0.13px; margin-left: 8px; }
 
   /* Reference moodboard */
   .moodboard-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; margin-bottom: 20px; }
@@ -88,7 +88,7 @@
 
   /* Prompt area */
   .prompt-box { background: var(--surface-1); border: 1px solid var(--border-standard); border-radius: 10px; padding: 14px 16px; margin-bottom: 8px; transition: border-color 0.15s; }
-  .prompt-box:focus-within { border-color: rgba(113,112,255,0.45); }
+  .prompt-box:focus-within { border-color: rgba(0,0,0,0.12); }
   .prompt-textarea { width: 100%; background: transparent; border: none; outline: none; color: var(--text-primary); font-size: 14px; font-weight: 400; letter-spacing: -0.165px; line-height: 1.5; resize: none; min-height: 56px; }
   .prompt-textarea::placeholder { color: var(--text-quaternary); }
 
@@ -104,8 +104,8 @@
   .ratio-btn.active { background: var(--surface-3); color: var(--text-primary); }
 
   .token-pill { font-size: 10px; font-weight: 510; color: var(--text-quaternary); background: var(--surface-2); padding: 3px 8px; border-radius: 9999px; letter-spacing: -0.13px; }
-  .gen-btn { padding: 6px 14px; background: var(--brand); border: 1px solid var(--brand); border-radius: 6px; color: white; font-size: 12px; font-weight: 510; cursor: pointer; font-family: inherit; display: inline-flex; align-items: center; gap: 5px; transition: background 0.12s; letter-spacing: -0.13px; }
-  .gen-btn:hover { background: var(--brand-hover); border-color: var(--brand-hover); }
+  .gen-btn { padding: 6px 14px; background: #292827; border: 1px solid #292827; border-radius: 6px; color: white; font-size: 12px; font-weight: 510; cursor: pointer; font-family: inherit; display: inline-flex; align-items: center; gap: 5px; transition: background 0.12s; letter-spacing: -0.13px; }
+  .gen-btn:hover { background: #3d3d3a; border-color: #3d3d3a; }
   .controls-spacer { flex: 1; }
 
   /* Chips */
@@ -117,12 +117,12 @@
   .variants-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 14px; }
   .variant-tile { position: relative; aspect-ratio: 1; border-radius: 8px; overflow: hidden; border: 2px solid transparent; cursor: pointer; transition: all 0.15s; }
   .variant-tile:hover { border-color: rgba(255,255,255,0.15); transform: translateY(-1px); }
-  .variant-tile.selected { border-color: var(--brand-accent); box-shadow: 0 0 0 1px var(--brand-accent); }
+  .variant-tile.selected { border-color: #292827; box-shadow: 0 0 0 1px var(--brand-accent); }
   .variant-tile img { width: 100%; height: 100%; object-fit: cover; }
   .variant-score { position: absolute; top: 8px; right: 8px; padding: 2px 7px; border-radius: 9999px; font-size: 10px; font-weight: 590; backdrop-filter: blur(8px); z-index: 2; }
-  .variant-score.green { background: rgba(16,185,129,0.25); color: var(--status-green); border: 1px solid rgba(16,185,129,0.4); }
-  .variant-score.indigo { background: rgba(113,112,255,0.2); color: var(--brand-accent); border: 1px solid rgba(113,112,255,0.35); }
-  .variant-format { position: absolute; bottom: 8px; left: 8px; font-size: 10px; font-weight: 510; color: rgba(255,255,255,0.85); text-shadow: 0 1px 2px rgba(0,0,0,0.5); z-index: 2; }
+  .variant-score.green { background: rgba(5,150,105,0.12); color: #292827; border: 1px solid rgba(5,150,105,0.25); }
+  .variant-score.indigo { background: rgba(0,0,0,0.05); color: #292827; border: 1px solid rgba(0,0,0,0.06); }
+  .variant-format { position: absolute; bottom: 8px; left: 8px; font-size: 10px; font-weight: 510; color: rgba(255,255,255,0.85); text-shadow: 0 1px 2px rgba(0,0,0,0.3); z-index: 2; }
   .variants-footer { display: flex; align-items: center; gap: 12px; font-size: 12px; color: var(--text-tertiary); letter-spacing: -0.13px; margin-bottom: 24px; }
 
   /* Selected detail */
@@ -131,7 +131,7 @@
   .sd-preview img { width: 100%; height: 100%; object-fit: cover; }
   .sd-info { flex: 1; display: flex; flex-direction: column; gap: 14px; }
   .sd-score-row { display: flex; align-items: center; gap: 12px; }
-  .sd-score-circle { width: 48px; height: 48px; border-radius: 50%; background: rgba(16,185,129,0.14); border: 1.5px solid rgba(16,185,129,0.4); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 590; color: var(--status-green); flex-shrink: 0; }
+  .sd-score-circle { width: 48px; height: 48px; border-radius: 50%; background: rgba(5,150,105,0.1); border: 1.5px solid rgba(5,150,105,0.25); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 590; color: #292827; flex-shrink: 0; }
   .sd-score-label { font-size: 13px; font-weight: 510; color: var(--text-primary); letter-spacing: -0.13px; }
   .sd-score-sub { font-size: 11px; color: var(--text-tertiary); margin-top: 2px; }
   .sd-bars { display: flex; flex-direction: column; gap: 4px; }
@@ -139,12 +139,12 @@
   .sd-bar-key { color: var(--text-tertiary); width: 55px; font-weight: 510; }
   .sd-bar { flex: 1; height: 4px; background: var(--surface-3); border-radius: 999px; overflow: hidden; }
   .sd-bar-fill { height: 100%; border-radius: 999px; }
-  .sd-bar-fill.green { background: var(--status-green); }
-  .sd-bar-fill.indigo { background: var(--brand-accent); }
+  .sd-bar-fill.green { background: #059669; }
+  .sd-bar-fill.indigo { background: #57534e; }
   .sd-bar-val { color: var(--text-primary); font-weight: 510; width: 28px; text-align: right; font-variant-numeric: tabular-nums; }
   .sd-format-row { display: flex; gap: 4px; }
   .sd-format-btn { padding: 4px 10px; border: 1px solid var(--border-standard); background: transparent; border-radius: 5px; color: var(--text-tertiary); font-size: 11px; font-weight: 510; cursor: pointer; font-family: inherit; transition: all 0.12s; letter-spacing: -0.13px; }
-  .sd-format-btn.active { background: var(--surface-3); color: var(--text-primary); border-color: rgba(255,255,255,0.12); }
+  .sd-format-btn.active { background: var(--surface-3); color: var(--text-primary); border-color: #ccc8c2; }
   .sd-format-btn:hover { color: var(--text-primary); }
   .sd-actions { display: flex; gap: 6px; margin-top: auto; }
 
@@ -153,7 +153,7 @@
   .panel-section:last-child { border-bottom: none; margin-bottom: 0; }
 
   /* Brand context panel */
-  .brand-ctx { background: rgba(113,112,255,0.03); border: 1px solid rgba(113,112,255,0.2); border-left: 3px solid var(--brand-accent); border-radius: 8px; padding: 12px 14px; }
+  .brand-ctx { background: rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.05); border-left: 3px solid var(--brand-accent); border-radius: 8px; padding: 12px 14px; }
   .brand-ctx-row { display: flex; gap: 6px; font-size: 11px; letter-spacing: -0.13px; margin-bottom: 6px; }
   .brand-ctx-row:last-child { margin-bottom: 0; }
   .brand-ctx-key { color: var(--text-quaternary); width: 45px; font-weight: 510; flex-shrink: 0; }
@@ -164,7 +164,7 @@
   .version-row:last-child { border-bottom: none; }
   .version-row:hover { color: var(--text-primary); }
   .version-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
-  .version-dot.active { background: var(--status-green); }
+  .version-dot.active { background: #059669; }
   .version-dot.past { background: var(--text-quaternary); }
   .version-name { color: var(--text-primary); font-weight: 510; }
   .version-meta { color: var(--text-tertiary); flex: 1; }
@@ -174,16 +174,16 @@
   .save-row { display: flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: -0.13px; margin-bottom: 8px; }
   .save-label { color: var(--text-quaternary); font-weight: 510; width: 60px; flex-shrink: 0; }
   .save-value { color: var(--text-secondary); flex: 1; }
-  .save-btn { width: 100%; padding: 8px; background: var(--brand); border: 1px solid var(--brand); border-radius: 6px; color: white; font-size: 12px; font-weight: 510; cursor: pointer; font-family: inherit; display: flex; align-items: center; justify-content: center; gap: 6px; transition: background 0.12s; margin-top: 10px; }
-  .save-btn:hover { background: var(--brand-hover); }
+  .save-btn { width: 100%; padding: 8px; background: #292827; border: 1px solid #292827; border-radius: 6px; color: white; font-size: 12px; font-weight: 510; cursor: pointer; font-family: inherit; display: flex; align-items: center; justify-content: center; gap: 6px; transition: background 0.12s; margin-top: 10px; }
+  .save-btn:hover { background: #3d3d3a; }
 
   /* Status pills */
   .status-pill { display: inline-flex; padding: 2px 8px; border-radius: 9999px; font-size: 10px; font-weight: 510; letter-spacing: 0.4px; text-transform: uppercase; }
-  .status-pill.production { background: rgba(113,112,255,0.1); color: var(--brand-accent); border: 1px solid rgba(113,112,255,0.3); }
+  .status-pill.production { background: rgba(37,99,235,0.06); color: #2563eb; border: 1px solid rgba(37,99,235,0.2); }
 
   /* Progress bar */
   .progress-bar { height: 3px; background: var(--surface-3); border-radius: 999px; overflow: hidden; }
-  .progress-fill { height: 100%; background: var(--brand-accent); border-radius: 999px; }
+  .progress-fill { height: 100%; background: #57534e; border-radius: 999px; }
 </style>
 </head>
 <body>
@@ -297,37 +297,37 @@
 
         <div style="font-size: 10px; font-weight: 510; color: var(--text-quaternary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; text-align: left;">Your assigned briefs</div>
         <div style="display: flex; flex-direction: column; gap: 6px; text-align: left;">
-          <div onclick="loadBrief('sakura')" style="display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: var(--surface-1); border: 1px solid var(--border-standard); border-radius: 8px; cursor: pointer; transition: all 0.12s;" onmouseover="this.style.background='rgba(255,255,255,0.04)';this.style.borderColor='rgba(113,112,255,0.35)'" onmouseout="this.style.background='var(--surface-1)';this.style.borderColor='var(--border-standard)'">
-            <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--brand-accent); flex-shrink: 0;"></div>
+          <div onclick="loadBrief('sakura')" style="display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: var(--surface-1); border: 1px solid var(--border-standard); border-radius: 8px; cursor: pointer; transition: all 0.12s;" onmouseover="this.style.background='rgba(0,0,0,0.06)';this.style.borderColor='rgba(0,0,0,0.06)'" onmouseout="this.style.background='var(--surface-1)';this.style.borderColor='var(--border-standard)'">
+            <div style="width: 8px; height: 8px; border-radius: 50%; background: #57534e; flex-shrink: 0;"></div>
             <div style="flex: 1;">
               <div style="font-size: 13px; font-weight: 510; color: var(--text-primary); letter-spacing: -0.13px;">Sakura Camo · Hero Pattern</div>
               <div style="font-size: 11px; color: var(--text-tertiary); margin-top: 2px;">SS26 · Hana Matsuri · Due May 10</div>
             </div>
             <span style="font-size: 11px; font-weight: 510; color: var(--text-tertiary); font-variant-numeric: tabular-nums;">1/4</span>
-            <span style="display: inline-flex; padding: 2px 7px; border-radius: 9999px; font-size: 9px; font-weight: 510; text-transform: uppercase; letter-spacing: 0.4px; background: rgba(113,112,255,0.1); color: var(--brand-accent); border: 1px solid rgba(113,112,255,0.3);">In Production</span>
+            <span style="display: inline-flex; padding: 2px 7px; border-radius: 9999px; font-size: 9px; font-weight: 510; text-transform: uppercase; letter-spacing: 0.4px; background: rgba(0,0,0,0.04); color: #292827; border: 1px solid rgba(0,0,0,0.06);">In Production</span>
           </div>
 
-          <div onclick="loadBrief('film')" style="display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: var(--surface-1); border: 1px solid var(--border-standard); border-radius: 8px; cursor: pointer; transition: all 0.12s;" onmouseover="this.style.background='rgba(255,255,255,0.04)';this.style.borderColor='rgba(113,112,255,0.35)'" onmouseout="this.style.background='var(--surface-1)';this.style.borderColor='var(--border-standard)'">
-            <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--brand-accent); flex-shrink: 0;"></div>
+          <div onclick="loadBrief('film')" style="display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: var(--surface-1); border: 1px solid var(--border-standard); border-radius: 8px; cursor: pointer; transition: all 0.12s;" onmouseover="this.style.background='rgba(0,0,0,0.06)';this.style.borderColor='rgba(0,0,0,0.06)'" onmouseout="this.style.background='var(--surface-1)';this.style.borderColor='var(--border-standard)'">
+            <div style="width: 8px; height: 8px; border-radius: 50%; background: #57534e; flex-shrink: 0;"></div>
             <div style="flex: 1;">
               <div style="font-size: 13px; font-weight: 510; color: var(--text-primary); letter-spacing: -0.13px;">Shibuya Flagship Reopening Film</div>
               <div style="font-size: 11px; color: var(--text-tertiary); margin-top: 2px;">SS26 · Hana Matsuri · Due May 12</div>
             </div>
             <span style="font-size: 11px; font-weight: 510; color: var(--text-tertiary); font-variant-numeric: tabular-nums;">0/2</span>
-            <span style="display: inline-flex; padding: 2px 7px; border-radius: 9999px; font-size: 9px; font-weight: 510; text-transform: uppercase; letter-spacing: 0.4px; background: rgba(113,112,255,0.1); color: var(--brand-accent); border: 1px solid rgba(113,112,255,0.3);">In Production</span>
+            <span style="display: inline-flex; padding: 2px 7px; border-radius: 9999px; font-size: 9px; font-weight: 510; text-transform: uppercase; letter-spacing: 0.4px; background: rgba(0,0,0,0.04); color: #292827; border: 1px solid rgba(0,0,0,0.06);">In Production</span>
           </div>
 
-          <div onclick="loadBrief('neomax')" style="display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: var(--surface-1); border: 1px solid var(--border-standard); border-radius: 8px; cursor: pointer; transition: all 0.12s;" onmouseover="this.style.background='rgba(255,255,255,0.04)';this.style.borderColor='rgba(113,112,255,0.35)'" onmouseout="this.style.background='var(--surface-1)';this.style.borderColor='var(--border-standard)'">
-            <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--brand-accent); flex-shrink: 0;"></div>
+          <div onclick="loadBrief('neomax')" style="display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: var(--surface-1); border: 1px solid var(--border-standard); border-radius: 8px; cursor: pointer; transition: all 0.12s;" onmouseover="this.style.background='rgba(0,0,0,0.06)';this.style.borderColor='rgba(0,0,0,0.06)'" onmouseout="this.style.background='var(--surface-1)';this.style.borderColor='var(--border-standard)'">
+            <div style="width: 8px; height: 8px; border-radius: 50%; background: #57534e; flex-shrink: 0;"></div>
             <div style="flex: 1;">
               <div style="font-size: 13px; font-weight: 510; color: var(--text-primary); letter-spacing: -0.13px;">Neo-Max Retail Concept · Interior</div>
               <div style="font-size: 11px; color: var(--text-tertiary); margin-top: 2px;">Neo-Max Store · Shibuya · Due May 28</div>
             </div>
             <span style="font-size: 11px; font-weight: 510; color: var(--text-tertiary); font-variant-numeric: tabular-nums;">2/6</span>
-            <span style="display: inline-flex; padding: 2px 7px; border-radius: 9999px; font-size: 9px; font-weight: 510; text-transform: uppercase; letter-spacing: 0.4px; background: rgba(113,112,255,0.1); color: var(--brand-accent); border: 1px solid rgba(113,112,255,0.3);">In Production</span>
+            <span style="display: inline-flex; padding: 2px 7px; border-radius: 9999px; font-size: 9px; font-weight: 510; text-transform: uppercase; letter-spacing: 0.4px; background: rgba(0,0,0,0.04); color: #292827; border: 1px solid rgba(0,0,0,0.06);">In Production</span>
           </div>
 
-          <div onclick="loadBrief('abc')" style="display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: var(--surface-1); border: 1px solid var(--border-standard); border-radius: 8px; cursor: pointer; transition: all 0.12s;" onmouseover="this.style.background='rgba(255,255,255,0.04)';this.style.borderColor='rgba(113,112,255,0.35)'" onmouseout="this.style.background='var(--surface-1)';this.style.borderColor='var(--border-standard)'">
+          <div onclick="loadBrief('abc')" style="display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: var(--surface-1); border: 1px solid var(--border-standard); border-radius: 8px; cursor: pointer; transition: all 0.12s;" onmouseover="this.style.background='rgba(0,0,0,0.06)';this.style.borderColor='rgba(0,0,0,0.06)'" onmouseout="this.style.background='var(--surface-1)';this.style.borderColor='var(--border-standard)'">
             <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--text-quaternary); flex-shrink: 0;"></div>
             <div style="flex: 1;">
               <div style="font-size: 13px; font-weight: 510; color: var(--text-primary); letter-spacing: -0.13px;">ABC Camo SS26 · New Colorways</div>
@@ -338,7 +338,7 @@
           </div>
         </div>
 
-        <div style="margin-top: 16px; font-size: 12px; color: var(--text-quaternary); letter-spacing: -0.13px;">Or <a href="briefs.html" style="color: var(--brand-accent); text-decoration: none;">create a new brief</a> first</div>
+        <div style="margin-top: 16px; font-size: 12px; color: var(--text-quaternary); letter-spacing: -0.13px;">Or <a href="briefs.html" style="color: #292827; text-decoration: none;">create a new brief</a> first</div>
       </div>
     </div>
 
@@ -354,7 +354,7 @@
         <!-- Active brief section -->
         <div class="sl" style="margin-bottom: 6px;">
           Active Brief
-          <span class="sl-badge" style="background: rgba(113,112,255,0.1); color: var(--brand-accent); border: 1px solid rgba(113,112,255,0.28);">In Production</span>
+          <span class="sl-badge" style="background: rgba(0,0,0,0.04); color: #292827; border: 1px solid rgba(0,0,0,0.12);">In Production</span>
           <a class="sl-link" href="briefs.html" style="font-size: 11px;">View all briefs →</a>
         </div>
         <div class="brief-strip" onclick="backToEmpty()" style="cursor: pointer;">
@@ -439,7 +439,7 @@
           </div>
         </div>
         <div class="variants-footer">
-          <a href="#" style="color: var(--brand-accent); text-decoration: none; font-weight: 510;">Load more variants</a>
+          <a href="#" style="color: #292827; text-decoration: none; font-weight: 510;">Load more variants</a>
           <span>·</span>
           <a href="#" style="color: var(--text-tertiary); text-decoration: none;">Regenerate all</a>
         </div>
@@ -484,7 +484,7 @@
         <div class="sl">Active Brief <a class="sl-link" href="briefs.html">Open →</a></div>
         <div style="font-size: 14px; font-weight: 510; color: var(--text-primary); margin-bottom: 4px;">Sakura Camo · Hero Pattern</div>
         <div style="font-size: 12px; color: var(--text-tertiary); margin-bottom: 10px;">SS26 · Hana Matsuri</div>
-        <div id="delivPost" style="font-size: 11px; color: var(--text-secondary); margin-bottom: 4px;">Instagram Post 1080×1080 × 3 — <span style="color: var(--status-green);">1 ready</span></div>
+        <div id="delivPost" style="font-size: 11px; color: var(--text-secondary); margin-bottom: 4px;">Instagram Post 1080×1080 × 3 — <span style="color: #292827;">1 ready</span></div>
         <div id="delivStory" style="font-size: 11px; color: var(--text-secondary); margin-bottom: 10px;">Instagram Story 1080×1920 × 1 — <span style="color: var(--text-quaternary);">0 ready</span></div>
         <div id="briefDue" style="font-size: 11px; color: var(--text-tertiary); margin-bottom: 6px;">Due: May 10 · 1 of 4 ready</div>
         <div id="briefProgress" class="progress-bar"><div class="progress-fill" style="width: 25%;"></div></div>
@@ -493,7 +493,7 @@
       <!-- Brand context -->
       <div class="panel-section">
         <div class="sl">Brand Context
-          <span style="display: inline-flex; align-items: center; gap: 3px; padding: 1px 6px; background: rgba(113,112,255,0.1); color: var(--brand-accent); border: 1px solid rgba(113,112,255,0.28); border-radius: 9999px; font-size: 9px; font-weight: 510; text-transform: none; letter-spacing: -0.13px;">
+          <span style="display: inline-flex; align-items: center; gap: 3px; padding: 1px 6px; background: rgba(0,0,0,0.04); color: #292827; border: 1px solid rgba(0,0,0,0.12); border-radius: 9999px; font-size: 9px; font-weight: 510; text-transform: none; letter-spacing: -0.13px;">
             <svg width="8" height="8" viewBox="0 0 12 12" fill="none"><path d="M6 1l1.5 3 3 .5-2.2 2.2.5 3.3L6 8.5 3.2 10l.5-3.3L1.5 4.5l3-.5z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" fill="currentColor" fill-opacity="0.2"/></svg>
             Auto
           </span>
@@ -566,8 +566,8 @@
 </main>
 
 <!-- Toast -->
-<div id="toast" style="position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(120px); background: var(--bg-elevated); border: 1px solid var(--border-standard); border-radius: 8px; padding: 12px 16px; font-size: 13px; font-weight: 510; color: var(--text-primary); letter-spacing: -0.13px; box-shadow: 0 8px 24px rgba(0,0,0,0.5); z-index: 200; opacity: 0; transition: opacity 0.2s, transform 0.2s; display: flex; align-items: center; gap: 10px;">
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="color: var(--status-green); flex-shrink: 0;"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.3"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<div id="toast" style="position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(120px); background: var(--bg-elevated); border: 1px solid var(--border-standard); border-radius: 8px; padding: 12px 16px; font-size: 13px; font-weight: 510; color: var(--text-primary); letter-spacing: -0.13px; box-shadow: 0 8px 24px rgba(0,0,0,0.3); z-index: 200; opacity: 0; transition: opacity 0.2s, transform 0.2s; display: flex; align-items: center; gap: 10px;">
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="color: #292827; flex-shrink: 0;"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.3"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
   <span id="toastText">Asset saved</span>
 </div>
 
@@ -588,8 +588,8 @@
     // Update right panel deliverables
     const postReady = Math.min(assetCount, 3);
     const storyReady = assetCount > 3 ? 1 : 0;
-    document.getElementById('delivPost').innerHTML = `Instagram Post 1080×1080 × 3 — <span style="color: var(--status-green);">${postReady} ready</span>`;
-    document.getElementById('delivStory').innerHTML = `Instagram Story 1080×1920 × 1 — <span style="${storyReady ? 'color: var(--status-green);' : 'color: var(--text-quaternary);'}">${storyReady} ready</span>`;
+    document.getElementById('delivPost').innerHTML = `Instagram Post 1080×1080 × 3 — <span style="color: #292827;">${postReady} ready</span>`;
+    document.getElementById('delivStory').innerHTML = `Instagram Story 1080×1920 × 1 — <span style="${storyReady ? 'color: #292827;' : 'color: var(--text-quaternary);'}">${storyReady} ready</span>`;
 
     // Update progress bar
     document.getElementById('briefProgress').innerHTML = `<div class="progress-fill" style="width: ${pct}%;"></div>`;

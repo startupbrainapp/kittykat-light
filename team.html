@@ -7,31 +7,31 @@
 <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 <style>
   :root {
-    --bg-canvas: #08090a;
-    --bg-panel: #0f1011;
-    --bg-surface: #191a1b;
-    --bg-elevated: #28282c;
+    --bg-canvas: #ffffff;
+    --bg-panel: #fafafa;
+    --bg-surface: #f5f5f4;
+    --bg-elevated: #eeedeb;
 
-    --text-primary: #f7f8f8;
-    --text-secondary: #d0d6e0;
+    --text-primary: #292827;
+    --text-secondary: #4a4946;
     --text-tertiary: #8a8f98;
-    --text-quaternary: #62666d;
+    --text-quaternary: #9ca3af;
 
-    --brand: #5e6ad2;
-    --brand-accent: #7170ff;
-    --brand-hover: #828fff;
+    --brand: #292827;
+    --brand-accent: #57534e;
+    --brand-hover: #3d3d3a;
 
-    --border-subtle: rgba(255,255,255,0.05);
-    --border-standard: rgba(255,255,255,0.08);
-    --border-solid: #23252a;
+    --border-subtle: rgba(0,0,0,0.06);
+    --border-standard: #dcd7d3;
+    --border-solid: #dcd7d3;
 
-    --surface-1: rgba(255,255,255,0.02);
-    --surface-2: rgba(255,255,255,0.04);
-    --surface-3: rgba(255,255,255,0.05);
+    --surface-1: rgba(0,0,0,0.025);
+    --surface-2: rgba(0,0,0,0.06);
+    --surface-3: rgba(0,0,0,0.06);
 
-    --status-green: #10b981;
-    --status-amber: #f59e0b;
-    --status-red: #ef4444;
+    --status-green: #059669;
+    --status-amber: #d97706;
+    --status-red: #dc2626;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -84,7 +84,7 @@
   .ws-logo {
     width: 22px; height: 22px;
     border-radius: 5px;
-    background: var(--brand);
+    background: #292827;
     color: white;
     display: flex; align-items: center; justify-content: center;
     font-size: 12px; font-weight: 590;
@@ -130,20 +130,20 @@
     text-decoration: none;
   }
   .nav-item:hover {
-    background: rgba(255,255,255,0.03);
+    background: rgba(0,0,0,0.06);
     color: var(--text-secondary);
   }
   .nav-item.active {
     background: var(--surface-2);
     color: var(--text-primary);
   }
-  .nav-icon { width: 14px; height: 14px; flex-shrink: 0; opacity: 0.85; }
+  .nav-icon { width: 14px; height: 14px; flex-shrink: 0; opacity: 1; color: #292827; }
   .nav-item.active .nav-icon { opacity: 1; }
   .nav-label { flex: 1; }
   .nav-badge {
     font-size: 11px; font-weight: 510;
     color: var(--text-tertiary);
-    background: rgba(255,255,255,0.04);
+    background: rgba(0,0,0,0.06);
     padding: 1px 6px;
     border-radius: 4px;
     letter-spacing: -0.13px;
@@ -163,7 +163,7 @@
   .avatar {
     width: 24px; height: 24px;
     border-radius: 50%;
-    background: var(--brand);
+    background: #292827;
     color: white;
     display: flex; align-items: center; justify-content: center;
     font-size: 11px; font-weight: 590;
@@ -273,7 +273,7 @@
     transition: border-color 0.15s;
   }
   .invite-bar input[type="email"]::placeholder { color: var(--text-quaternary); }
-  .invite-bar input[type="email"]:focus { border-color: var(--brand); }
+  .invite-bar input[type="email"]:focus { border-color: #292827; }
 
   .invite-bar select {
     background: var(--bg-panel);
@@ -292,7 +292,7 @@
     background-position: right 10px center;
     transition: border-color 0.15s;
   }
-  .invite-bar select:focus { border-color: var(--brand); }
+  .invite-bar select:focus { border-color: #292827; }
 
   .btn-primary {
     padding: 7px 16px;
@@ -300,14 +300,14 @@
     font-size: 13px;
     font-weight: 510;
     letter-spacing: -0.13px;
-    background: var(--brand);
+    background: #292827;
     color: white;
     border: none;
     cursor: pointer;
     transition: background 0.15s;
     white-space: nowrap;
   }
-  .btn-primary:hover { background: var(--brand-hover); }
+  .btn-primary:hover { background: #3d3d3a; }
 
   /* ═══ SECTION HEADERS ═══ */
   .section-header {
@@ -404,15 +404,15 @@
 
   .role-cmo {
     background: rgba(113, 112, 255, 0.15);
-    color: var(--brand-accent);
+    color: #292827;
   }
   .role-creative-lead {
     background: rgba(16, 185, 129, 0.15);
-    color: var(--status-green);
+    color: #292827;
   }
   .role-regional {
     background: rgba(245, 158, 11, 0.15);
-    color: var(--status-amber);
+    color: #292827;
   }
   .role-designer {
     background: var(--surface-3);
@@ -437,7 +437,7 @@
   }
 
   .active-now {
-    color: var(--status-green);
+    color: #292827;
     display: flex;
     align-items: center;
     gap: 6px;
@@ -446,7 +446,7 @@
   .active-dot {
     width: 6px; height: 6px;
     border-radius: 50%;
-    background: var(--status-green);
+    background: #059669;
     flex-shrink: 0;
   }
 
@@ -532,7 +532,7 @@
     letter-spacing: -0.13px;
     border: 1px solid rgba(239, 68, 68, 0.2);
     background: transparent;
-    color: var(--status-red);
+    color: #292827;
     cursor: pointer;
     transition: all 0.12s;
   }
@@ -747,7 +747,7 @@
           <tr>
             <td>
               <div class="member-cell">
-                <div class="member-avatar" style="background: var(--brand-accent);">K</div>
+                <div class="member-avatar" style="background: #57534e;">K</div>
                 <div>
                   <div class="member-name">Kathy S.</div>
                   <div class="member-email">kathy@bape.com</div>
@@ -763,7 +763,7 @@
           <tr>
             <td>
               <div class="member-cell">
-                <div class="member-avatar" style="background: var(--status-green);">M</div>
+                <div class="member-avatar" style="background: #059669;">M</div>
                 <div>
                   <div class="member-name">Marcus T.</div>
                   <div class="member-email">marcus@bape.com</div>
@@ -779,7 +779,7 @@
           <tr>
             <td>
               <div class="member-cell">
-                <div class="member-avatar" style="background: var(--status-amber);">Y</div>
+                <div class="member-avatar" style="background: #d97706;">Y</div>
                 <div>
                   <div class="member-name">Yuki A.</div>
                   <div class="member-email">yuki@bape.com</div>
@@ -843,7 +843,7 @@
           <tr>
             <td>
               <div class="member-cell">
-                <div class="member-avatar" style="background: var(--status-amber);">T</div>
+                <div class="member-avatar" style="background: #d97706;">T</div>
                 <div>
                   <div class="member-name">Tom W.</div>
                   <div class="member-email">tom@bape.com</div>
@@ -916,7 +916,7 @@
               <svg width="20" height="12" viewBox="0 0 20 12" fill="none"><path d="M2 6h16M14 2l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <div class="chain-step">
-              <div class="chain-step-avatar" style="background: var(--status-green);">M</div>
+              <div class="chain-step-avatar" style="background: #059669;">M</div>
               <div class="chain-step-info">
                 <span class="chain-step-role">Creative Lead</span>
                 <span class="chain-step-name">Reviews &amp; refines</span>
@@ -926,7 +926,7 @@
               <svg width="20" height="12" viewBox="0 0 20 12" fill="none"><path d="M2 6h16M14 2l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <div class="chain-step">
-              <div class="chain-step-avatar" style="background: var(--brand-accent);">K</div>
+              <div class="chain-step-avatar" style="background: #57534e;">K</div>
               <div class="chain-step-info">
                 <span class="chain-step-role">CMO</span>
                 <span class="chain-step-name">Final approval</span>
@@ -952,7 +952,7 @@
               <svg width="20" height="12" viewBox="0 0 20 12" fill="none"><path d="M2 6h16M14 2l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <div class="chain-step">
-              <div class="chain-step-avatar" style="background: var(--status-green);">M</div>
+              <div class="chain-step-avatar" style="background: #059669;">M</div>
               <div class="chain-step-info">
                 <span class="chain-step-role">Creative Lead</span>
                 <span class="chain-step-name">Art direction review</span>
@@ -962,7 +962,7 @@
               <svg width="20" height="12" viewBox="0 0 20 12" fill="none"><path d="M2 6h16M14 2l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <div class="chain-step">
-              <div class="chain-step-avatar" style="background: var(--status-amber);">R</div>
+              <div class="chain-step-avatar" style="background: #d97706;">R</div>
               <div class="chain-step-info">
                 <span class="chain-step-role">Regional Manager</span>
                 <span class="chain-step-name">Market fit check</span>
@@ -972,7 +972,7 @@
               <svg width="20" height="12" viewBox="0 0 20 12" fill="none"><path d="M2 6h16M14 2l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <div class="chain-step">
-              <div class="chain-step-avatar" style="background: var(--brand-accent);">K</div>
+              <div class="chain-step-avatar" style="background: #57534e;">K</div>
               <div class="chain-step-info">
                 <span class="chain-step-role">CMO</span>
                 <span class="chain-step-name">Final sign-off</span>

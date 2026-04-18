@@ -7,31 +7,31 @@
 <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 <style>
   :root {
-    --bg-canvas: #08090a;
-    --bg-panel: #0f1011;
-    --bg-surface: #191a1b;
-    --bg-elevated: #28282c;
+    --bg-canvas: #ffffff;
+    --bg-panel: #fafafa;
+    --bg-surface: #f5f5f4;
+    --bg-elevated: #eeedeb;
 
-    --text-primary: #f7f8f8;
-    --text-secondary: #d0d6e0;
+    --text-primary: #292827;
+    --text-secondary: #4a4946;
     --text-tertiary: #8a8f98;
-    --text-quaternary: #62666d;
+    --text-quaternary: #9ca3af;
 
-    --brand: #5e6ad2;
-    --brand-accent: #7170ff;
-    --brand-hover: #828fff;
+    --brand: #292827;
+    --brand-accent: #57534e;
+    --brand-hover: #3d3d3a;
 
-    --border-subtle: rgba(255,255,255,0.05);
-    --border-standard: rgba(255,255,255,0.08);
-    --border-solid: #23252a;
+    --border-subtle: rgba(0,0,0,0.06);
+    --border-standard: #dcd7d3;
+    --border-solid: #dcd7d3;
 
-    --surface-1: rgba(255,255,255,0.02);
-    --surface-2: rgba(255,255,255,0.04);
-    --surface-3: rgba(255,255,255,0.05);
+    --surface-1: rgba(0,0,0,0.025);
+    --surface-2: rgba(0,0,0,0.06);
+    --surface-3: rgba(0,0,0,0.06);
 
-    --status-green: #10b981;
-    --status-amber: #f59e0b;
-    --status-red: #ef4444;
+    --status-green: #059669;
+    --status-amber: #d97706;
+    --status-red: #dc2626;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -58,23 +58,23 @@
   .nav-section { padding: 4px 0; }
   .nav-section-label { padding: 12px 20px 4px; font-size: 10px; font-weight: 510; color: var(--text-quaternary); letter-spacing: 0.5px; text-transform: uppercase; }
   .nav-item { display: flex; align-items: center; gap: 10px; padding: 5px 10px; margin: 0 8px; border-radius: 5px; cursor: pointer; color: var(--text-tertiary); font-size: 13px; font-weight: 510; letter-spacing: -0.13px; transition: background 0.1s, color 0.1s; }
-  .nav-item:hover { background: rgba(255,255,255,0.03); color: var(--text-secondary); }
-  .nav-item.active { background: var(--surface-2); color: var(--text-primary); }
-  .nav-icon { width: 14px; height: 14px; flex-shrink: 0; opacity: 0.85; }
+  .nav-item:hover { background: rgba(0,0,0,0.06); color: var(--text-secondary); }
+  .nav-item.active { background: rgba(0,0,0,0.06); color: var(--text-primary); }
+  .nav-icon { width: 14px; height: 14px; flex-shrink: 0; opacity: 1; color: #292827; }
   .nav-item.active .nav-icon { opacity: 1; }
   .nav-label { flex: 1; }
-  .nav-badge { font-size: 11px; font-weight: 510; color: var(--text-tertiary); background: rgba(255,255,255,0.04); padding: 1px 6px; border-radius: 4px; letter-spacing: -0.13px; }
+  .nav-badge { font-size: 11px; font-weight: 510; color: var(--text-tertiary); background: rgba(0,0,0,0.06); padding: 1px 6px; border-radius: 4px; letter-spacing: -0.13px; }
   .nav-chevron { width: 10px; height: 10px; opacity: 0.5; transition: transform 0.15s; flex-shrink: 0; }
   .nav-chevron.open { transform: rotate(90deg); }
   .sub-nav { overflow: hidden; max-height: 0; transition: max-height 0.2s ease; }
   .sub-nav.open { max-height: 240px; }
   .sub-nav-item { padding: 4px 10px 4px 32px; margin: 0 8px; border-radius: 5px; color: var(--text-quaternary); font-size: 13px; font-weight: 510; letter-spacing: -0.13px; cursor: pointer; transition: all 0.1s; text-decoration: none; display: block; }
-  .sub-nav-item:hover { color: var(--text-secondary); background: rgba(255,255,255,0.03); }
+  .sub-nav-item:hover { color: var(--text-secondary); background: rgba(0,0,0,0.06); }
   .sub-nav-item.active { color: var(--text-primary); background: var(--surface-2); }
   .sidebar-bottom-spacer { flex: 1; }
   .sidebar-bottom { padding: 8px 0 10px; border-top: 1px solid var(--border-subtle); }
   .user-item { display: flex; align-items: center; gap: 10px; padding: 8px 16px; }
-  .avatar { width: 24px; height: 24px; border-radius: 50%; background: var(--brand); color: white; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 590; }
+  .avatar { width: 24px; height: 24px; border-radius: 50%; background: #292827; color: white; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 590; }
   .user-info { flex: 1; min-width: 0; }
   .user-name { font-size: 12px; font-weight: 510; color: var(--text-secondary); letter-spacing: -0.13px; line-height: 1.3; }
   .user-role { font-size: 11px; font-weight: 400; color: var(--text-quaternary); letter-spacing: -0.13px; line-height: 1.3; }
@@ -91,10 +91,10 @@
   .btn { padding: 5px 10px; border-radius: 6px; font-size: 13px; font-weight: 510; letter-spacing: -0.13px; cursor: pointer; transition: background 0.12s, color 0.12s, border-color 0.12s; display: inline-flex; align-items: center; gap: 6px; }
   .btn-ghost { background: var(--surface-1); border: 1px solid var(--border-standard); color: var(--text-secondary); }
   .btn-ghost:hover { background: var(--surface-3); color: var(--text-primary); }
-  .btn-primary { background: var(--brand); border: 1px solid var(--brand); color: #ffffff; }
-  .btn-primary:hover { background: var(--brand-hover); border-color: var(--brand-hover); }
+  .btn-primary { background: #292827; border: 1px solid #292827; color: #ffffff; }
+  .btn-primary:hover { background: #3d3d3a; border-color: #3d3d3a; }
 
-  .content { flex: 1; overflow-y: auto; padding: 32px 40px 80px; }
+  .content { flex: 1; overflow-y: auto; padding: 40px 40px 80px; }
   .content-max { max-width: 1200px; margin: 0 auto; }
 
   .page-eyebrow { font-size: 10px; font-weight: 510; color: var(--text-quaternary); letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 10px; }
@@ -104,15 +104,15 @@
   /* Stat strip */
   .stat-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 16px; }
   .stat-card { background: var(--surface-1); border: 1px solid var(--border-standard); border-radius: 8px; padding: 12px 14px; display: flex; align-items: center; gap: 10px; }
-  .stat-icon { width: 28px; height: 28px; border-radius: 6px; background: var(--surface-2); border: 1px solid var(--border-standard); display: flex; align-items: center; justify-content: center; color: var(--brand-accent); flex-shrink: 0; }
+  .stat-icon { width: 28px; height: 28px; border-radius: 6px; background: var(--surface-2); border: 1px solid var(--border-standard); display: flex; align-items: center; justify-content: center; color: #292827; flex-shrink: 0; }
   .stat-meta { display: flex; flex-direction: column; gap: 0; }
   .stat-value { font-size: 14px; font-weight: 590; color: var(--text-primary); letter-spacing: -0.182px; line-height: 1.2; }
   .stat-label { font-size: 11px; font-weight: 400; color: var(--text-tertiary); letter-spacing: -0.13px; line-height: 1.3; }
 
   /* ═══ Insight callout — the unified-platform hero ═══ */
   .insight {
-    background: linear-gradient(to right, rgba(113,112,255,0.12), rgba(113,112,255,0.03) 80%);
-    border: 1px solid rgba(113,112,255,0.3);
+    background: linear-gradient(to right, rgba(0,0,0,0.07), rgba(0,0,0,0.02) 80%);
+    border: 1px solid rgba(0,0,0,0.06);
     border-radius: 10px;
     padding: 16px 20px;
     margin-bottom: 24px;
@@ -122,18 +122,18 @@
   }
   .insight-icon {
     width: 32px; height: 32px;
-    background: rgba(113,112,255,0.18);
-    border: 1px solid rgba(113,112,255,0.35);
+    background: rgba(0,0,0,0.11);
+    border: 1px solid rgba(0,0,0,0.06);
     border-radius: 8px;
     display: flex; align-items: center; justify-content: center;
-    color: var(--brand-accent);
+    color: #292827;
     flex-shrink: 0;
     margin-top: 2px;
   }
   .insight-body { flex: 1; }
   .insight-label {
     font-size: 10px; font-weight: 510;
-    color: var(--brand-accent);
+    color: #292827;
     letter-spacing: 0.5px; text-transform: uppercase;
     margin-bottom: 4px;
   }
@@ -151,7 +151,7 @@
     margin-top: 6px;
     display: flex; align-items: center; gap: 5px;
   }
-  .insight-provenance span { color: var(--brand-accent); }
+  .insight-provenance span { color: #292827; }
 
   /* ═══ Filter row ═══ */
   .filter-row { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
@@ -184,15 +184,15 @@
   }
   .cluster-card:hover {
     transform: translateY(-2px);
-    border-color: rgba(113,112,255,0.35);
+    border-color: rgba(0,0,0,0.06);
     background: var(--surface-2);
   }
   .cluster-card.highlight {
-    border-color: rgba(16,185,129,0.4);
+    border-color: rgba(5,150,105,0.25);
     box-shadow: 0 0 0 1px rgba(16,185,129,0.2);
   }
   .cluster-card.warn {
-    border-color: rgba(245,158,11,0.35);
+    border-color: rgba(217,119,6,0.3);
   }
 
   /* Cover mosaic (2x2 grid) */
@@ -259,14 +259,14 @@
     margin-top: 2px;
   }
   .cluster-percentile.top {
-    background: rgba(16,185,129,0.12);
-    color: var(--status-green);
-    border: 1px solid rgba(16,185,129,0.3);
+    background: rgba(5,150,105,0.1);
+    color: #292827;
+    border: 1px solid rgba(5,150,105,0.2);
   }
   .cluster-percentile.over {
-    background: rgba(245,158,11,0.1);
-    color: var(--status-amber);
-    border: 1px solid rgba(245,158,11,0.3);
+    background: rgba(0,0,0,0.04);
+    color: #292827;
+    border: 1px solid rgba(217,119,6,0.2);
   }
 
   .cluster-metrics {
@@ -297,14 +297,14 @@
     letter-spacing: -0.182px;
     font-variant-numeric: tabular-nums;
   }
-  .metric-value.green { color: var(--status-green); }
-  .metric-value.amber { color: var(--status-amber); }
+  .metric-value.green { color: #292827; }
+  .metric-value.amber { color: #292827; }
   .metric-value.muted { color: var(--text-tertiary); }
 
   /* Cluster drawer (same pattern as Visual Search) */
-  .drawer-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.5); opacity: 0; pointer-events: none; transition: opacity 0.2s; z-index: 90; }
+  .drawer-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.3); opacity: 0; pointer-events: none; transition: opacity 0.2s; z-index: 90; }
   .drawer-backdrop.open { opacity: 1; pointer-events: auto; }
-  .drawer { position: fixed; top: 0; right: 0; bottom: 0; width: 520px; max-width: 100vw; background: var(--bg-surface); border-left: 1px solid var(--border-standard); box-shadow: -8px 0 32px rgba(0,0,0,0.5); z-index: 100; transform: translateX(100%); transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1); display: flex; flex-direction: column; }
+  .drawer { position: fixed; top: 0; right: 0; bottom: 0; width: 520px; max-width: 100vw; background: var(--bg-surface); border-left: 1px solid var(--border-standard); box-shadow: -8px 0 32px rgba(0,0,0,0.3); z-index: 100; transform: translateX(100%); transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1); display: flex; flex-direction: column; }
   .drawer.open { transform: translateX(0); }
   .drawer-header { display: flex; align-items: center; gap: 10px; padding: 14px 18px; border-bottom: 1px solid var(--border-subtle); flex-shrink: 0; }
   .drawer-title-wrap { flex: 1; min-width: 0; }
@@ -315,8 +315,8 @@
   .drawer-body { flex: 1; overflow-y: auto; padding: 18px; }
   .drawer-footer { border-top: 1px solid var(--border-subtle); padding: 14px 18px; display: flex; gap: 6px; flex-shrink: 0; background: var(--bg-surface); }
   .drawer-btn { flex: 1; padding: 8px 12px; border-radius: 6px; font-size: 13px; font-weight: 510; letter-spacing: -0.13px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 6px; transition: background 0.12s; }
-  .drawer-btn.primary { background: var(--brand); border: 1px solid var(--brand); color: white; }
-  .drawer-btn.primary:hover { background: var(--brand-hover); border-color: var(--brand-hover); }
+  .drawer-btn.primary { background: #292827; border: 1px solid #292827; color: white; }
+  .drawer-btn.primary:hover { background: #3d3d3a; border-color: #3d3d3a; }
   .drawer-btn.secondary { background: var(--surface-2); border: 1px solid var(--border-standard); color: var(--text-primary); }
   .drawer-btn.secondary:hover { background: var(--surface-3); }
 
@@ -337,14 +337,14 @@
   }
   .drawer-stat-label { font-size: 9px; font-weight: 510; color: var(--text-quaternary); text-transform: uppercase; letter-spacing: 0.4px; line-height: 1.3; }
   .drawer-stat-value { font-size: 15px; font-weight: 590; color: var(--text-primary); letter-spacing: -0.165px; line-height: 1.3; font-variant-numeric: tabular-nums; }
-  .drawer-stat-value.green { color: var(--status-green); }
+  .drawer-stat-value.green { color: #292827; }
   .drawer-stat-sub { font-size: 10px; color: var(--text-tertiary); letter-spacing: -0.13px; margin-top: 1px; }
 
   .drawer-section { margin-bottom: 18px; }
   .drawer-section-label { font-size: 10px; font-weight: 510; color: var(--text-quaternary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
 
   .color-row { display: flex; align-items: center; gap: 6px; }
-  .color-dot { width: 24px; height: 24px; border-radius: 5px; border: 1px solid rgba(255,255,255,0.12); }
+  .color-dot { width: 24px; height: 24px; border-radius: 5px; border: 1px solid #ccc8c2; }
 
   .tag-list { display: flex; flex-wrap: wrap; gap: 6px; }
   .tag { padding: 3px 9px; background: var(--surface-2); border: 1px solid var(--border-standard); border-radius: 9999px; font-size: 11px; font-weight: 510; color: var(--text-secondary); letter-spacing: -0.13px; }
@@ -357,8 +357,8 @@
   .perf-row { display: flex; align-items: center; gap: 10px; font-size: 12px; letter-spacing: -0.13px; }
   .perf-key { color: var(--text-tertiary); width: 80px; flex-shrink: 0; font-weight: 510; }
   .perf-bar-wrap { flex: 1; height: 5px; background: var(--surface-2); border-radius: 999px; overflow: hidden; }
-  .perf-fill { height: 100%; border-radius: 999px; background: var(--brand-accent); }
-  .perf-fill.green { background: var(--status-green); }
+  .perf-fill { height: 100%; border-radius: 999px; background: #57534e; }
+  .perf-fill.green { background: #059669; }
   .perf-val { color: var(--text-primary); font-weight: 510; width: 48px; text-align: right; font-variant-numeric: tabular-nums; }
 </style>
 </head>
@@ -511,11 +511,11 @@
           <div class="stat-meta"><div class="stat-value">89%</div><div class="stat-label">Coverage · 7,647 of 8,576</div></div>
         </div>
         <div class="stat-card">
-          <div class="stat-icon" style="color: var(--status-green);"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><polyline points="2,12 6,7 9,10 14,4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="stat-icon" style="color: #292827;"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><polyline points="2,12 6,7 9,10 14,4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           <div class="stat-meta"><div class="stat-value">Green Camo Shark</div><div class="stat-label">Highest ROAS · 4.1x</div></div>
         </div>
         <div class="stat-card">
-          <div class="stat-icon" style="color: var(--status-amber);"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 3v5M8 11v0.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.2"/></svg></div>
+          <div class="stat-icon" style="color: #292827;"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 3v5M8 11v0.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.2"/></svg></div>
           <div class="stat-meta"><div class="stat-value">Blue ABC Camo</div><div class="stat-label">Over-invested · 2.1x ROAS</div></div>
         </div>
       </div>
@@ -630,22 +630,22 @@
   // Clusters — sorted by ROAS by default (the headline sort)
   // tiles: pick from 16 gradients to form a 4-tile mosaic per card
   const clusters = [
-    { name: 'Green Camo Shark & Sweatwear', count: 398, pct: '4.6%', roas: 4.1, ctr: 2.8, tiles: [1, 9, 4, 1], imgs: ['images/1.jpg','images/c1.jpg','images/c2.jpg','images/2.jpg'], colors: ['#2d6b2a','#1a3a1a','#8b1a1a','#0a0a0a','#2d4a2a','#62666d'], tags: ['Green camo','Shark graphic','Heritage','Streetwear','Bold'], badge: 'top' },
+    { name: 'Green Camo Shark & Sweatwear', count: 398, pct: '4.6%', roas: 4.1, ctr: 2.8, tiles: [1, 9, 4, 1], imgs: ['images/1.jpg','images/c1.jpg','images/c2.jpg','images/2.jpg'], colors: ['#2d6b2a','#1a3a1a','#8b1a1a','#0a0a0a','#2d4a2a','#9ca3af'], tags: ['Green camo','Shark graphic','Heritage','Streetwear','Bold'], badge: 'top' },
     { name: 'Gold Luxury & Neon Brights', count: 379, pct: '4.4%', roas: 3.8, ctr: 3.1, tiles: [7, 8, 7, 14], imgs: ['images/7.jpg','images/c3.jpg','images/c4.jpg','images/10.jpg'], colors: ['#e8c464','#b8a568','#3a3020','#1a1a1a','#f0ede8','#d4a86a'], tags: ['Gold foil','Premium','Editorial','Maximalist','Foil type'] },
     { name: 'Pink/Red Camo & Sakura Prints', count: 333, pct: '3.9%', roas: 3.6, ctr: 2.5, tiles: [5, 14, 5, 2], imgs: ['images/5.jpg','images/c5.jpg','images/9.jpg','images/c6.jpg'], colors: ['#e5b4b0','#8b1a1a','#3a1a1a','#e5b4b0','#f0ede8','#d4a86a'], tags: ['Sakura','Japan seasonal','Pink','Floral','Soft'] },
-    { name: 'ABC Camo Shark Hoodies & Campaign', count: 270, pct: '3.1%', roas: 3.4, ctr: 2.3, tiles: [1, 9, 1, 12], imgs: ['images/c7.jpg','images/4.jpg','images/c8.jpg','images/1.jpg'], colors: ['#2d6b2a','#1a3a1a','#1a1a1a','#f0ede8','#8b1a1a','#62666d'], tags: ['ABC camo','Shark','Campaign','Hoodie','Core'] },
-    { name: 'Lifestyle & Street Photography', count: 337, pct: '3.9%', roas: 3.2, ctr: 2.9, tiles: [4, 6, 15, 4], imgs: ['images/c9.jpg','images/c10.jpg','images/3.jpg','images/6.jpg'], colors: ['#3a2a1a','#1a0c04','#181818','#484848','#a08878','#62666d'], tags: ['Editorial','Candid','Street','Lifestyle','Warm'] },
+    { name: 'ABC Camo Shark Hoodies & Campaign', count: 270, pct: '3.1%', roas: 3.4, ctr: 2.3, tiles: [1, 9, 1, 12], imgs: ['images/c7.jpg','images/4.jpg','images/c8.jpg','images/1.jpg'], colors: ['#2d6b2a','#1a3a1a','#1a1a1a','#f0ede8','#8b1a1a','#9ca3af'], tags: ['ABC camo','Shark','Campaign','Hoodie','Core'] },
+    { name: 'Lifestyle & Street Photography', count: 337, pct: '3.9%', roas: 3.2, ctr: 2.9, tiles: [4, 6, 15, 4], imgs: ['images/c9.jpg','images/c10.jpg','images/3.jpg','images/6.jpg'], colors: ['#3a2a1a','#1a0c04','#181818','#484848','#a08878','#9ca3af'], tags: ['Editorial','Candid','Street','Lifestyle','Warm'] },
     { name: 'Blue ABC Camo', count: 456, pct: '5.3%', roas: 2.1, ctr: 1.8, tiles: [3, 13, 3, 13], imgs: ['images/2.jpg','images/c1.jpg','images/8.jpg','images/c3.jpg'], colors: ['#1a2a4a','#080a1a','#2d3a5a','#0a0f1a','#a0b0c0','#f0ede8'], tags: ['Blue camo','ABC pattern','Volume'], badge: 'over' },
-    { name: 'Small Logo & Milo Details', count: 422, pct: '4.9%', roas: 3.0, ctr: 2.4, tiles: [4, 6, 7, 4], imgs: ['images/4.jpg','images/c5.jpg','images/c7.jpg','images/13.jpg'], colors: ['#3a2a1a','#1a0c04','#62666d','#f0ede8','#c8b090','#1a1a1a'], tags: ['Milo','Heritage','Archive','Logo detail','Small scale'] },
-    { name: 'Dark Apparel & Classic Logos', count: 459, pct: '5.4%', roas: 2.8, ctr: 2.2, tiles: [6, 12, 6, 15], imgs: ['images/6.jpg','images/c2.jpg','images/c4.jpg','images/11.jpg'], colors: ['#0a0a0a','#1a1a1a','#2a2a2a','#484848','#f0ede8','#62666d'], tags: ['Dark','Classic','Logos','Monochrome','Basics'] },
-    { name: 'Digital Camo & Patterned Textiles', count: 360, pct: '4.2%', roas: 2.7, ctr: 2.1, tiles: [9, 1, 9, 3], imgs: ['images/c8.jpg','images/c9.jpg','images/14.jpg','images/c6.jpg'], colors: ['#2d4a4a','#0a1a1a','#2d4a2a','#0c1a0a','#62666d','#a0b0b0'], tags: ['Digital camo','Pattern-heavy','Textile','Tech','Hybrid'] },
-    { name: 'Monochrome & Sneaker Close-ups', count: 407, pct: '4.7%', roas: 2.6, ctr: 2.0, tiles: [15, 6, 10, 15], imgs: ['images/3.jpg','images/c10.jpg','images/15.jpg','images/c1.jpg'], colors: ['#484848','#181818','#0a0a0a','#a0a0a0','#f0ede8','#62666d'], tags: ['Monochrome','Sneaker','Product detail','Studio'] },
-    { name: 'Sneaker Details & Close-ups', count: 358, pct: '4.2%', roas: 2.6, ctr: 2.3, tiles: [10, 2, 4, 10], imgs: ['images/12.jpg','images/c3.jpg','images/c5.jpg','images/16.jpg'], colors: ['#5a3a1a','#1a0a0a','#8b1a1a','#62666d','#c8b090','#f0ede8'], tags: ['Product close-up','Sneaker','Detail','Macro'] },
-    { name: 'Dark Textured Fabrics & Monograms', count: 421, pct: '4.9%', roas: 2.5, ctr: 1.9, tiles: [12, 6, 12, 15], imgs: ['images/c4.jpg','images/c7.jpg','images/17.jpg','images/c2.jpg'], colors: ['#0a0a0a','#2a2a2a','#1a1a1a','#484848','#62666d','#a0a0a0'], tags: ['Texture','Monogram','Dark','Premium','Fabric'] },
+    { name: 'Small Logo & Milo Details', count: 422, pct: '4.9%', roas: 3.0, ctr: 2.4, tiles: [4, 6, 7, 4], imgs: ['images/4.jpg','images/c5.jpg','images/c7.jpg','images/13.jpg'], colors: ['#3a2a1a','#1a0c04','#9ca3af','#f0ede8','#c8b090','#1a1a1a'], tags: ['Milo','Heritage','Archive','Logo detail','Small scale'] },
+    { name: 'Dark Apparel & Classic Logos', count: 459, pct: '5.4%', roas: 2.8, ctr: 2.2, tiles: [6, 12, 6, 15], imgs: ['images/6.jpg','images/c2.jpg','images/c4.jpg','images/11.jpg'], colors: ['#0a0a0a','#1a1a1a','#2a2a2a','#484848','#f0ede8','#9ca3af'], tags: ['Dark','Classic','Logos','Monochrome','Basics'] },
+    { name: 'Digital Camo & Patterned Textiles', count: 360, pct: '4.2%', roas: 2.7, ctr: 2.1, tiles: [9, 1, 9, 3], imgs: ['images/c8.jpg','images/c9.jpg','images/14.jpg','images/c6.jpg'], colors: ['#2d4a4a','#0a1a1a','#2d4a2a','#0c1a0a','#9ca3af','#a0b0b0'], tags: ['Digital camo','Pattern-heavy','Textile','Tech','Hybrid'] },
+    { name: 'Monochrome & Sneaker Close-ups', count: 407, pct: '4.7%', roas: 2.6, ctr: 2.0, tiles: [15, 6, 10, 15], imgs: ['images/3.jpg','images/c10.jpg','images/15.jpg','images/c1.jpg'], colors: ['#484848','#181818','#0a0a0a','#a0a0a0','#f0ede8','#9ca3af'], tags: ['Monochrome','Sneaker','Product detail','Studio'] },
+    { name: 'Sneaker Details & Close-ups', count: 358, pct: '4.2%', roas: 2.6, ctr: 2.3, tiles: [10, 2, 4, 10], imgs: ['images/12.jpg','images/c3.jpg','images/c5.jpg','images/16.jpg'], colors: ['#5a3a1a','#1a0a0a','#8b1a1a','#9ca3af','#c8b090','#f0ede8'], tags: ['Product close-up','Sneaker','Detail','Macro'] },
+    { name: 'Dark Textured Fabrics & Monograms', count: 421, pct: '4.9%', roas: 2.5, ctr: 1.9, tiles: [12, 6, 12, 15], imgs: ['images/c4.jpg','images/c7.jpg','images/17.jpg','images/c2.jpg'], colors: ['#0a0a0a','#2a2a2a','#1a1a1a','#484848','#9ca3af','#a0a0a0'], tags: ['Texture','Monogram','Dark','Premium','Fabric'] },
     { name: 'Colorful Sneakers & Collectibles', count: 325, pct: '3.8%', roas: 2.4, ctr: 2.6, tiles: [7, 14, 2, 8], imgs: ['images/18.jpg','images/c6.jpg','images/c8.jpg','images/19.jpg'], colors: ['#e8c464','#8a1a6a','#8b1a1a','#4a2d5a','#b8a568','#f0ede8'], tags: ['Colorful','Collectible','Drop','Multi-color'] },
-    { name: '1st Camo Green & Graphic Bags', count: 366, pct: '4.3%', roas: 2.3, ctr: 1.9, tiles: [1, 9, 1, 4], imgs: ['images/c9.jpg','images/20.jpg','images/c10.jpg','images/c1.jpg'], colors: ['#2d6b2a','#1a3a1a','#3a2a1a','#62666d','#f0ede8','#0a0a0a'], tags: ['1st camo','Green','Bag','Archive','Heritage'] },
-    { name: 'White College Logo Tees & Basics', count: 511, pct: '6.0%', roas: 2.3, ctr: 1.7, tiles: [11, 11, 6, 11], imgs: ['images/11.jpg','images/c2.jpg','images/c3.jpg','images/7.jpg'], colors: ['#f0ede8','#e5e3de','#1a1a1a','#8b1a1a','#2d6b2a','#62666d'], tags: ['Tee','Basics','White','Logo','Volume'], badge: 'over' },
-    { name: 'Minimal Basics & Accessories', count: 433, pct: '5.0%', roas: 2.2, ctr: 1.8, tiles: [11, 6, 11, 15], imgs: ['images/c4.jpg','images/c5.jpg','images/8.jpg','images/c6.jpg'], colors: ['#f0ede8','#e5e3de','#62666d','#1a1a1a','#a0a0a0','#484848'], tags: ['Minimal','Basics','Accessories','Neutral','Calm'] },
+    { name: '1st Camo Green & Graphic Bags', count: 366, pct: '4.3%', roas: 2.3, ctr: 1.9, tiles: [1, 9, 1, 4], imgs: ['images/c9.jpg','images/20.jpg','images/c10.jpg','images/c1.jpg'], colors: ['#2d6b2a','#1a3a1a','#3a2a1a','#9ca3af','#f0ede8','#0a0a0a'], tags: ['1st camo','Green','Bag','Archive','Heritage'] },
+    { name: 'White College Logo Tees & Basics', count: 511, pct: '6.0%', roas: 2.3, ctr: 1.7, tiles: [11, 11, 6, 11], imgs: ['images/11.jpg','images/c2.jpg','images/c3.jpg','images/7.jpg'], colors: ['#f0ede8','#e5e3de','#1a1a1a','#8b1a1a','#2d6b2a','#9ca3af'], tags: ['Tee','Basics','White','Logo','Volume'], badge: 'over' },
+    { name: 'Minimal Basics & Accessories', count: 433, pct: '5.0%', roas: 2.2, ctr: 1.8, tiles: [11, 6, 11, 15], imgs: ['images/c4.jpg','images/c5.jpg','images/8.jpg','images/c6.jpg'], colors: ['#f0ede8','#e5e3de','#9ca3af','#1a1a1a','#a0a0a0','#484848'], tags: ['Minimal','Basics','Accessories','Neutral','Calm'] },
   ];
 
   const grid = document.getElementById('clusterGrid');

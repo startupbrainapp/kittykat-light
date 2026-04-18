@@ -7,29 +7,29 @@
 <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 <style>
   :root {
-    --bg-canvas: #08090a;
-    --bg-panel: #0f1011;
-    --bg-surface: #191a1b;
-    --bg-elevated: #28282c;
+    --bg-canvas: #ffffff;
+    --bg-panel: #fafafa;
+    --bg-surface: #f5f5f4;
+    --bg-elevated: #eeedeb;
 
-    --text-primary: #f7f8f8;
-    --text-secondary: #d0d6e0;
+    --text-primary: #292827;
+    --text-secondary: #4a4946;
     --text-tertiary: #8a8f98;
-    --text-quaternary: #62666d;
+    --text-quaternary: #9ca3af;
 
-    --brand: #5e6ad2;
-    --brand-accent: #7170ff;
-    --brand-hover: #828fff;
+    --brand: #292827;
+    --brand-accent: #57534e;
+    --brand-hover: #3d3d3a;
 
-    --border-subtle: rgba(255,255,255,0.05);
-    --border-standard: rgba(255,255,255,0.08);
-    --border-solid: #23252a;
+    --border-subtle: rgba(0,0,0,0.06);
+    --border-standard: #dcd7d3;
+    --border-solid: #dcd7d3;
 
-    --surface-1: rgba(255,255,255,0.02);
-    --surface-2: rgba(255,255,255,0.04);
-    --surface-3: rgba(255,255,255,0.05);
+    --surface-1: rgba(0,0,0,0.025);
+    --surface-2: rgba(0,0,0,0.06);
+    --surface-3: rgba(0,0,0,0.06);
 
-    --status-green: #10b981;
+    --status-green: #059669;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -82,7 +82,7 @@
   .ws-logo {
     width: 22px; height: 22px;
     border-radius: 5px;
-    background: var(--brand);
+    background: #292827;
     color: white;
     display: flex; align-items: center; justify-content: center;
     font-size: 12px; font-weight: 590;
@@ -127,20 +127,20 @@
     transition: background 0.1s, color 0.1s;
   }
   .nav-item:hover {
-    background: rgba(255,255,255,0.03);
+    background: rgba(0,0,0,0.06);
     color: var(--text-secondary);
   }
   .nav-item.active {
     background: var(--surface-2);
     color: var(--text-primary);
   }
-  .nav-icon { width: 14px; height: 14px; flex-shrink: 0; opacity: 0.85; }
+  .nav-icon { width: 14px; height: 14px; flex-shrink: 0; opacity: 1; color: #292827; }
   .nav-item.active .nav-icon { opacity: 1; }
   .nav-label { flex: 1; }
   .nav-badge {
     font-size: 11px; font-weight: 510;
     color: var(--text-tertiary);
-    background: rgba(255,255,255,0.04);
+    background: rgba(0,0,0,0.06);
     padding: 1px 6px;
     border-radius: 4px;
     letter-spacing: -0.13px;
@@ -168,7 +168,7 @@
   }
   .sub-nav-item:hover {
     color: var(--text-secondary);
-    background: rgba(255,255,255,0.03);
+    background: rgba(0,0,0,0.06);
   }
   .sub-nav-item.active {
     color: var(--text-primary);
@@ -189,7 +189,7 @@
   .avatar {
     width: 24px; height: 24px;
     border-radius: 50%;
-    background: var(--brand);
+    background: #292827;
     color: white;
     display: flex; align-items: center; justify-content: center;
     font-size: 11px; font-weight: 590;
@@ -260,13 +260,13 @@
     color: var(--text-primary);
   }
   .btn-primary {
-    background: var(--brand);
-    border: 1px solid var(--brand);
+    background: #292827;
+    border: 1px solid #292827;
     color: #ffffff;
   }
   .btn-primary:hover {
-    background: var(--brand-hover);
-    border-color: var(--brand-hover);
+    background: #3d3d3a;
+    border-color: #3d3d3a;
   }
 
   .content {
@@ -321,7 +321,7 @@
   .source-tab:hover { color: var(--text-secondary); }
   .source-tab.active {
     color: var(--text-primary);
-    border-bottom-color: var(--brand-accent);
+    border-bottom-color: #292827;
   }
 
   .section-label {
@@ -391,7 +391,7 @@
     white-space: nowrap;
   }
   .status-pill.live {
-    color: var(--status-green);
+    color: #292827;
     border-color: rgba(16, 185, 129, 0.3);
   }
   .status-pill .pill-dot {
@@ -405,7 +405,7 @@
   .connected-item {
     display: flex; align-items: center; gap: 8px;
     padding: 6px 10px;
-    background: rgba(255,255,255,0.03);
+    background: rgba(0,0,0,0.06);
     border: 1px solid var(--border-subtle);
     border-radius: 5px;
   }
@@ -434,7 +434,7 @@
   }
   .remove-btn:hover {
     color: var(--text-primary);
-    background: rgba(255,255,255,0.05);
+    background: rgba(0,0,0,0.06);
   }
 
   .input-row { display: flex; gap: 6px; align-items: center; }
@@ -465,7 +465,7 @@
     white-space: nowrap;
     transition: background 0.12s;
   }
-  .source-btn:hover { background: rgba(255,255,255,0.08); }
+  .source-btn:hover { background: #dcd7d3; }
 
   .upload-zone {
     border: 1.5px dashed var(--border-standard);
@@ -505,7 +505,7 @@
   .sync-dot {
     width: 6px; height: 6px;
     border-radius: 50%;
-    background: var(--status-green);
+    background: #059669;
     box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
     flex-shrink: 0;
   }
