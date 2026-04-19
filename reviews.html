@@ -68,7 +68,7 @@
 
   /* Stat strip */
   .stat-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; }
-  .stat-card { background: var(--surface-1); border: 1px solid var(--border-standard); border-radius: 8px; padding: 12px 14px; display: flex; align-items: center; gap: 10px; }
+  .stat-card { background: #f5f4f2; border: none; border-radius: 8px; padding: 12px 14px; display: flex; align-items: center; gap: 10px; }
   .stat-icon { width: 28px; height: 28px; border-radius: 6px; background: var(--surface-2); border: 1px solid var(--border-standard); display: flex; align-items: center; justify-content: center; color: #292827; flex-shrink: 0; }
   .stat-icon.green { color: #292827; }
   .stat-icon.amber { color: #292827; }
@@ -162,7 +162,7 @@
   .d-breakdown-val { font-size: 12px; font-weight: 590; color: var(--text-primary); font-variant-numeric: tabular-nums; }
   .d-breakdown-label { font-size: 9px; color: var(--text-quaternary); text-transform: uppercase; letter-spacing: 0.4px; margin-top: 2px; }
 
-  .panel { background: var(--surface-1); border: 1px solid var(--border-standard); border-radius: 10px; padding: 14px 16px; margin-bottom: 10px; }
+  .panel { background: #f5f4f2; border: none; border-radius: 10px; padding: 14px 16px; margin-bottom: 10px; }
   .panel-label { font-size: 10px; font-weight: 510; color: var(--text-quaternary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
   .panel-label-count { background: var(--surface-3); color: var(--text-tertiary); padding: 1px 6px; border-radius: 9999px; font-size: 10px; font-weight: 510; text-transform: none; letter-spacing: -0.13px; }
 
@@ -180,7 +180,7 @@
   .d-comparison-text { font-size: 12px; color: var(--text-secondary); letter-spacing: -0.13px; line-height: 1.55; }
   .d-comparison-thumb { width: 100%; border-radius: 6px; object-fit: cover; aspect-ratio: 1; background: var(--bg-elevated); }
 
-  .d-comment { background: var(--surface-1); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 10px 12px; margin-bottom: 6px; }
+  .d-comment { background: var(--surface-1); border: none; border-radius: 8px; padding: 10px 12px; margin-bottom: 6px; }
   .d-comment-header { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
   .d-comment-avatar { width: 20px; height: 20px; border-radius: 50%; background: #292827; color: white; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 590; flex-shrink: 0; }
   .d-comment-name { font-size: 12px; font-weight: 510; color: var(--text-primary); letter-spacing: -0.13px; }
@@ -308,12 +308,7 @@
       <span class="bc-sep">/</span>
       <span class="bc-current">Reviews</span>
     </div>
-    <div class="topbar-right">
-      <button class="btn btn-ghost">
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Mark all read
-      </button>
-    </div>
+    <div class="topbar-right"></div>
   </div>
 
   <div class="content">
