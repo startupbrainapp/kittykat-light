@@ -105,6 +105,30 @@
   .sched-info { flex: 1; min-width: 0; }
   .sched-name { font-size: 12px; font-weight: 510; color: var(--text-primary); letter-spacing: -0.13px; line-height: 1.3; }
   .sched-next { font-size: 11px; color: var(--text-quaternary); letter-spacing: -0.13px; }
+
+  /* Command Palette */
+  .cmd-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.25); z-index: 999; opacity: 0; pointer-events: none; transition: opacity 0.15s; }
+  .cmd-backdrop.open { opacity: 1; pointer-events: auto; }
+  .cmd-dialog { position: fixed; top: 20%; left: 50%; transform: translateX(-50%) scale(0.96); width: 560px; max-width: 90vw; background: #ffffff; border: 1px solid #dcd7d3; border-radius: 12px; box-shadow: 0 16px 48px rgba(0,0,0,0.12); z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.15s, transform 0.15s; overflow: hidden; }
+  .cmd-backdrop.open + .cmd-dialog, .cmd-dialog.open { opacity: 1; pointer-events: auto; transform: translateX(-50%) scale(1); }
+  .cmd-input-wrap { display: flex; align-items: center; gap: 10px; padding: 14px 18px; border-bottom: 1px solid #f0eee6; }
+  .cmd-input-wrap svg { color: #9ca3af; flex-shrink: 0; }
+  .cmd-input { flex: 1; border: none; outline: none; font-size: 15px; font-weight: 400; color: #292827; background: transparent; font-family: inherit; font-feature-settings: 'cv01','ss03'; letter-spacing: -0.165px; }
+  .cmd-input::placeholder { color: #9ca3af; }
+  .cmd-hint { font-size: 11px; color: #9ca3af; background: #f5f5f4; border: 1px solid #dcd7d3; border-radius: 4px; padding: 1px 5px; font-weight: 510; flex-shrink: 0; }
+  .cmd-results { max-height: 320px; overflow-y: auto; padding: 6px; }
+  .cmd-group-label { font-size: 10px; font-weight: 510; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.5px; padding: 8px 12px 4px; }
+  .cmd-item { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 6px; cursor: pointer; transition: background 0.08s; }
+  .cmd-item:hover, .cmd-item.active { background: #f5f5f4; }
+  .cmd-item-icon { width: 28px; height: 28px; border-radius: 6px; background: rgba(0,0,0,0.04); display: flex; align-items: center; justify-content: center; color: #292827; flex-shrink: 0; }
+  .cmd-item-text { flex: 1; }
+  .cmd-item-name { font-size: 13px; font-weight: 510; color: #292827; letter-spacing: -0.13px; }
+  .cmd-item-desc { font-size: 11px; color: #8a8f98; letter-spacing: -0.13px; }
+  .cmd-item-shortcut { font-size: 10px; color: #9ca3af; font-weight: 510; }
+  .cmd-footer { display: flex; align-items: center; gap: 12px; padding: 8px 14px; border-top: 1px solid #f0eee6; background: #fafafa; }
+  .cmd-footer-hint { font-size: 10px; color: #9ca3af; display: flex; align-items: center; gap: 4px; }
+  .cmd-footer-key { background: #eeedeb; border: 1px solid #dcd7d3; border-radius: 3px; padding: 0px 4px; font-size: 10px; font-weight: 510; color: #57534e; }
+
 </style>
 </head>
 <body>
@@ -449,6 +473,373 @@
     </div>
   </div>
 </div>
+
+
+<!-- REPORT VIEWER DRAWER -->
+<div class="drawer-backdrop" id="reportBackdrop"></div>
+<div class="drawer" id="reportDrawer">
+  <div class="drawer-scroll">
+    <div class="drawer-header">
+      <div class="drawer-header-left">
+        <div class="drawer-title" id="drawerTitle">Weekly ROAS Summary — Apr 14</div>
+        <div class="drawer-date" id="drawerDate">Apr 14, 2026</div>
+        <div class="drawer-subtitle" id="drawerSubtitle">Generated automatically</div>
+      </div>
+      <button class="drawer-close" id="drawerClose" aria-label="Close">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+
+    <div class="drawer-section">
+      <div class="drawer-section-label">EXECUTIVE SUMMARY</div>
+      <ul class="drawer-bullets" id="drawerBullets">
+        <li>Blended ROAS increased 0.4x to 3.8x week-over-week</li>
+        <li>Hana Matsuri campaign outperforming at 4.6x, 18% above portfolio average</li>
+        <li>TikTok channel showing strongest growth, recommend 15% budget increase</li>
+      </ul>
+    </div>
+
+    <div class="drawer-section">
+      <div class="drawer-metrics" id="drawerMetrics">
+        <div class="drawer-metric-card">
+          <div class="drawer-metric-label">ROAS</div>
+          <div class="drawer-metric-value">3.8x</div>
+          <div class="drawer-metric-change positive">+0.4x</div>
+        </div>
+        <div class="drawer-metric-card">
+          <div class="drawer-metric-label">Spend</div>
+          <div class="drawer-metric-value">$42.1K</div>
+          <div class="drawer-metric-change negative">+8%</div>
+        </div>
+        <div class="drawer-metric-card">
+          <div class="drawer-metric-label">Revenue</div>
+          <div class="drawer-metric-value">$160K</div>
+          <div class="drawer-metric-change positive">+22%</div>
+        </div>
+        <div class="drawer-metric-card">
+          <div class="drawer-metric-label">CPA</div>
+          <div class="drawer-metric-value">$24.30</div>
+          <div class="drawer-metric-change positive">-12%</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="drawer-section">
+      <div class="drawer-chart-wrap">
+        <svg viewBox="0 0 600 160" class="drawer-chart">
+          <defs>
+            <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#2563eb" stop-opacity="0.12"/>
+              <stop offset="100%" stop-color="#2563eb" stop-opacity="0.01"/>
+            </linearGradient>
+          </defs>
+          <path d="M0,120 L60,100 L120,110 L180,80 L240,70 L300,55 L360,60 L420,40 L480,35 L540,25 L600,20 L600,160 L0,160 Z" fill="url(#chartFill)"/>
+          <polyline points="0,120 60,100 120,110 180,80 240,70 300,55 360,60 420,40 480,35 540,25 600,20" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="600" cy="20" r="3.5" fill="#2563eb"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="drawer-section">
+      <div class="drawer-section-label">RECOMMENDATIONS</div>
+      <div class="drawer-recs" id="drawerRecs">
+        <div class="drawer-rec-row">
+          <div class="drawer-rec-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="drawer-rec-text">Increase TikTok budget by 15% to capitalize on momentum</div>
+        </div>
+        <div class="drawer-rec-row">
+          <div class="drawer-rec-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="drawer-rec-text">Scale Hana Matsuri creative to additional territories</div>
+        </div>
+        <div class="drawer-rec-row">
+          <div class="drawer-rec-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="drawer-rec-text">Pause underperforming Pinterest static ads to reallocate spend</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="drawer-footer">
+      <button class="btn btn-primary">Export PDF</button>
+      <button class="btn btn-ghost">Share with team</button>
+      <button class="btn btn-ghost">Schedule recurring</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .drawer-backdrop {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 900;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.25s cubic-bezier(0.2,0.8,0.2,1);
+  }
+  .drawer-backdrop.open { opacity: 1; pointer-events: auto; }
+
+  .drawer {
+    position: fixed; top: 0; right: 0; bottom: 0; width: 700px; background: #fff;
+    border-left: 1px solid #dcd7d3;
+    box-shadow: -8px 0 30px rgba(0,0,0,0.08);
+    z-index: 910;
+    transform: translateX(100%);
+    transition: transform 0.25s cubic-bezier(0.2,0.8,0.2,1);
+    display: flex; flex-direction: column;
+  }
+  .drawer.open { transform: translateX(0); }
+
+  .drawer-scroll { flex: 1; overflow-y: auto; padding: 28px 32px 32px; }
+
+  .drawer-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 28px; }
+  .drawer-header-left { flex: 1; min-width: 0; }
+  .drawer-title { font-size: 18px; font-weight: 510; color: var(--text-primary); letter-spacing: -0.2px; margin-bottom: 2px; }
+  .drawer-date { font-size: 12px; color: var(--text-tertiary); letter-spacing: -0.13px; margin-bottom: 4px; }
+  .drawer-subtitle { font-size: 12px; color: var(--text-quaternary); letter-spacing: -0.13px; }
+  .drawer-close {
+    width: 32px; height: 32px; border-radius: 6px; border: 1px solid var(--border-standard);
+    background: var(--surface-1); color: #292827; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    transition: background 0.12s;
+  }
+  .drawer-close:hover { background: var(--surface-3); }
+
+  .drawer-section { margin-bottom: 24px; }
+  .drawer-section-label { font-size: 10px; font-weight: 510; color: #9ca3af; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 10px; }
+
+  .drawer-bullets { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .drawer-bullets li {
+    font-size: 13px; color: var(--text-secondary); letter-spacing: -0.13px; line-height: 1.5;
+    padding-left: 16px; position: relative;
+  }
+  .drawer-bullets li::before {
+    content: ''; position: absolute; left: 0; top: 8px;
+    width: 5px; height: 5px; border-radius: 50%; background: var(--text-quaternary);
+  }
+
+  .drawer-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .drawer-metric-card {
+    background: var(--surface-1); border: 1px solid var(--border-standard); border-radius: 8px;
+    padding: 14px 16px;
+  }
+  .drawer-metric-label { font-size: 10px; font-weight: 510; color: #9ca3af; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 4px; }
+  .drawer-metric-value { font-size: 20px; font-weight: 510; color: var(--text-primary); letter-spacing: -0.2px; font-variant-numeric: tabular-nums; }
+  .drawer-metric-change { font-size: 11px; font-weight: 510; margin-top: 2px; }
+  .drawer-metric-change.positive { color: #059669; }
+  .drawer-metric-change.negative { color: #dc2626; }
+
+  .drawer-chart-wrap {
+    background: var(--surface-1); border: 1px solid var(--border-standard); border-radius: 8px;
+    padding: 16px 16px 8px; overflow: hidden;
+  }
+  .drawer-chart { width: 100%; height: auto; display: block; }
+
+  .drawer-recs { display: flex; flex-direction: column; gap: 8px; }
+  .drawer-rec-row { display: flex; align-items: flex-start; gap: 10px; }
+  .drawer-rec-icon {
+    width: 26px; height: 26px; border-radius: 6px; background: rgba(0,0,0,0.04);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #292827; margin-top: 1px;
+  }
+  .drawer-rec-text { font-size: 13px; color: var(--text-secondary); letter-spacing: -0.13px; line-height: 1.5; padding-top: 3px; }
+
+  .drawer-footer {
+    display: flex; align-items: center; justify-content: flex-end; gap: 8px; padding: 16px 32px; border-top: 1px solid var(--border-subtle);
+    background: #fff; flex-shrink: 0;
+  }
+</style>
+
+<script>
+(function() {
+  var backdrop = document.getElementById('reportBackdrop');
+  var drawer = document.getElementById('reportDrawer');
+  var closeBtn = document.getElementById('drawerClose');
+
+  var reportData = [
+    {
+      name: 'Weekly ROAS Summary \u2014 Apr 14', date: 'Apr 14, 2026', by: 'Auto',
+      bullets: ['Blended ROAS increased 0.4x to 3.8x week-over-week','Hana Matsuri campaign outperforming at 4.6x, 18% above portfolio average','TikTok channel showing strongest growth, recommend 15% budget increase'],
+      metrics: [{label:'ROAS',value:'3.8x',change:'+0.4x',dir:'positive'},{label:'Spend',value:'$42.1K',change:'+8%',dir:'negative'},{label:'Revenue',value:'$160K',change:'+22%',dir:'positive'},{label:'CPA',value:'$24.30',change:'-12%',dir:'positive'}],
+      recs: ['Increase TikTok budget by 15% to capitalize on momentum','Scale Hana Matsuri creative to additional territories','Pause underperforming Pinterest static ads to reallocate spend']
+    },
+    {
+      name: 'Hana Matsuri \u2014 Creative Deep Dive', date: 'Apr 12, 2026', by: 'Kathy S.',
+      bullets: ['Video assets outperforming static by 2.3x on engagement rate','Sakura-themed visuals driving 34% higher CTR than brand average','Top creative variant reached 1.2M impressions in first 72 hours'],
+      metrics: [{label:'Engagement',value:'4.8%',change:'+1.2%',dir:'positive'},{label:'CTR',value:'2.1%',change:'+34%',dir:'positive'},{label:'Impressions',value:'3.4M',change:'+18%',dir:'positive'},{label:'Cost/Engage',value:'$0.42',change:'-22%',dir:'positive'}],
+      recs: ['Extend Hana Matsuri video variants to TikTok and Reels','Create 3 additional colorways based on top performer','A/B test shorter 6s cuts for Stories placement']
+    },
+    {
+      name: 'Q1 2026 Brand Health', date: 'Apr 10, 2026', by: 'Auto',
+      bullets: ['Unaided brand awareness up 3 points to 42% among 18\u201334 demo','Brand sentiment score stable at 78/100 despite competitive pressure','Search volume for \u201cBAPE\u201d grew 12% QoQ, outpacing category growth of 5%'],
+      metrics: [{label:'Awareness',value:'42%',change:'+3pts',dir:'positive'},{label:'Sentiment',value:'78/100',change:'+1',dir:'positive'},{label:'Search Vol',value:'1.8M',change:'+12%',dir:'positive'},{label:'NPS',value:'54',change:'-2',dir:'negative'}],
+      recs: ['Invest in upper-funnel awareness campaigns to maintain momentum','Address NPS dip with post-purchase experience improvements','Leverage search growth with expanded Google Shopping campaigns']
+    },
+    {
+      name: 'Channel Mix \u2014 March Reallocation', date: 'Apr 8, 2026', by: 'Marcus T.',
+      bullets: ['Meta still delivering highest absolute revenue but efficiency declining','TikTok CPA 28% lower than portfolio average with growing volume','Pinterest underperforming \u2014 recommend 40% budget reduction'],
+      metrics: [{label:'Meta ROAS',value:'3.2x',change:'-0.3x',dir:'negative'},{label:'TikTok ROAS',value:'4.1x',change:'+0.8x',dir:'positive'},{label:'Google ROAS',value:'3.6x',change:'+0.2x',dir:'positive'},{label:'Pinterest ROAS',value:'1.8x',change:'-0.4x',dir:'negative'}],
+      recs: ['Shift 15% of Meta budget to TikTok for next 4 weeks','Reduce Pinterest to maintenance spend only','Test Google Performance Max with top creative assets']
+    },
+    {
+      name: 'Weekly ROAS Summary \u2014 Apr 7', date: 'Apr 7, 2026', by: 'Auto',
+      bullets: ['Blended ROAS held steady at 3.4x despite 12% spend increase','New Shark Hoodie retarget campaign launched with strong early signals','Meta CPMs rose 8% \u2014 monitor for continued inflation'],
+      metrics: [{label:'ROAS',value:'3.4x',change:'0.0x',dir:'positive'},{label:'Spend',value:'$38.9K',change:'+12%',dir:'negative'},{label:'Revenue',value:'$132K',change:'+12%',dir:'positive'},{label:'CPA',value:'$27.60',change:'+3%',dir:'negative'}],
+      recs: ['Continue monitoring Meta CPM inflation trend','Scale Shark Hoodie retarget if week-2 signals hold','Prepare creative refresh for fatiguing Q1 assets']
+    },
+    {
+      name: 'Sakura Camo \u2014 A/B Test Results', date: 'Apr 5, 2026', by: 'Yuki A.',
+      bullets: ['Variant B (lifestyle context) outperformed Variant A (product-only) by 41%','UGC-style thumbnail drove 2.8x higher click-through on TikTok','Longer 15s format performed best on Meta, 6s best on TikTok'],
+      metrics: [{label:'Winner CTR',value:'3.2%',change:'+41%',dir:'positive'},{label:'Conv Rate',value:'2.8%',change:'+0.6%',dir:'positive'},{label:'Stat Sig',value:'98%',change:'',dir:'positive'},{label:'Lift',value:'+$18K',change:'projected',dir:'positive'}],
+      recs: ['Roll out Variant B as primary across all channels','Apply UGC-style treatment to upcoming Shark Hoodie campaign','Create platform-specific edits: 15s for Meta, 6s for TikTok']
+    },
+    {
+      name: 'Audience Overlap \u2014 Meta vs TikTok', date: 'Apr 3, 2026', by: 'Kathy S.',
+      bullets: ['Only 23% audience overlap between Meta and TikTok \u2014 largely incremental reach','TikTok skews 18\u201324 heavily (62%) vs Meta more balanced 18\u201334','Cross-platform attribution shows 15% of TikTok-first users convert on Meta'],
+      metrics: [{label:'Overlap',value:'23%',change:'-4%',dir:'positive'},{label:'TikTok Uniques',value:'840K',change:'+28%',dir:'positive'},{label:'Meta Uniques',value:'1.2M',change:'+8%',dir:'positive'},{label:'Cross-Conv',value:'15%',change:'+3%',dir:'positive'}],
+      recs: ['Maintain separate creative strategies per platform','Increase TikTok frequency cap \u2014 low overlap means less fatigue risk','Build cross-platform attribution model for better budget allocation']
+    },
+    {
+      name: 'Weekly ROAS Summary \u2014 Mar 31', date: 'Mar 31, 2026', by: 'Auto',
+      bullets: ['Blended ROAS dipped slightly to 3.4x from 3.5x prior week','End-of-quarter budget flush increased spend without proportional returns','Google Shopping maintained strongest efficiency at 4.2x ROAS'],
+      metrics: [{label:'ROAS',value:'3.4x',change:'-0.1x',dir:'negative'},{label:'Spend',value:'$34.7K',change:'+18%',dir:'negative'},{label:'Revenue',value:'$118K',change:'+14%',dir:'positive'},{label:'CPA',value:'$26.80',change:'+5%',dir:'negative'}],
+      recs: ['Review Q1 budget pacing to avoid end-of-quarter flush','Maintain Google Shopping allocation \u2014 best efficiency channel','Prepare Q2 creative pipeline to avoid recycling Q1 assets']
+    },
+    {
+      name: 'Territory Performance \u2014 Q1', date: 'Mar 28, 2026', by: 'Kathy S.',
+      bullets: ['Neo-Maximalism territory drove 38% of total revenue, highest share','Heritage Storytelling showed 22% growth but declining engagement rate','Y2K Revival emerging as high-potential territory with 4.8x ROAS on test campaigns'],
+      metrics: [{label:'Top Territory',value:'Neo-Max',change:'38% rev',dir:'positive'},{label:'Heritage',value:'$48K',change:'+22%',dir:'positive'},{label:'Y2K Revival',value:'4.8x',change:'ROAS',dir:'positive'},{label:'Territories',value:'6',change:'active',dir:'positive'}],
+      recs: ['Double down on Neo-Maximalism with new creative variants','Refresh Heritage Storytelling creative to combat engagement fatigue','Expand Y2K Revival from test to full campaign budget']
+    },
+    {
+      name: 'Bape x Coca-Cola \u2014 Post-Campaign', date: 'Mar 25, 2026', by: 'Marcus T.',
+      bullets: ['Campaign delivered 5.2x ROAS, exceeding 4.0x target by 30%','Collab-exclusive products sold out in 18 minutes \u2014 fastest ever','Social earned media value estimated at $220K from organic buzz'],
+      metrics: [{label:'ROAS',value:'5.2x',change:'+30% vs target',dir:'positive'},{label:'Revenue',value:'$410K',change:'total',dir:'positive'},{label:'EMV',value:'$220K',change:'earned',dir:'positive'},{label:'Sell-Through',value:'100%',change:'18 min',dir:'positive'}],
+      recs: ['Replicate collab playbook for upcoming Q2 partnerships','Extend hype-cycle timeline with staggered restocks','Capture UGC from sellout for retargeting creative']
+    },
+    {
+      name: 'Creative Effectiveness \u2014 March', date: 'Mar 22, 2026', by: 'Auto',
+      bullets: ['Video outperformed static by 1.8x on conversion rate across all channels','Top 5 creatives drove 64% of total campaign revenue','Creative fatigue detected on 8 assets running longer than 3 weeks'],
+      metrics: [{label:'Video Conv',value:'3.1%',change:'+1.8x vs static',dir:'positive'},{label:'Top 5 Share',value:'64%',change:'of revenue',dir:'positive'},{label:'Fatigued',value:'8',change:'assets',dir:'negative'},{label:'New Assets',value:'14',change:'this month',dir:'positive'}],
+      recs: ['Retire 8 fatigued assets and replace with fresh variants','Prioritize video production over static for Q2','Diversify beyond top 5 to reduce concentration risk']
+    },
+    {
+      name: 'Shark Hoodie UK \u2014 Post-Mortem', date: 'Mar 18, 2026', by: 'Yuki A.',
+      bullets: ['UK campaign delivered 2.1x ROAS, below 3.0x target','Creative resonance low \u2014 UK audience preferred subtle branding over bold graphics','Retargeting phase salvaged performance with 3.8x ROAS in final week'],
+      metrics: [{label:'ROAS',value:'2.1x',change:'-30% vs target',dir:'negative'},{label:'Spend',value:'$28K',change:'total',dir:'negative'},{label:'Retarget ROAS',value:'3.8x',change:'final week',dir:'positive'},{label:'Lessons',value:'4',change:'key findings',dir:'positive'}],
+      recs: ['Develop UK-specific creative that tones down graphic intensity','Lead with retargeting-first strategy for UK market','Test with micro-influencers to build local credibility']
+    }
+  ];
+
+  function openDrawer(index) {
+    var d = reportData[index] || reportData[0];
+    document.getElementById('drawerTitle').textContent = d.name;
+    document.getElementById('drawerDate').textContent = d.date;
+    document.getElementById('drawerSubtitle').textContent = d.by === 'Auto' ? 'Generated automatically' : 'Created by ' + d.by;
+
+    var bulletsEl = document.getElementById('drawerBullets');
+    bulletsEl.innerHTML = d.bullets.map(function(b) { return '<li>' + b + '</li>'; }).join('');
+
+    var metricsEl = document.getElementById('drawerMetrics');
+    metricsEl.innerHTML = d.metrics.map(function(m) {
+      return '<div class="drawer-metric-card"><div class="drawer-metric-label">' + m.label + '</div><div class="drawer-metric-value">' + m.value + '</div><div class="drawer-metric-change ' + m.dir + '">' + m.change + '</div></div>';
+    }).join('');
+
+    var recsEl = document.getElementById('drawerRecs');
+    recsEl.innerHTML = d.recs.map(function(r) {
+      return '<div class="drawer-rec-row"><div class="drawer-rec-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="drawer-rec-text">' + r + '</div></div>';
+    }).join('');
+
+    backdrop.classList.add('open');
+    drawer.classList.add('open');
+  }
+
+  function closeDrawer() {
+    backdrop.classList.remove('open');
+    drawer.classList.remove('open');
+  }
+
+  var rows = document.querySelectorAll('.table-wrap tbody tr');
+  rows.forEach(function(row, i) {
+    row.addEventListener('click', function() { openDrawer(i); });
+  });
+
+  backdrop.addEventListener('click', closeDrawer);
+  closeBtn.addEventListener('click', closeDrawer);
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && drawer.classList.contains('open')) { e.stopPropagation(); closeDrawer(); }
+  });
+})();
+</script>
+
+
+<!-- Command Palette -->
+<div class="cmd-backdrop" id="cmdBackdrop"></div>
+<div class="cmd-dialog" id="cmdDialog">
+  <div class="cmd-input-wrap">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.3"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+    <input class="cmd-input" id="cmdInput" placeholder="Search pages, briefs, assets..." autocomplete="off">
+    <span class="cmd-hint">ESC</span>
+  </div>
+  <div class="cmd-results" id="cmdResults">
+    <div class="cmd-group-label">Pages</div>
+    <a class="cmd-item" href="home.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 6.5L8 2l6 4.5V14H10v-3H6v3H2V6.5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Home</div></div></a>
+    <a class="cmd-item" href="current_brand.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.2"/><circle cx="8" cy="8" r="2.5" fill="currentColor"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Brand</div></div></a>
+    <a class="cmd-item" href="visual_search.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.2"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Visual Vault</div></div></a>
+    <a class="cmd-item" href="trend_matching.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 12l4-4 3 3 5-5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Opportunities</div></div></a>
+    <a class="cmd-item" href="brand_sandbox.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 2l1.5 3.5L13 6l-2.5 2.5.5 3.5L8 10l-3 2 .5-3.5L3 6l3.5-.5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Brand Sandbox</div></div></a>
+    <a class="cmd-item" href="clusters.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.2"/><rect x="9" y="2" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.2"/><rect x="2" y="9" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.2"/><rect x="9" y="9" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.2"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Thematic Intelligence</div></div></a>
+    <a class="cmd-item" href="briefs.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l2 2v10H3V2z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Briefs</div></div></a>
+    <a class="cmd-item" href="creator_studio.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M4 11l3-3 2 2 3-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Creator Studio</div></div></a>
+    <a class="cmd-item" href="asset_manager.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 4h5l1.5 2H14v8H2V4z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Asset Manager</div></div></a>
+    <a class="cmd-item" href="reviews.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Reviews</div></div></a>
+    <a class="cmd-item" href="roas_dashboard.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><polyline points="2,12 6,7 9,10 14,4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">ROAS Dashboard</div></div></a>
+    <a class="cmd-item" href="reports.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 2h8l2 2v10H3V2z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Reports</div></div></a>
+    <a class="cmd-item" href="competitive_intel.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.2"/><circle cx="8" cy="8" r="2" stroke="currentColor" stroke-width="1.2"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Competitive Intel</div></div></a>
+    <div class="cmd-group-label">Briefs</div>
+    <a class="cmd-item" href="brief_detail.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l2 2v10H3V2z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Sakura Camo Hero Pattern</div><div class="cmd-item-desc">SS26 · Hana Matsuri · In Production</div></div></a>
+    <a class="cmd-item" href="briefs.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l2 2v10H3V2z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">30yr Retrospective · Hero Film</div><div class="cmd-item-desc">Heritage Storytelling · Shipped</div></div></a>
+    <div class="cmd-group-label">Actions</div>
+    <a class="cmd-item" href="briefs.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">New brief</div></div></a>
+    <a class="cmd-item" href="creator_studio.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Generate creative</div></div></a>
+    <a class="cmd-item" href="visual_search.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Upload assets</div></div></a>
+  </div>
+  <div class="cmd-footer">
+    <span class="cmd-footer-hint"><span class="cmd-footer-key">&uarr;</span><span class="cmd-footer-key">&darr;</span> navigate</span>
+    <span class="cmd-footer-hint"><span class="cmd-footer-key">&crarr;</span> open</span>
+    <span class="cmd-footer-hint"><span class="cmd-footer-key">esc</span> close</span>
+  </div>
+</div>
+
+<script>
+(function(){
+  const bd = document.getElementById('cmdBackdrop');
+  const dg = document.getElementById('cmdDialog');
+  const ip = document.getElementById('cmdInput');
+  const rs = document.getElementById('cmdResults');
+  function openCmd() { bd.classList.add('open'); dg.classList.add('open'); setTimeout(() => ip.focus(), 50); }
+  function closeCmd() { bd.classList.remove('open'); dg.classList.remove('open'); ip.value = ''; filterItems(''); }
+  bd.addEventListener('click', closeCmd);
+  document.addEventListener('keydown', e => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); dg.classList.contains('open') ? closeCmd() : openCmd(); }
+    if (e.key === 'Escape' && dg.classList.contains('open')) closeCmd();
+  });
+  function filterItems(q) {
+    const items = rs.querySelectorAll('.cmd-item');
+    const labels = rs.querySelectorAll('.cmd-group-label');
+    const lq = q.toLowerCase();
+    items.forEach(it => {
+      const name = it.querySelector('.cmd-item-name')?.textContent?.toLowerCase() || '';
+      const desc = it.querySelector('.cmd-item-desc')?.textContent?.toLowerCase() || '';
+      it.style.display = (!q || name.includes(lq) || desc.includes(lq)) ? 'flex' : 'none';
+    });
+    labels.forEach(l => {
+      let next = l.nextElementSibling;
+      let hasVisible = false;
+      while (next && !next.classList.contains('cmd-group-label')) {
+        if (next.style.display !== 'none') hasVisible = true;
+        next = next.nextElementSibling;
+      }
+      l.style.display = hasVisible ? 'block' : 'none';
+    });
+  }
+  ip.addEventListener('input', () => filterItems(ip.value));
+})();
+</script>
 
 </body>
 </html>

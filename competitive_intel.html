@@ -141,6 +141,64 @@
   .threat-brand-activity.low { color: var(--text-quaternary); }
   .threat-your-position { font-size: 10px; color: var(--text-quaternary); letter-spacing: -0.13px; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border-subtle); }
   .threat-your-position strong { color: var(--text-secondary); font-weight: 510; }
+
+  /* Add Competitor Modal */
+  .ac-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.25); z-index: 200; opacity: 0; pointer-events: none; transition: opacity 0.15s; }
+  .ac-backdrop.open { opacity: 1; pointer-events: auto; }
+  .ac-modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.96); width: 480px; max-width: 90vw; background: #fff; border: 1px solid var(--border-standard); border-radius: 12px; box-shadow: 0 16px 48px rgba(0,0,0,0.12); z-index: 201; opacity: 0; pointer-events: none; transition: opacity 0.15s, transform 0.15s; }
+  .ac-modal.open { opacity: 1; pointer-events: auto; transform: translate(-50%, -50%) scale(1); }
+  .ac-header { display: flex; align-items: center; justify-content: space-between; padding: 18px 24px 0; }
+  .ac-title { font-size: 16px; font-weight: 510; color: var(--text-primary); letter-spacing: -0.21px; }
+  .ac-close { width: 28px; height: 28px; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; border-radius: 6px; color: var(--text-tertiary); }
+  .ac-close:hover { background: var(--surface-2); color: var(--text-primary); }
+  .ac-body { padding: 20px 24px; }
+  .ac-label { font-size: 11px; font-weight: 510; color: var(--text-quaternary); text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 6px; }
+  .ac-input { width: 100%; padding: 10px 14px; border: 1px solid var(--border-standard); border-radius: 8px; font-size: 14px; color: var(--text-primary); background: white; font-family: inherit; font-feature-settings: 'cv01','ss03'; }
+  .ac-input:focus { border-color: #292827; outline: none; }
+  .ac-input-group { margin-bottom: 16px; }
+  .ac-select { width: 100%; padding: 10px 14px; border: 1px solid var(--border-standard); border-radius: 8px; font-size: 14px; color: var(--text-primary); background: white; font-family: inherit; font-feature-settings: 'cv01','ss03'; appearance: none; background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2.5 3.5L5 6.5L7.5 3.5' stroke='%238a8f98' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; }
+  .ac-select:focus { border-color: #292827; outline: none; }
+  .ac-hint { font-size: 11px; color: var(--text-quaternary); margin-top: 4px; letter-spacing: -0.13px; }
+  .ac-suggestions { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-subtle); }
+  .ac-sug-label { font-size: 10px; font-weight: 510; color: var(--text-quaternary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+  .ac-sug-item { display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 6px; cursor: pointer; transition: background 0.1s; }
+  .ac-sug-item:hover { background: var(--surface-2); }
+  .ac-sug-logo { width: 28px; height: 28px; border-radius: 6px; background: rgba(0,0,0,0.05); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 590; color: #292827; flex-shrink: 0; }
+  .ac-sug-info { flex: 1; }
+  .ac-sug-name { font-size: 13px; font-weight: 510; color: var(--text-primary); letter-spacing: -0.13px; }
+  .ac-sug-cat { font-size: 11px; color: var(--text-tertiary); }
+  .ac-sug-add { font-size: 11px; font-weight: 510; color: #292827; opacity: 0; transition: opacity 0.1s; }
+  .ac-sug-item:hover .ac-sug-add { opacity: 1; }
+  .ac-footer { display: flex; justify-content: flex-end; gap: 8px; padding: 0 24px 20px; }
+  .ac-btn-primary { padding: 10px 20px; border-radius: 8px; font-size: 13px; font-weight: 510; background: #292827; color: white; border: none; cursor: pointer; font-family: inherit; }
+  .ac-btn-primary:hover { background: #3d3d3a; }
+  .ac-btn-ghost { padding: 10px 20px; border-radius: 8px; font-size: 13px; font-weight: 510; background: transparent; color: var(--text-tertiary); border: none; cursor: pointer; font-family: inherit; }
+  .ac-btn-ghost:hover { color: var(--text-primary); }
+  .ac-added { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 510; color: #059669; }
+
+  /* Command Palette */
+  .cmd-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.25); z-index: 999; opacity: 0; pointer-events: none; transition: opacity 0.15s; }
+  .cmd-backdrop.open { opacity: 1; pointer-events: auto; }
+  .cmd-dialog { position: fixed; top: 20%; left: 50%; transform: translateX(-50%) scale(0.96); width: 560px; max-width: 90vw; background: #ffffff; border: 1px solid #dcd7d3; border-radius: 12px; box-shadow: 0 16px 48px rgba(0,0,0,0.12); z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.15s, transform 0.15s; overflow: hidden; }
+  .cmd-backdrop.open + .cmd-dialog, .cmd-dialog.open { opacity: 1; pointer-events: auto; transform: translateX(-50%) scale(1); }
+  .cmd-input-wrap { display: flex; align-items: center; gap: 10px; padding: 14px 18px; border-bottom: 1px solid #f0eee6; }
+  .cmd-input-wrap svg { color: #9ca3af; flex-shrink: 0; }
+  .cmd-input { flex: 1; border: none; outline: none; font-size: 15px; font-weight: 400; color: #292827; background: transparent; font-family: inherit; font-feature-settings: 'cv01','ss03'; letter-spacing: -0.165px; }
+  .cmd-input::placeholder { color: #9ca3af; }
+  .cmd-hint { font-size: 11px; color: #9ca3af; background: #f5f5f4; border: 1px solid #dcd7d3; border-radius: 4px; padding: 1px 5px; font-weight: 510; flex-shrink: 0; }
+  .cmd-results { max-height: 320px; overflow-y: auto; padding: 6px; }
+  .cmd-group-label { font-size: 10px; font-weight: 510; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.5px; padding: 8px 12px 4px; }
+  .cmd-item { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 6px; cursor: pointer; transition: background 0.08s; }
+  .cmd-item:hover, .cmd-item.active { background: #f5f5f4; }
+  .cmd-item-icon { width: 28px; height: 28px; border-radius: 6px; background: rgba(0,0,0,0.04); display: flex; align-items: center; justify-content: center; color: #292827; flex-shrink: 0; }
+  .cmd-item-text { flex: 1; }
+  .cmd-item-name { font-size: 13px; font-weight: 510; color: #292827; letter-spacing: -0.13px; }
+  .cmd-item-desc { font-size: 11px; color: #8a8f98; letter-spacing: -0.13px; }
+  .cmd-item-shortcut { font-size: 10px; color: #9ca3af; font-weight: 510; }
+  .cmd-footer { display: flex; align-items: center; gap: 12px; padding: 8px 14px; border-top: 1px solid #f0eee6; background: #fafafa; }
+  .cmd-footer-hint { font-size: 10px; color: #9ca3af; display: flex; align-items: center; gap: 4px; }
+  .cmd-footer-key { background: #eeedeb; border: 1px solid #dcd7d3; border-radius: 3px; padding: 0px 4px; font-size: 10px; font-weight: 510; color: #57534e; }
+
 </style>
 </head>
 <body>
@@ -626,6 +684,439 @@
     </div>
   </div>
 </div>
+
+
+<!-- COMPETITOR DETAIL DRAWER -->
+<div class="ci-drawer-backdrop" id="ciBackdrop"></div>
+<div class="ci-drawer" id="ciDrawer">
+  <div class="ci-drawer-scroll">
+    <div class="ci-drawer-header">
+      <div class="ci-drawer-header-left">
+        <div class="ci-drawer-logo" id="ciLogo">S</div>
+        <div>
+          <div class="ci-drawer-title" id="ciTitle">Supreme</div>
+          <div class="ci-drawer-category" id="ciCategory">Streetwear</div>
+        </div>
+      </div>
+      <button class="ci-drawer-close" id="ciClose" aria-label="Close">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+
+    <div class="ci-drawer-section">
+      <div class="ci-overview-grid" id="ciOverview">
+        <div class="ci-overview-item">
+          <div class="ci-overview-label">Category</div>
+          <div class="ci-overview-value" id="ciOverviewCat">Streetwear</div>
+        </div>
+        <div class="ci-overview-item">
+          <div class="ci-overview-label">Est. ad spend</div>
+          <div class="ci-overview-value" id="ciOverviewSpend">$380K/mo</div>
+        </div>
+        <div class="ci-overview-item">
+          <div class="ci-overview-label">Trend</div>
+          <div class="ci-overview-value" id="ciOverviewTrend"><span class="ci-trend-up">Increasing</span></div>
+        </div>
+        <div class="ci-overview-item">
+          <div class="ci-overview-label">Tracking since</div>
+          <div class="ci-overview-value">Jan 2026</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ci-drawer-section">
+      <div class="ci-drawer-section-label">SHARE OF VOICE TREND</div>
+      <div class="ci-chart-wrap">
+        <svg viewBox="0 0 600 120" class="ci-chart" id="ciChart">
+          <polyline points="0,90 40,85 80,80 120,82 160,75 200,70 240,68 280,65 320,58 360,55 400,52 440,48 480,45 520,40 560,38 600,35" fill="none" stroke="#292827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="600" cy="35" r="3.5" fill="#292827"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="ci-drawer-section">
+      <div class="ci-drawer-section-label">RECENT CREATIVE <span class="ci-badge-new">8 NEW</span></div>
+      <div class="ci-creative-grid" id="ciCreatives">
+        <div class="ci-creative-card"><img src="images/1.jpg" class="ci-creative-img" alt="Creative"><div class="ci-creative-format">Video</div></div>
+        <div class="ci-creative-card"><img src="images/2.jpg" class="ci-creative-img" alt="Creative"><div class="ci-creative-format">Static</div></div>
+        <div class="ci-creative-card"><img src="images/3.jpg" class="ci-creative-img" alt="Creative"><div class="ci-creative-format">Carousel</div></div>
+        <div class="ci-creative-card"><img src="images/4.jpg" class="ci-creative-img" alt="Creative"><div class="ci-creative-format">Video</div></div>
+        <div class="ci-creative-card"><img src="images/5.jpg" class="ci-creative-img" alt="Creative"><div class="ci-creative-format">Static</div></div>
+        <div class="ci-creative-card"><img src="images/6.jpg" class="ci-creative-img" alt="Creative"><div class="ci-creative-format">Video</div></div>
+      </div>
+    </div>
+
+    <div class="ci-drawer-section">
+      <div class="ci-drawer-section-label">CHANNEL BREAKDOWN</div>
+      <div class="ci-channel-list" id="ciChannels">
+        <div class="ci-channel-row"><div class="ci-channel-name">Meta</div><div class="ci-channel-bar-wrap"><div class="ci-channel-bar" style="width:42%;"></div></div><div class="ci-channel-pct">42%</div><div class="ci-channel-spend">$160K</div></div>
+        <div class="ci-channel-row"><div class="ci-channel-name">TikTok</div><div class="ci-channel-bar-wrap"><div class="ci-channel-bar" style="width:28%;"></div></div><div class="ci-channel-pct">28%</div><div class="ci-channel-spend">$106K</div></div>
+        <div class="ci-channel-row"><div class="ci-channel-name">Google</div><div class="ci-channel-bar-wrap"><div class="ci-channel-bar" style="width:20%;"></div></div><div class="ci-channel-pct">20%</div><div class="ci-channel-spend">$76K</div></div>
+        <div class="ci-channel-row"><div class="ci-channel-name">Pinterest</div><div class="ci-channel-bar-wrap"><div class="ci-channel-bar" style="width:10%;"></div></div><div class="ci-channel-pct">10%</div><div class="ci-channel-spend">$38K</div></div>
+      </div>
+    </div>
+
+    <div class="ci-drawer-section">
+      <div class="ci-drawer-section-label">TERRITORY OVERLAP</div>
+      <div class="ci-territory-list" id="ciTerritories">
+        <div class="ci-territory-row"><div class="ci-territory-name">Heritage Storytelling</div><div class="ci-territory-level high">High</div></div>
+        <div class="ci-territory-row"><div class="ci-territory-name">Neo-Maximalism</div><div class="ci-territory-level medium">Medium</div></div>
+        <div class="ci-territory-row"><div class="ci-territory-name">Y2K Revival</div><div class="ci-territory-level low">Low</div></div>
+      </div>
+    </div>
+
+    <div class="ci-drawer-footer">
+      <button class="btn" style="background:#292827;border:1px solid #292827;color:#fff;padding:5px 10px;border-radius:6px;font-size:13px;font-weight:510;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">Set alert</button>
+      <button class="btn btn-ghost">Compare with us</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .ci-drawer-backdrop {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 900;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.25s cubic-bezier(0.2,0.8,0.2,1);
+  }
+  .ci-drawer-backdrop.open { opacity: 1; pointer-events: auto; }
+
+  .ci-drawer {
+    position: fixed; top: 0; right: 0; bottom: 0; width: 700px; background: #fff;
+    border-left: 1px solid #dcd7d3;
+    box-shadow: -8px 0 30px rgba(0,0,0,0.08);
+    z-index: 910;
+    transform: translateX(100%);
+    transition: transform 0.25s cubic-bezier(0.2,0.8,0.2,1);
+    display: flex; flex-direction: column;
+  }
+  .ci-drawer.open { transform: translateX(0); }
+
+  .ci-drawer-scroll { flex: 1; overflow-y: auto; padding: 28px 32px 32px; }
+
+  .ci-drawer-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+  .ci-drawer-header-left { display: flex; align-items: center; gap: 12px; }
+  .ci-drawer-logo {
+    width: 40px; height: 40px; border-radius: 10px; background: var(--bg-elevated);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 590; color: var(--text-secondary); flex-shrink: 0;
+  }
+  .ci-drawer-title { font-size: 18px; font-weight: 510; color: var(--text-primary); letter-spacing: -0.2px; }
+  .ci-drawer-category { font-size: 12px; color: var(--text-tertiary); letter-spacing: -0.13px; }
+  .ci-drawer-close {
+    width: 32px; height: 32px; border-radius: 6px; border: 1px solid var(--border-standard);
+    background: var(--surface-1); color: #292827; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    transition: background 0.12s;
+  }
+  .ci-drawer-close:hover { background: var(--surface-3); }
+
+  .ci-drawer-section { margin-bottom: 24px; }
+  .ci-drawer-section-label { font-size: 10px; font-weight: 510; color: #9ca3af; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 12px; }
+  .ci-badge-new { font-size: 10px; font-weight: 510; color: #059669; margin-left: 4px; letter-spacing: 0.3px; }
+
+  .ci-overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .ci-overview-item {
+    background: var(--surface-1); border: 1px solid var(--border-standard); border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .ci-overview-label { font-size: 10px; font-weight: 510; color: #9ca3af; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 3px; }
+  .ci-overview-value { font-size: 14px; font-weight: 510; color: var(--text-primary); letter-spacing: -0.13px; }
+  .ci-trend-up { color: #dc2626; }
+  .ci-trend-down { color: #059669; }
+  .ci-trend-flat { color: #9ca3af; }
+
+  .ci-chart-wrap {
+    background: var(--surface-1); border: 1px solid var(--border-standard); border-radius: 8px;
+    padding: 16px 16px 8px; overflow: hidden;
+  }
+  .ci-chart { width: 100%; height: auto; display: block; }
+
+  .ci-creative-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .ci-creative-card {
+    border-radius: 8px; overflow: hidden; position: relative;
+    background: var(--surface-2); border: 1px solid var(--border-standard);
+    aspect-ratio: 1;
+  }
+  .ci-creative-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ci-creative-format {
+    position: absolute; bottom: 6px; left: 6px;
+    font-size: 10px; font-weight: 510; color: #fff; background: rgba(0,0,0,0.6);
+    padding: 2px 8px; border-radius: 4px; letter-spacing: 0.3px; text-transform: uppercase;
+  }
+
+  .ci-channel-list { display: flex; flex-direction: column; gap: 10px; }
+  .ci-channel-row { display: flex; align-items: center; gap: 10px; }
+  .ci-channel-name { width: 64px; font-size: 12px; font-weight: 510; color: var(--text-secondary); letter-spacing: -0.13px; flex-shrink: 0; }
+  .ci-channel-bar-wrap { flex: 1; height: 18px; background: var(--surface-3); border-radius: 4px; overflow: hidden; }
+  .ci-channel-bar { height: 100%; background: #292827; border-radius: 4px; }
+  .ci-channel-pct { font-size: 12px; font-weight: 590; color: var(--text-primary); font-variant-numeric: tabular-nums; min-width: 32px; text-align: right; letter-spacing: -0.13px; }
+  .ci-channel-spend { font-size: 11px; color: var(--text-tertiary); font-variant-numeric: tabular-nums; min-width: 48px; text-align: right; letter-spacing: -0.13px; }
+
+  .ci-territory-list { display: flex; flex-direction: column; gap: 6px; }
+  .ci-territory-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 14px; background: var(--surface-1); border: 1px solid var(--border-standard); border-radius: 8px;
+  }
+  .ci-territory-name { font-size: 13px; font-weight: 510; color: var(--text-primary); letter-spacing: -0.13px; }
+  .ci-territory-level {
+    font-size: 10px; font-weight: 510; letter-spacing: 0.4px; text-transform: uppercase;
+    padding: 2px 8px; border-radius: 9999px;
+  }
+  .ci-territory-level.high { background: rgba(220,38,38,0.06); color: #dc2626; border: 1px solid rgba(220,38,38,0.25); }
+  .ci-territory-level.medium { background: rgba(217,119,6,0.06); color: #d97706; border: 1px solid rgba(217,119,6,0.25); }
+  .ci-territory-level.low { background: rgba(5,150,105,0.06); color: #059669; border: 1px solid rgba(5,150,105,0.25); }
+
+  .ci-drawer-footer {
+    display: flex; align-items: center; gap: 8px; padding: 16px 32px; border-top: 1px solid var(--border-subtle);
+    background: #fff; flex-shrink: 0;
+  }
+</style>
+
+<script>
+(function() {
+  var backdrop = document.getElementById('ciBackdrop');
+  var drawer = document.getElementById('ciDrawer');
+  var closeBtn = document.getElementById('ciClose');
+
+  var compData = [
+    {
+      name: 'Supreme', letter: 'S', category: 'Streetwear', spend: '$380K/mo', trend: 'up', trendLabel: 'Increasing',
+      sovPoints: '0,90 40,85 80,80 120,82 160,75 200,70 240,68 280,65 320,58 360,55 400,52 440,48 480,45 520,40 560,38 600,35',
+      channels: [{name:'Meta',pct:42,spend:'$160K'},{name:'TikTok',pct:28,spend:'$106K'},{name:'Google',pct:20,spend:'$76K'},{name:'Pinterest',pct:10,spend:'$38K'}],
+      territories: [{name:'Heritage Storytelling',level:'high'},{name:'Neo-Maximalism',level:'medium'},{name:'Y2K Revival',level:'low'}]
+    },
+    {
+      name: 'Palace', letter: 'P', category: 'Streetwear', spend: '$210K/mo', trend: 'flat', trendLabel: 'Stable',
+      sovPoints: '0,70 40,72 80,68 120,70 160,72 200,68 240,66 280,68 320,66 360,65 400,66 440,64 480,66 520,65 560,64 600,65',
+      channels: [{name:'Meta',pct:38,spend:'$80K'},{name:'TikTok',pct:32,spend:'$67K'},{name:'Google',pct:18,spend:'$38K'},{name:'Pinterest',pct:12,spend:'$25K'}],
+      territories: [{name:'Neo-Maximalism',level:'high'},{name:'Y2K Revival',level:'medium'},{name:'Heritage Storytelling',level:'low'}]
+    },
+    {
+      name: 'Aim\u00e9 Leon Dore', letter: 'A', category: 'Luxury Street', spend: '$165K/mo', trend: 'up', trendLabel: 'Increasing',
+      sovPoints: '0,100 40,95 80,92 120,88 160,82 200,78 240,72 280,68 320,62 360,58 400,52 440,48 480,42 520,38 560,34 600,30',
+      channels: [{name:'Meta',pct:35,spend:'$58K'},{name:'TikTok',pct:40,spend:'$66K'},{name:'Google',pct:15,spend:'$25K'},{name:'Pinterest',pct:10,spend:'$16K'}],
+      territories: [{name:'Heritage Storytelling',level:'high'},{name:'Neo-Maximalism',level:'low'},{name:'Y2K Revival',level:'medium'}]
+    },
+    {
+      name: 'St\u00fcssy', letter: 'S', category: 'Surf / Street', spend: '$290K/mo', trend: 'up', trendLabel: 'Increasing',
+      sovPoints: '0,80 40,78 80,75 120,72 160,70 200,68 240,65 280,60 320,58 360,55 400,50 440,48 480,45 520,42 560,40 600,38',
+      channels: [{name:'Meta',pct:36,spend:'$104K'},{name:'TikTok',pct:24,spend:'$70K'},{name:'Google',pct:28,spend:'$81K'},{name:'Pinterest',pct:12,spend:'$35K'}],
+      territories: [{name:'Y2K Revival',level:'high'},{name:'Heritage Storytelling',level:'medium'},{name:'Neo-Maximalism',level:'low'}]
+    }
+  ];
+
+  function openCiDrawer(index) {
+    var d = compData[index] || compData[0];
+    document.getElementById('ciLogo').textContent = d.letter;
+    document.getElementById('ciTitle').textContent = d.name;
+    document.getElementById('ciCategory').textContent = d.category;
+    document.getElementById('ciOverviewCat').textContent = d.category;
+    document.getElementById('ciOverviewSpend').textContent = d.spend;
+
+    var trendEl = document.getElementById('ciOverviewTrend');
+    var trendClass = d.trend === 'up' ? 'ci-trend-up' : d.trend === 'down' ? 'ci-trend-down' : 'ci-trend-flat';
+    trendEl.innerHTML = '<span class="' + trendClass + '">' + d.trendLabel + '</span>';
+
+    var chartEl = document.getElementById('ciChart');
+    var lastPt = d.sovPoints.split(' ').pop().split(',');
+    chartEl.innerHTML = '<polyline points="' + d.sovPoints + '" fill="none" stroke="#292827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="' + lastPt[0] + '" cy="' + lastPt[1] + '" r="3.5" fill="#292827"/>';
+
+    var channelsEl = document.getElementById('ciChannels');
+    channelsEl.innerHTML = d.channels.map(function(c) {
+      return '<div class="ci-channel-row"><div class="ci-channel-name">' + c.name + '</div><div class="ci-channel-bar-wrap"><div class="ci-channel-bar" style="width:' + c.pct + '%;"></div></div><div class="ci-channel-pct">' + c.pct + '%</div><div class="ci-channel-spend">' + c.spend + '</div></div>';
+    }).join('');
+
+    var terrEl = document.getElementById('ciTerritories');
+    terrEl.innerHTML = d.territories.map(function(t) {
+      return '<div class="ci-territory-row"><div class="ci-territory-name">' + t.name + '</div><div class="ci-territory-level ' + t.level + '">' + t.level.charAt(0).toUpperCase() + t.level.slice(1) + '</div></div>';
+    }).join('');
+
+    backdrop.classList.add('open');
+    drawer.classList.add('open');
+  }
+
+  function closeCiDrawer() {
+    backdrop.classList.remove('open');
+    drawer.classList.remove('open');
+  }
+
+  var cards = document.querySelectorAll('.comp-card');
+  cards.forEach(function(card, i) {
+    card.addEventListener('click', function() { openCiDrawer(i); });
+  });
+
+  backdrop.addEventListener('click', closeCiDrawer);
+  closeBtn.addEventListener('click', closeCiDrawer);
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && drawer.classList.contains('open')) { e.stopPropagation(); closeCiDrawer(); }
+  });
+})();
+</script>
+
+
+<!-- Add Competitor Modal -->
+<div class="ac-backdrop" id="acBackdrop"></div>
+<div class="ac-modal" id="acModal">
+  <div class="ac-header">
+    <div class="ac-title">Add competitor</div>
+    <button class="ac-close" id="acClose"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 3l8 8M3 11l8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+  </div>
+  <div class="ac-body">
+    <div class="ac-input-group">
+      <div class="ac-label">Brand name</div>
+      <input class="ac-input" id="acBrandInput" placeholder="e.g. Off-White, Kith, Carhartt WIP..." autocomplete="off">
+    </div>
+    <div class="ac-input-group">
+      <div class="ac-label">Category</div>
+      <select class="ac-select" id="acCategory">
+        <option value="">Select category</option>
+        <option>Streetwear</option>
+        <option>Luxury Street</option>
+        <option>Surf / Street</option>
+        <option>Sportswear</option>
+        <option>Luxury Fashion</option>
+        <option>Footwear</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="ac-input-group">
+      <div class="ac-label">Website URL (optional)</div>
+      <input class="ac-input" placeholder="https://..." autocomplete="off">
+      <div class="ac-hint">We'll crawl their site and ad libraries to start tracking</div>
+    </div>
+
+    <div class="ac-suggestions" id="acSuggestions">
+      <div class="ac-sug-label">Suggested competitors</div>
+      <div class="ac-sug-item" onclick="addSuggested(this, 'Off-White')">
+        <div class="ac-sug-logo">O</div>
+        <div class="ac-sug-info"><div class="ac-sug-name">Off-White</div><div class="ac-sug-cat">Luxury Street</div></div>
+        <span class="ac-sug-add">+ Add</span>
+      </div>
+      <div class="ac-sug-item" onclick="addSuggested(this, 'Kith')">
+        <div class="ac-sug-logo">K</div>
+        <div class="ac-sug-info"><div class="ac-sug-name">Kith</div><div class="ac-sug-cat">Streetwear</div></div>
+        <span class="ac-sug-add">+ Add</span>
+      </div>
+      <div class="ac-sug-item" onclick="addSuggested(this, 'Neighborhood')">
+        <div class="ac-sug-logo">N</div>
+        <div class="ac-sug-info"><div class="ac-sug-name">Neighborhood</div><div class="ac-sug-cat">Streetwear</div></div>
+        <span class="ac-sug-add">+ Add</span>
+      </div>
+      <div class="ac-sug-item" onclick="addSuggested(this, 'Carhartt WIP')">
+        <div class="ac-sug-logo">C</div>
+        <div class="ac-sug-info"><div class="ac-sug-name">Carhartt WIP</div><div class="ac-sug-cat">Workwear / Street</div></div>
+        <span class="ac-sug-add">+ Add</span>
+      </div>
+      <div class="ac-sug-item" onclick="addSuggested(this, 'Human Made')">
+        <div class="ac-sug-logo">H</div>
+        <div class="ac-sug-info"><div class="ac-sug-name">Human Made</div><div class="ac-sug-cat">Streetwear</div></div>
+        <span class="ac-sug-add">+ Add</span>
+      </div>
+    </div>
+  </div>
+  <div class="ac-footer">
+    <button class="ac-btn-ghost" onclick="closeAddComp()">Cancel</button>
+    <button class="ac-btn-primary" onclick="closeAddComp()">Add competitor</button>
+  </div>
+</div>
+
+<script>
+function openAddComp() {
+  document.getElementById('acBackdrop').classList.add('open');
+  document.getElementById('acModal').classList.add('open');
+  setTimeout(() => document.getElementById('acBrandInput').focus(), 100);
+}
+function closeAddComp() {
+  document.getElementById('acBackdrop').classList.remove('open');
+  document.getElementById('acModal').classList.remove('open');
+}
+document.getElementById('acBackdrop').addEventListener('click', closeAddComp);
+document.getElementById('acClose').addEventListener('click', closeAddComp);
+
+function addSuggested(el, name) {
+  const addBtn = el.querySelector('.ac-sug-add');
+  addBtn.outerHTML = '<span class="ac-added"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Added</span>';
+  el.style.cursor = 'default';
+  el.onclick = null;
+}
+
+// Wire up the Add Competitor button in topbar
+document.querySelector('.btn-ghost').addEventListener('click', openAddComp);
+</script>
+
+<!-- Command Palette -->
+<div class="cmd-backdrop" id="cmdBackdrop"></div>
+<div class="cmd-dialog" id="cmdDialog">
+  <div class="cmd-input-wrap">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.3"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+    <input class="cmd-input" id="cmdInput" placeholder="Search pages, briefs, assets..." autocomplete="off">
+    <span class="cmd-hint">ESC</span>
+  </div>
+  <div class="cmd-results" id="cmdResults">
+    <div class="cmd-group-label">Pages</div>
+    <a class="cmd-item" href="home.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 6.5L8 2l6 4.5V14H10v-3H6v3H2V6.5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Home</div></div></a>
+    <a class="cmd-item" href="current_brand.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.2"/><circle cx="8" cy="8" r="2.5" fill="currentColor"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Brand</div></div></a>
+    <a class="cmd-item" href="visual_search.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.2"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Visual Vault</div></div></a>
+    <a class="cmd-item" href="trend_matching.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 12l4-4 3 3 5-5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Opportunities</div></div></a>
+    <a class="cmd-item" href="brand_sandbox.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 2l1.5 3.5L13 6l-2.5 2.5.5 3.5L8 10l-3 2 .5-3.5L3 6l3.5-.5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Brand Sandbox</div></div></a>
+    <a class="cmd-item" href="clusters.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.2"/><rect x="9" y="2" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.2"/><rect x="2" y="9" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.2"/><rect x="9" y="9" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.2"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Thematic Intelligence</div></div></a>
+    <a class="cmd-item" href="briefs.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l2 2v10H3V2z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Briefs</div></div></a>
+    <a class="cmd-item" href="creator_studio.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M4 11l3-3 2 2 3-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Creator Studio</div></div></a>
+    <a class="cmd-item" href="asset_manager.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 4h5l1.5 2H14v8H2V4z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Asset Manager</div></div></a>
+    <a class="cmd-item" href="reviews.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Reviews</div></div></a>
+    <a class="cmd-item" href="roas_dashboard.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><polyline points="2,12 6,7 9,10 14,4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">ROAS Dashboard</div></div></a>
+    <a class="cmd-item" href="reports.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 2h8l2 2v10H3V2z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Reports</div></div></a>
+    <a class="cmd-item" href="competitive_intel.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.2"/><circle cx="8" cy="8" r="2" stroke="currentColor" stroke-width="1.2"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Competitive Intel</div></div></a>
+    <div class="cmd-group-label">Briefs</div>
+    <a class="cmd-item" href="brief_detail.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l2 2v10H3V2z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Sakura Camo Hero Pattern</div><div class="cmd-item-desc">SS26 · Hana Matsuri · In Production</div></div></a>
+    <a class="cmd-item" href="briefs.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l2 2v10H3V2z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">30yr Retrospective · Hero Film</div><div class="cmd-item-desc">Heritage Storytelling · Shipped</div></div></a>
+    <div class="cmd-group-label">Actions</div>
+    <a class="cmd-item" href="briefs.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">New brief</div></div></a>
+    <a class="cmd-item" href="creator_studio.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Generate creative</div></div></a>
+    <a class="cmd-item" href="visual_search.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Upload assets</div></div></a>
+  </div>
+  <div class="cmd-footer">
+    <span class="cmd-footer-hint"><span class="cmd-footer-key">&uarr;</span><span class="cmd-footer-key">&darr;</span> navigate</span>
+    <span class="cmd-footer-hint"><span class="cmd-footer-key">&crarr;</span> open</span>
+    <span class="cmd-footer-hint"><span class="cmd-footer-key">esc</span> close</span>
+  </div>
+</div>
+
+<script>
+(function(){
+  const bd = document.getElementById('cmdBackdrop');
+  const dg = document.getElementById('cmdDialog');
+  const ip = document.getElementById('cmdInput');
+  const rs = document.getElementById('cmdResults');
+  function openCmd() { bd.classList.add('open'); dg.classList.add('open'); setTimeout(() => ip.focus(), 50); }
+  function closeCmd() { bd.classList.remove('open'); dg.classList.remove('open'); ip.value = ''; filterItems(''); }
+  bd.addEventListener('click', closeCmd);
+  document.addEventListener('keydown', e => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); dg.classList.contains('open') ? closeCmd() : openCmd(); }
+    if (e.key === 'Escape' && dg.classList.contains('open')) closeCmd();
+  });
+  function filterItems(q) {
+    const items = rs.querySelectorAll('.cmd-item');
+    const labels = rs.querySelectorAll('.cmd-group-label');
+    const lq = q.toLowerCase();
+    items.forEach(it => {
+      const name = it.querySelector('.cmd-item-name')?.textContent?.toLowerCase() || '';
+      const desc = it.querySelector('.cmd-item-desc')?.textContent?.toLowerCase() || '';
+      it.style.display = (!q || name.includes(lq) || desc.includes(lq)) ? 'flex' : 'none';
+    });
+    labels.forEach(l => {
+      let next = l.nextElementSibling;
+      let hasVisible = false;
+      while (next && !next.classList.contains('cmd-group-label')) {
+        if (next.style.display !== 'none') hasVisible = true;
+        next = next.nextElementSibling;
+      }
+      l.style.display = hasVisible ? 'block' : 'none';
+    });
+  }
+  ip.addEventListener('input', () => filterItems(ip.value));
+})();
+</script>
 
 </body>
 </html>

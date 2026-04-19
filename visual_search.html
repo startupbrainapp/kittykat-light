@@ -312,10 +312,10 @@
   .drawer {
     position: fixed;
     top: 0; right: 0; bottom: 0;
-    width: 480px; max-width: 100vw;
-    background: var(--bg-surface);
-    border-left: 1px solid var(--border-standard);
-    box-shadow: -8px 0 32px rgba(0,0,0,0.3);
+    width: 700px; max-width: 100vw;
+    background: #ffffff;
+    border-left: 1px solid #dcd7d3;
+    box-shadow: -8px 0 32px rgba(0,0,0,0.1);
     z-index: 100;
     transform: translateX(100%);
     transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -325,41 +325,48 @@
 
   .drawer-header {
     display: flex; align-items: center; gap: 10px;
-    padding: 14px 18px;
+    padding: 14px 24px;
     border-bottom: 1px solid var(--border-subtle);
     flex-shrink: 0;
   }
   .drawer-title-wrap { flex: 1; min-width: 0; }
   .drawer-eyebrow { font-size: 10px; font-weight: 510; color: var(--text-quaternary); text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.3; }
   .drawer-title { font-size: 14px; font-weight: 510; color: var(--text-primary); letter-spacing: -0.182px; line-height: 1.3; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .drawer-close { width: 26px; height: 26px; background: transparent; border: none; border-radius: 6px; color: var(--text-tertiary); cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .drawer-close { width: 28px; height: 28px; background: transparent; border: none; border-radius: 6px; color: #292827; cursor: pointer; font-size: 20px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .drawer-close:hover { background: var(--surface-2); color: var(--text-primary); }
 
-  .drawer-body { flex: 1; overflow-y: auto; padding: 18px; }
+  .drawer-body { flex: 1; overflow-y: auto; padding: 24px; }
 
-  .drawer-hero {
-    aspect-ratio: 1 / 1;
+  /* Large image preview */
+  .drawer-hero-img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
     border-radius: 8px;
-    overflow: hidden;
-    position: relative;
-    margin-bottom: 18px;
-    border: 1px solid var(--border-standard);
-  }
-  .drawer-hero-inner { width: 100%; height: 100%; display: flex; align-items: flex-end; padding: 16px; }
-  .drawer-hero-label { font-size: 13px; font-weight: 510; color: rgba(255,255,255,0.95); text-shadow: 0 1px 3px rgba(0,0,0,0.3); }
-
-  .drawer-meta-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px 14px;
     margin-bottom: 20px;
+    border: 1px solid var(--border-standard);
+    display: block;
   }
-  .meta-row { display: flex; flex-direction: column; gap: 2px; }
-  .meta-label { font-size: 10px; font-weight: 510; color: var(--text-quaternary); letter-spacing: 0.4px; text-transform: uppercase; }
-  .meta-value { font-size: 13px; font-weight: 400; color: var(--text-secondary); letter-spacing: -0.13px; }
-  .meta-value.mono { font-family: 'Berkeley Mono', ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: var(--text-primary); }
 
-  .drawer-section { margin-bottom: 20px; }
+  /* Metadata section */
+  .drawer-filename { font-size: 14px; font-weight: 510; color: var(--text-primary); margin-bottom: 4px; }
+  .drawer-dimensions { font-size: 13px; font-weight: 400; color: var(--text-tertiary); letter-spacing: -0.13px; margin-bottom: 12px; }
+  .drawer-dimensions span { margin: 0 4px; }
+
+  /* Tag pills */
+  .tag-list { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    display: inline-flex; align-items: center;
+    padding: 4px 10px;
+    background: rgba(0,0,0,0.04);
+    border: 1px solid #dcd7d3;
+    border-radius: 9999px;
+    font-size: 12px; font-weight: 510;
+    color: var(--text-secondary);
+    letter-spacing: -0.13px;
+  }
+
+  .drawer-section { margin-top: 24px; margin-bottom: 0; }
   .drawer-section-label {
     font-size: 10px; font-weight: 510;
     color: var(--text-quaternary);
@@ -367,78 +374,88 @@
     margin-bottom: 10px;
   }
 
-  /* Alignment breakdown */
-  .align-row {
-    display: flex; align-items: center; gap: 10px;
-    padding: 6px 0;
-    font-size: 12px;
+  /* AI Analysis */
+  .ai-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 5px 0;
+    font-size: 13px;
     letter-spacing: -0.13px;
   }
-  .align-key { color: var(--text-tertiary); width: 110px; flex-shrink: 0; font-weight: 400; }
-  .align-bar { flex: 1; height: 5px; background: var(--surface-2); border-radius: 999px; overflow: hidden; }
-  .align-fill { height: 100%; background: #059669; border-radius: 999px; }
-  .align-fill.mid { background: #57534e; }
-  .align-val { color: var(--text-primary); font-weight: 510; width: 36px; text-align: right; font-variant-numeric: tabular-nums; }
+  .ai-key { color: var(--text-tertiary); font-weight: 400; }
+  .ai-val { color: var(--text-primary); font-weight: 510; }
+  .ai-val.green { color: #059669; }
+  .color-dots { display: flex; gap: 6px; align-items: center; }
+  .color-dot { width: 16px; height: 16px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.08); }
 
-  /* Tag chips */
-  .tag-list { display: flex; flex-wrap: wrap; gap: 6px; }
-  .tag {
+  /* Used in */
+  .used-in-item {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .used-in-item:last-child { border-bottom: none; }
+  .used-in-info { display: flex; flex-direction: column; gap: 1px; }
+  .used-in-name { font-size: 13px; font-weight: 510; color: var(--text-primary); letter-spacing: -0.13px; }
+  .used-in-type { font-size: 11px; font-weight: 400; color: var(--text-tertiary); letter-spacing: -0.13px; }
+  .status-pill {
     display: inline-flex; align-items: center;
     padding: 2px 8px;
-    background: var(--surface-1);
-    border: 1px solid var(--border-standard);
     border-radius: 9999px;
     font-size: 11px; font-weight: 510;
-    color: var(--text-secondary);
     letter-spacing: -0.13px;
   }
+  .status-pill.blue { background: rgba(37,99,235,0.1); color: #2563eb; border: 1px solid rgba(37,99,235,0.2); }
+  .status-pill.green { background: rgba(5,150,105,0.1); color: #059669; border: 1px solid rgba(5,150,105,0.2); }
+  .status-pill.amber { background: rgba(217,119,6,0.1); color: #d97706; border: 1px solid rgba(217,119,6,0.2); }
 
-  /* Related thumbnails */
-  .related-grid {
+  /* Similar images grid */
+  .similar-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 6px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
   }
-  .related-thumb {
+  .similar-thumb {
     aspect-ratio: 1;
-    border-radius: 5px;
+    border-radius: 6px;
     border: 1px solid var(--border-standard);
     cursor: pointer;
     transition: border-color 0.12s;
+    object-fit: cover;
+    width: 100%;
   }
-  .related-thumb:hover { border-color: rgba(113, 112, 255, 0.45); }
+  .similar-thumb:hover { border-color: #292827; }
 
   /* Drawer footer actions */
   .drawer-footer {
     border-top: 1px solid var(--border-subtle);
-    padding: 14px 18px;
-    display: flex; flex-direction: column; gap: 8px;
+    padding: 14px 24px;
+    display: flex; gap: 8px;
     flex-shrink: 0;
-    background: var(--bg-surface);
+    background: #ffffff;
   }
-  .drawer-action-row { display: flex; gap: 6px; }
   .drawer-btn {
-    flex: 1;
-    padding: 8px 12px;
+    padding: 8px 16px;
     border-radius: 6px;
     font-size: 13px; font-weight: 510;
     letter-spacing: -0.13px;
     cursor: pointer;
     display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-    transition: background 0.12s;
+    transition: background 0.12s, color 0.12s;
   }
   .drawer-btn.primary {
     background: #292827;
     border: 1px solid #292827;
     color: white;
+    flex: 1;
   }
   .drawer-btn.primary:hover { background: #3d3d3a; border-color: #3d3d3a; }
-  .drawer-btn.secondary {
-    background: var(--surface-2);
+  .drawer-btn.ghost {
+    background: transparent;
     border: 1px solid var(--border-standard);
-    color: var(--text-primary);
+    color: var(--text-secondary);
   }
-  .drawer-btn.secondary:hover { background: var(--surface-3); }
+  .drawer-btn.ghost:hover { background: var(--surface-2); color: var(--text-primary); }
+  .drawer-btn.ghost.danger:hover { color: #dc2626; border-color: rgba(220,38,38,0.3); background: rgba(220,38,38,0.05); }
 
   /* ═══ Embedded mode action bar ═══ */
   .action-bar {
@@ -492,6 +509,30 @@
   }
   .toast.visible { opacity: 1; transform: translateX(-50%) translateY(0); }
   .toast-check { color: #292827; }
+
+  /* Command Palette */
+  .cmd-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.25); z-index: 999; opacity: 0; pointer-events: none; transition: opacity 0.15s; }
+  .cmd-backdrop.open { opacity: 1; pointer-events: auto; }
+  .cmd-dialog { position: fixed; top: 20%; left: 50%; transform: translateX(-50%) scale(0.96); width: 560px; max-width: 90vw; background: #ffffff; border: 1px solid #dcd7d3; border-radius: 12px; box-shadow: 0 16px 48px rgba(0,0,0,0.12); z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.15s, transform 0.15s; overflow: hidden; }
+  .cmd-backdrop.open + .cmd-dialog, .cmd-dialog.open { opacity: 1; pointer-events: auto; transform: translateX(-50%) scale(1); }
+  .cmd-input-wrap { display: flex; align-items: center; gap: 10px; padding: 14px 18px; border-bottom: 1px solid #f0eee6; }
+  .cmd-input-wrap svg { color: #9ca3af; flex-shrink: 0; }
+  .cmd-input { flex: 1; border: none; outline: none; font-size: 15px; font-weight: 400; color: #292827; background: transparent; font-family: inherit; font-feature-settings: 'cv01','ss03'; letter-spacing: -0.165px; }
+  .cmd-input::placeholder { color: #9ca3af; }
+  .cmd-hint { font-size: 11px; color: #9ca3af; background: #f5f5f4; border: 1px solid #dcd7d3; border-radius: 4px; padding: 1px 5px; font-weight: 510; flex-shrink: 0; }
+  .cmd-results { max-height: 320px; overflow-y: auto; padding: 6px; }
+  .cmd-group-label { font-size: 10px; font-weight: 510; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.5px; padding: 8px 12px 4px; }
+  .cmd-item { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 6px; cursor: pointer; transition: background 0.08s; }
+  .cmd-item:hover, .cmd-item.active { background: #f5f5f4; }
+  .cmd-item-icon { width: 28px; height: 28px; border-radius: 6px; background: rgba(0,0,0,0.04); display: flex; align-items: center; justify-content: center; color: #292827; flex-shrink: 0; }
+  .cmd-item-text { flex: 1; }
+  .cmd-item-name { font-size: 13px; font-weight: 510; color: #292827; letter-spacing: -0.13px; }
+  .cmd-item-desc { font-size: 11px; color: #8a8f98; letter-spacing: -0.13px; }
+  .cmd-item-shortcut { font-size: 10px; color: #9ca3af; font-weight: 510; }
+  .cmd-footer { display: flex; align-items: center; gap: 12px; padding: 8px 14px; border-top: 1px solid #f0eee6; background: #fafafa; }
+  .cmd-footer-hint { font-size: 10px; color: #9ca3af; display: flex; align-items: center; gap: 4px; }
+  .cmd-footer-key { background: #eeedeb; border: 1px solid #dcd7d3; border-radius: 3px; padding: 0px 4px; font-size: 10px; font-weight: 510; color: #57534e; }
+
 </style>
 </head>
 <body>
@@ -615,9 +656,9 @@
       <span class="bc-current">Visual Vault</span>
     </div>
     <div class="topbar-right">
-      <button class="btn demo-toggle" onclick="toggleMode()">
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2v8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-        <span id="modeLabel">Simulate: from Brief</span>
+      <button class="btn btn-ghost">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 2v6M3 5l3-3 3 3M2 10h8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Upload
       </button>
       <button class="btn btn-ghost">
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 2v6M3 5l3-3 3 3M2 10h8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -712,96 +753,82 @@
 <aside class="drawer" id="drawer">
   <div class="drawer-header">
     <div class="drawer-title-wrap">
-      <div class="drawer-eyebrow" id="drawerEyebrow">Asset</div>
-      <div class="drawer-title" id="drawerTitle">—</div>
+      <div class="drawer-eyebrow" id="drawerEyebrow">Asset detail</div>
+      <div class="drawer-title" id="drawerTitle">--</div>
     </div>
-    <button class="drawer-close" onclick="closeDrawer()">×</button>
+    <button class="drawer-close" onclick="closeDrawer()">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 4l8 8M12 4l-8 8" stroke="#292827" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
   </div>
 
   <div class="drawer-body">
-    <div class="drawer-hero" id="drawerHero">
-      <div class="drawer-hero-inner tile-pattern">
-        <div class="drawer-hero-label" id="drawerHeroLabel">—</div>
-      </div>
-    </div>
+    <!-- 1. Large image preview -->
+    <img class="drawer-hero-img" id="drawerHeroImg" src="" alt="Preview">
 
-    <div class="drawer-meta-grid">
-      <div class="meta-row"><div class="meta-label">Source</div><div class="meta-value" id="dmSource">—</div></div>
-      <div class="meta-row"><div class="meta-label">Captured</div><div class="meta-value" id="dmCaptured">—</div></div>
-      <div class="meta-row"><div class="meta-label">Format</div><div class="meta-value mono">JPG · 1080×1080</div></div>
-      <div class="meta-row"><div class="meta-label">Cluster</div><div class="meta-value" id="dmCluster">—</div></div>
-    </div>
+    <!-- 2. Metadata -->
+    <div class="drawer-filename" id="drawerFilename">sakura-camo-hero-01.jpg</div>
+    <div class="drawer-dimensions" id="drawerDimensions">2400 x 3200<span>·</span>4.2 MB<span>·</span>Uploaded Nov 15</div>
+    <div class="tag-list" id="drawerTags"></div>
 
+    <!-- 3. AI Analysis -->
     <div class="drawer-section">
-      <div class="drawer-section-label">Brand Alignment · <span id="dmScoreTotal">—</span></div>
-      <div class="align-row">
-        <span class="align-key">Color palette</span>
-        <div class="align-bar"><div class="align-fill" id="barColor" style="width:95%"></div></div>
-        <span class="align-val">95</span>
+      <div class="drawer-section-label">AI Analysis</div>
+      <div class="ai-row">
+        <span class="ai-key">Brand alignment</span>
+        <span class="ai-val green" id="aiAlignment">94%</span>
       </div>
-      <div class="align-row">
-        <span class="align-key">Subject / motif</span>
-        <div class="align-bar"><div class="align-fill" id="barSubject" style="width:96%"></div></div>
-        <span class="align-val">96</span>
+      <div class="ai-row">
+        <span class="ai-key">Territory</span>
+        <span class="ai-val" id="aiTerritory">Heritage Storytelling</span>
       </div>
-      <div class="align-row">
-        <span class="align-key">Typography</span>
-        <div class="align-bar"><div class="align-fill mid" id="barType" style="width:88%"></div></div>
-        <span class="align-val">88</span>
+      <div class="ai-row">
+        <span class="ai-key">Mood</span>
+        <span class="ai-val" id="aiMood">Confident, archival, pattern-forward</span>
       </div>
-      <div class="align-row">
-        <span class="align-key">Composition</span>
-        <div class="align-bar"><div class="align-fill" id="barComp" style="width:93%"></div></div>
-        <span class="align-val">93</span>
-      </div>
-    </div>
-
-    <div class="drawer-section">
-      <div class="drawer-section-label">Tags</div>
-      <div class="tag-list">
-        <span class="tag">green camo</span>
-        <span class="tag">storefront</span>
-        <span class="tag">night shoot</span>
-        <span class="tag">heritage</span>
-        <span class="tag">SS24</span>
+      <div class="ai-row">
+        <span class="ai-key">Colors detected</span>
+        <div class="color-dots" id="aiColors">
+          <div class="color-dot" style="background:#4a6741;"></div>
+          <div class="color-dot" style="background:#292827;"></div>
+          <div class="color-dot" style="background:#d4c5a9;"></div>
+          <div class="color-dot" style="background:#8b6f47;"></div>
+        </div>
       </div>
     </div>
 
+    <!-- 4. Used in -->
     <div class="drawer-section">
-      <div class="drawer-section-label">Used in Campaigns</div>
-      <div class="tag-list">
-        <span class="tag" style="color: #292827; border-color: rgba(0,0,0,0.06);">SS24 Shark Campaign</span>
-        <span class="tag" style="color: #292827; border-color: rgba(0,0,0,0.06);">Tokyo Flagship Launch</span>
+      <div class="drawer-section-label">Used in</div>
+      <div id="drawerUsedIn">
+        <div class="used-in-item">
+          <div class="used-in-info">
+            <div class="used-in-name">Sakura Camo Hero Pattern</div>
+            <div class="used-in-type">Brief</div>
+          </div>
+          <span class="status-pill blue">In Production</span>
+        </div>
+        <div class="used-in-item">
+          <div class="used-in-info">
+            <div class="used-in-name">Hana Matsuri -- SS26 Launch</div>
+            <div class="used-in-type">Campaign</div>
+          </div>
+          <span class="status-pill green">Live</span>
+        </div>
       </div>
     </div>
 
+    <!-- 5. Similar images -->
     <div class="drawer-section">
-      <div class="drawer-section-label">Visually similar</div>
-      <div class="related-grid" id="relatedGrid"></div>
+      <div class="drawer-section-label">Similar in vault · <span id="similarCount">6</span></div>
+      <div class="similar-grid" id="similarGrid"></div>
     </div>
   </div>
 
+  <!-- 6. Action buttons (sticky footer) -->
   <div class="drawer-footer">
-    <div class="drawer-action-row">
-      <button class="drawer-btn primary">
-        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M3 2h5l2 2v7H3V2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M4.5 6.5h4M4.5 8.5h3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-        Start brief from this
-      </button>
-      <button class="drawer-btn secondary">
-        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 2v9M2 6.5h9M3.5 3.5l6 6M3.5 9.5l6-6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-        Generate variants
-      </button>
-    </div>
-    <div class="drawer-action-row">
-      <button class="drawer-btn secondary" onclick="showToast('Saved to Collection: Green Camo Refs')">
-        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M3 2v9l3.5-2.5L10 11V2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
-        Save to collection
-      </button>
-      <button class="drawer-btn secondary">
-        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 7V2h5M11 6v5H6M2 2l4 4M11 11L7 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        View in campaign
-      </button>
-    </div>
+    <button class="drawer-btn primary" onclick="showToast('Added to brief')">Add to brief</button>
+    <button class="drawer-btn ghost" onclick="showToast('Download started')">Download</button>
+    <button class="drawer-btn ghost danger">Delete</button>
   </div>
 </aside>
 
@@ -939,22 +966,68 @@
   }
 
   /* ═══ Drawer (standalone mode) ═══ */
+  // Demo metadata pools
+  const demoFilenames = ['sakura-camo-hero-01.jpg','shark-hoodie-green-02.jpg','abc-camo-editorial-03.jpg','gold-type-campaign-04.jpg','pink-camo-detail-05.jpg','mono-lookbook-bw-06.jpg','futura-collab-gold-07.jpg','milo-archival-tee-08.jpg','abc-jacket-store-09.jpg','bapesta-closeup-10.jpg','camo-hoodie-display-11.jpg','shark-fullzip-hero-12.jpg','abc-jacket-detail-13.jpg','streetwear-tokyo-14.jpg','heritage-logo-tee-15.jpg','collab-adidas-16.jpg','mono-product-studio-17.jpg','premium-knit-grey-18.jpg','cap-detail-drop-19.jpg','sneaker-collectible-20.jpg'];
+  const demoDimensions = ['2400 x 3200','1920 x 1080','3000 x 2000','1080 x 1350','2560 x 1440','1200 x 1600'];
+  const demoSizes = ['4.2 MB','3.1 MB','5.7 MB','2.8 MB','6.1 MB','1.9 MB'];
+  const demoUploadDates = ['Uploaded Nov 15','Uploaded Oct 28','Uploaded Dec 3','Uploaded Sep 10','Uploaded Jan 22','Uploaded Mar 5'];
+  const demoTagSets = [
+    ['Camo','Cherry Blossom','Pattern','Pink','Heritage'],
+    ['Shark','Hoodie','Green','Streetwear','SS26'],
+    ['ABC Camo','Editorial','Blue','Fashion'],
+    ['Gold','Typography','Luxury','Campaign'],
+    ['Sakura','Pink','Detail','Textile','Print'],
+    ['Monochrome','B&W','Portrait','Lookbook'],
+    ['Collab','Gold Foil','Futura','Limited'],
+    ['Milo','Character','Heritage','Archival'],
+    ['Camo','Jacket','Store','Display'],
+    ['Sneaker','Bape Sta','Product','Close-up']
+  ];
+  const demoTerritories = ['Heritage Storytelling','Street Culture','Luxury Collab','Pattern Play','Archive Revival','Urban Night','Youth Culture'];
+  const demoMoods = ['Confident, archival, pattern-forward','Bold, energetic, street-ready','Minimal, premium, refined','Playful, vibrant, collectible','Dark, moody, editorial','Clean, modern, aspirational'];
+  const demoColorSets = [
+    ['#4a6741','#292827','#d4c5a9','#8b6f47'],
+    ['#1a5c2e','#292827','#c4a35a','#4a4946'],
+    ['#3b5998','#292827','#8fa4bf','#e8e0d4'],
+    ['#c9a84c','#292827','#1a1a1a','#f5f0e1'],
+    ['#d4577a','#fce4ec','#8b4557','#292827'],
+    ['#292827','#555555','#999999','#ffffff']
+  ];
+  const similarImages = ['c2.jpg','c4.jpg','c6.jpg','c8.jpg','3.jpg','5.jpg'];
+
   function openDrawer(i) {
     const t = tiles[i];
-    document.getElementById('drawerTitle').textContent = t.label;
-    document.getElementById('drawerHeroLabel').textContent = t.label;
-    document.getElementById('drawerHero').querySelector('.drawer-hero-inner').className = 'drawer-hero-inner tile-pattern';
-    document.getElementById('drawerHero').className = 'drawer-hero tile-gradient-' + t.grad;
-    document.getElementById('dmSource').textContent = t.sourceFull;
-    document.getElementById('dmCaptured').textContent = t.captured;
-    document.getElementById('dmCluster').textContent = t.cluster;
-    document.getElementById('dmScoreTotal').textContent = t.score + '% match';
+    const imgSrc = 'images/' + t.grad + '.jpg';
 
-    // Render related thumbs (4 random other tiles)
-    const rel = tiles.filter((_, k) => k !== i).slice(0, 4);
-    document.getElementById('relatedGrid').innerHTML = rel.map(r => `
-      <div class="related-thumb tile-gradient-${r.grad}"></div>
-    `).join('');
+    // Title
+    document.getElementById('drawerTitle').textContent = t.label;
+
+    // Hero image
+    document.getElementById('drawerHeroImg').src = imgSrc;
+
+    // Filename
+    document.getElementById('drawerFilename').textContent = demoFilenames[i] || ('asset-' + t.grad + '.jpg');
+
+    // Dimensions
+    const dimIdx = i % demoDimensions.length;
+    document.getElementById('drawerDimensions').innerHTML =
+      demoDimensions[dimIdx] + '<span> · </span>' + demoSizes[dimIdx] + '<span> · </span>' + demoUploadDates[dimIdx];
+
+    // Tags
+    const tags = demoTagSets[i % demoTagSets.length];
+    document.getElementById('drawerTags').innerHTML = tags.map(tag => '<span class="tag">' + tag + '</span>').join('');
+
+    // AI Analysis
+    document.getElementById('aiAlignment').textContent = t.score + '%';
+    document.getElementById('aiTerritory').textContent = demoTerritories[i % demoTerritories.length];
+    document.getElementById('aiMood').textContent = demoMoods[i % demoMoods.length];
+    const colors = demoColorSets[i % demoColorSets.length];
+    document.getElementById('aiColors').innerHTML = colors.map(c => '<div class="color-dot" style="background:' + c + ';"></div>').join('');
+
+    // Similar images grid (6 thumbs)
+    document.getElementById('similarGrid').innerHTML = similarImages.map(img =>
+      '<img class="similar-thumb" src="images/' + img + '" alt="Similar">'
+    ).join('');
 
     document.getElementById('drawer').classList.add('open');
     document.getElementById('drawerBackdrop').classList.add('open');
@@ -983,6 +1056,81 @@
     if (sub) sub.classList.toggle('open');
     if (chev) chev.classList.toggle('open');
   }
+</script>
+
+
+<!-- Command Palette -->
+<div class="cmd-backdrop" id="cmdBackdrop"></div>
+<div class="cmd-dialog" id="cmdDialog">
+  <div class="cmd-input-wrap">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.3"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+    <input class="cmd-input" id="cmdInput" placeholder="Search pages, briefs, assets..." autocomplete="off">
+    <span class="cmd-hint">ESC</span>
+  </div>
+  <div class="cmd-results" id="cmdResults">
+    <div class="cmd-group-label">Pages</div>
+    <a class="cmd-item" href="home.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 6.5L8 2l6 4.5V14H10v-3H6v3H2V6.5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Home</div></div></a>
+    <a class="cmd-item" href="current_brand.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.2"/><circle cx="8" cy="8" r="2.5" fill="currentColor"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Brand</div></div></a>
+    <a class="cmd-item" href="visual_search.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.2"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Visual Vault</div></div></a>
+    <a class="cmd-item" href="trend_matching.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 12l4-4 3 3 5-5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Opportunities</div></div></a>
+    <a class="cmd-item" href="brand_sandbox.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 2l1.5 3.5L13 6l-2.5 2.5.5 3.5L8 10l-3 2 .5-3.5L3 6l3.5-.5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Brand Sandbox</div></div></a>
+    <a class="cmd-item" href="clusters.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.2"/><rect x="9" y="2" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.2"/><rect x="2" y="9" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.2"/><rect x="9" y="9" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.2"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Thematic Intelligence</div></div></a>
+    <a class="cmd-item" href="briefs.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l2 2v10H3V2z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Briefs</div></div></a>
+    <a class="cmd-item" href="creator_studio.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M4 11l3-3 2 2 3-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Creator Studio</div></div></a>
+    <a class="cmd-item" href="asset_manager.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 4h5l1.5 2H14v8H2V4z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Asset Manager</div></div></a>
+    <a class="cmd-item" href="reviews.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Reviews</div></div></a>
+    <a class="cmd-item" href="roas_dashboard.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><polyline points="2,12 6,7 9,10 14,4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">ROAS Dashboard</div></div></a>
+    <a class="cmd-item" href="reports.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 2h8l2 2v10H3V2z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Reports</div></div></a>
+    <a class="cmd-item" href="competitive_intel.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.2"/><circle cx="8" cy="8" r="2" stroke="currentColor" stroke-width="1.2"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Competitive Intel</div></div></a>
+    <div class="cmd-group-label">Briefs</div>
+    <a class="cmd-item" href="brief_detail.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l2 2v10H3V2z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Sakura Camo Hero Pattern</div><div class="cmd-item-desc">SS26 · Hana Matsuri · In Production</div></div></a>
+    <a class="cmd-item" href="briefs.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l2 2v10H3V2z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">30yr Retrospective · Hero Film</div><div class="cmd-item-desc">Heritage Storytelling · Shipped</div></div></a>
+    <div class="cmd-group-label">Actions</div>
+    <a class="cmd-item" href="briefs.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">New brief</div></div></a>
+    <a class="cmd-item" href="creator_studio.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Generate creative</div></div></a>
+    <a class="cmd-item" href="visual_search.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Upload assets</div></div></a>
+  </div>
+  <div class="cmd-footer">
+    <span class="cmd-footer-hint"><span class="cmd-footer-key">&uarr;</span><span class="cmd-footer-key">&darr;</span> navigate</span>
+    <span class="cmd-footer-hint"><span class="cmd-footer-key">&crarr;</span> open</span>
+    <span class="cmd-footer-hint"><span class="cmd-footer-key">esc</span> close</span>
+  </div>
+</div>
+
+<script>
+(function(){
+  const bd = document.getElementById('cmdBackdrop');
+  const dg = document.getElementById('cmdDialog');
+  const ip = document.getElementById('cmdInput');
+  const rs = document.getElementById('cmdResults');
+  function openCmd() { bd.classList.add('open'); dg.classList.add('open'); setTimeout(() => ip.focus(), 50); }
+  function closeCmd() { bd.classList.remove('open'); dg.classList.remove('open'); ip.value = ''; filterItems(''); }
+  bd.addEventListener('click', closeCmd);
+  document.addEventListener('keydown', e => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); dg.classList.contains('open') ? closeCmd() : openCmd(); }
+    if (e.key === 'Escape' && dg.classList.contains('open')) closeCmd();
+  });
+  function filterItems(q) {
+    const items = rs.querySelectorAll('.cmd-item');
+    const labels = rs.querySelectorAll('.cmd-group-label');
+    const lq = q.toLowerCase();
+    items.forEach(it => {
+      const name = it.querySelector('.cmd-item-name')?.textContent?.toLowerCase() || '';
+      const desc = it.querySelector('.cmd-item-desc')?.textContent?.toLowerCase() || '';
+      it.style.display = (!q || name.includes(lq) || desc.includes(lq)) ? 'flex' : 'none';
+    });
+    labels.forEach(l => {
+      let next = l.nextElementSibling;
+      let hasVisible = false;
+      while (next && !next.classList.contains('cmd-group-label')) {
+        if (next.style.display !== 'none') hasVisible = true;
+        next = next.nextElementSibling;
+      }
+      l.style.display = hasVisible ? 'block' : 'none';
+    });
+  }
+  ip.addEventListener('input', () => filterItems(ip.value));
+})();
 </script>
 
 </body>

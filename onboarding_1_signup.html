@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create your account — KittyKat</title>
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <style>
+    :root {
+      --bg-canvas: #ffffff; --bg-panel: #fafafa; --bg-surface: #f5f5f4; --bg-elevated: #eeedeb;
+      --text-primary: #292827; --text-secondary: #4a4946; --text-tertiary: #8a8f98; --text-quaternary: #9ca3af;
+      --brand: #292827; --brand-accent: #57534e; --brand-hover: #3d3d3a;
+      --border-subtle: #f0eee6; --border-standard: #dcd7d3; --border-solid: #dcd7d3;
+      --surface-1: #fafafa; --surface-2: #f5f5f4; --surface-3: #eeedeb;
+      --status-green: #059669; --status-amber: #d97706; --status-red: #dc2626;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter var', Inter, -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif;
+      font-feature-settings: 'cv01', 'ss03';
+      background: var(--bg-canvas);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .logo {
+      position: fixed;
+      top: 24px;
+      left: 24px;
+      font-size: 15px;
+      font-weight: 510;
+      color: var(--text-primary);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .container {
+      max-width: 480px;
+      width: 100%;
+      padding: 0 20px;
+    }
+
+    .progress-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 32px;
+      justify-content: center;
+    }
+
+    .progress-step {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .progress-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--border-standard);
+      transition: background 0.2s;
+    }
+
+    .progress-dot.active {
+      background: var(--brand);
+      width: 10px;
+      height: 10px;
+    }
+
+    .progress-dot.completed {
+      background: var(--brand);
+    }
+
+    .progress-label {
+      font-size: 11px;
+      font-weight: 450;
+      color: var(--text-quaternary);
+      white-space: nowrap;
+    }
+
+    .progress-label.active {
+      color: var(--text-primary);
+      font-weight: 510;
+    }
+
+    .progress-connector {
+      width: 20px;
+      height: 1px;
+      background: var(--border-standard);
+      flex-shrink: 0;
+    }
+
+    .card {
+      max-width: 480px;
+      width: 100%;
+      padding: 40px;
+      background: white;
+      border: 1px solid var(--border-standard);
+      border-radius: 12px;
+    }
+
+    .card-title {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .card-subtitle {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+      line-height: 1.5;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 510;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid var(--border-standard);
+      border-radius: 8px;
+      font-size: 14px;
+      background: white;
+      color: var(--text-primary);
+      font-family: inherit;
+      transition: border-color 0.15s;
+    }
+
+    .form-input:focus {
+      border-color: #292827;
+      outline: none;
+    }
+
+    .form-input::placeholder {
+      color: var(--text-quaternary);
+    }
+
+    .form-hint {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      margin-top: 6px;
+    }
+
+    .btn-primary {
+      background: #292827;
+      color: white;
+      border-radius: 8px;
+      padding: 12px 24px;
+      font-size: 14px;
+      font-weight: 510;
+      width: 100%;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.15s;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .btn-primary:hover {
+      background: var(--brand-hover);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-tertiary);
+      border: none;
+      font-size: 14px;
+      font-weight: 450;
+      cursor: pointer;
+      font-family: inherit;
+      padding: 8px 0;
+      text-decoration: none;
+    }
+
+    .btn-secondary:hover {
+      color: var(--text-secondary);
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 24px 0;
+    }
+
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border-standard);
+    }
+
+    .divider-text {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      white-space: nowrap;
+    }
+
+    .btn-google {
+      width: 100%;
+      padding: 10px 24px;
+      border: 1px solid var(--border-standard);
+      border-radius: 8px;
+      background: white;
+      color: var(--text-primary);
+      font-size: 14px;
+      font-weight: 450;
+      cursor: pointer;
+      font-family: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .btn-google:hover {
+      background: var(--surface-1);
+      border-color: var(--brand-accent);
+    }
+
+    .google-icon {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .google-icon span:nth-child(1) { color: #4285F4; }
+    .google-icon span:nth-child(2) { color: #EA4335; }
+    .google-icon span:nth-child(3) { color: #FBBC05; }
+    .google-icon span:nth-child(4) { color: #34A853; }
+
+    .bottom-link {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 13px;
+      color: var(--text-tertiary);
+    }
+
+    .bottom-link a {
+      color: var(--text-primary);
+      font-weight: 510;
+      text-decoration: none;
+    }
+
+    .bottom-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <a href="home.html" class="logo">KittyKat</a>
+
+  <div class="container">
+    <div class="progress-bar">
+      <div class="progress-step">
+        <div class="progress-dot active"></div>
+        <span class="progress-label active">Sign up</span>
+      </div>
+      <div class="progress-connector"></div>
+      <div class="progress-step">
+        <div class="progress-dot"></div>
+        <span class="progress-label">Workspace</span>
+      </div>
+      <div class="progress-connector"></div>
+      <div class="progress-step">
+        <div class="progress-dot"></div>
+        <span class="progress-label">Role</span>
+      </div>
+      <div class="progress-connector"></div>
+      <div class="progress-step">
+        <div class="progress-dot"></div>
+        <span class="progress-label">Brand</span>
+      </div>
+      <div class="progress-connector"></div>
+      <div class="progress-step">
+        <div class="progress-dot"></div>
+        <span class="progress-label">Channels</span>
+      </div>
+      <div class="progress-connector"></div>
+      <div class="progress-step">
+        <div class="progress-dot"></div>
+        <span class="progress-label">Team</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h1 class="card-title">Create your account</h1>
+      <p class="card-subtitle">Start building your creative intelligence workspace.</p>
+
+      <form onsubmit="event.preventDefault(); window.location.href='onboarding_2_workspace.html';">
+        <div class="form-group">
+          <label class="form-label" for="fullname">Full name</label>
+          <input type="text" id="fullname" class="form-input" placeholder="Jane Smith" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="email">Work email</label>
+          <input type="email" id="email" class="form-input" placeholder="jane@company.com" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="password">Password</label>
+          <input type="password" id="password" class="form-input" placeholder="Create a password" required minlength="8">
+          <p class="form-hint">8+ characters</p>
+        </div>
+
+        <button type="submit" class="btn-primary">Create account</button>
+      </form>
+
+      <div class="divider">
+        <div class="divider-line"></div>
+        <span class="divider-text">Or continue with</span>
+        <div class="divider-line"></div>
+      </div>
+
+      <button class="btn-google" onclick="window.location.href='onboarding_2_workspace.html';">
+        <span class="google-icon"><span>G</span></span>
+        Continue with Google
+      </button>
+
+      <div class="bottom-link">
+        Already have an account? <a href="#">Log in</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

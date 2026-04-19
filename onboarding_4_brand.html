@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Define Your Brand — KittyKat</title>
+<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<style>
+  :root {
+    --bg-canvas: #ffffff; --bg-panel: #fafafa; --bg-surface: #f5f5f4; --bg-elevated: #eeedeb;
+    --text-primary: #292827; --text-secondary: #4a4946; --text-tertiary: #8a8f98; --text-quaternary: #9ca3af;
+    --brand: #292827; --brand-accent: #57534e; --brand-hover: #3d3d3a;
+    --border-subtle: #f0eee6; --border-standard: #dcd7d3; --border-solid: #dcd7d3;
+    --surface-1: #fafafa; --surface-2: #f5f5f4; --surface-3: #eeedeb;
+    --status-green: #059669; --status-amber: #d97706; --status-red: #dc2626;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter var', Inter, -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif;
+    font-feature-settings: 'cv01', 'ss03';
+    background: var(--bg-canvas);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+  }
+</style>
+</head>
+<body>
+
+<!-- Logo -->
+<div style="position: fixed; top: 24px; left: 24px; font-size: 15px; font-weight: 510; color: var(--text-primary); letter-spacing: -0.01em;">KittyKat</div>
+
+<!-- Progress bar -->
+<div style="position: fixed; top: 24px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 8px;">
+  <div style="display: flex; align-items: center; gap: 4px;">
+    <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--brand);"></div>
+    <span style="font-size: 11px; font-weight: 500; color: var(--text-primary); margin-right: 4px;">Sign up</span>
+  </div>
+  <div style="width: 20px; height: 1px; background: var(--border-standard);"></div>
+  <div style="display: flex; align-items: center; gap: 4px;">
+    <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--brand);"></div>
+    <span style="font-size: 11px; font-weight: 500; color: var(--text-primary); margin-right: 4px;">Workspace</span>
+  </div>
+  <div style="width: 20px; height: 1px; background: var(--border-standard);"></div>
+  <div style="display: flex; align-items: center; gap: 4px;">
+    <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--brand);"></div>
+    <span style="font-size: 11px; font-weight: 500; color: var(--text-primary); margin-right: 4px;">Role</span>
+  </div>
+  <div style="width: 20px; height: 1px; background: var(--border-standard);"></div>
+  <div style="display: flex; align-items: center; gap: 4px;">
+    <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 0 3px rgba(41,40,39,0.15);"></div>
+    <span style="font-size: 11px; font-weight: 600; color: var(--text-primary); margin-right: 4px;">Brand</span>
+  </div>
+  <div style="width: 20px; height: 1px; background: var(--border-standard);"></div>
+  <div style="display: flex; align-items: center; gap: 4px;">
+    <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--border-standard);"></div>
+    <span style="font-size: 11px; font-weight: 500; color: var(--text-quaternary); margin-right: 4px;">Channels</span>
+  </div>
+  <div style="width: 20px; height: 1px; background: var(--border-standard);"></div>
+  <div style="display: flex; align-items: center; gap: 4px;">
+    <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--border-standard);"></div>
+    <span style="font-size: 11px; font-weight: 500; color: var(--text-quaternary);">Team</span>
+  </div>
+</div>
+
+<!-- Main Card -->
+<div style="max-width: 540px; width: 100%; padding: 40px; background: white; border: 1px solid var(--border-standard); border-radius: 12px;">
+
+  <h1 style="font-size: 22px; font-weight: 600; color: var(--text-primary); margin-bottom: 8px;">Define your brand</h1>
+  <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 28px;">Drop your brand guidelines, voice docs, or website URL. We'll synthesize everything into a single brand definition.</p>
+
+  <!-- Drop zone -->
+  <div id="dropZone" style="height: 200px; border: 2px dashed #dcd7d3; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; cursor: pointer; transition: border-color 0.2s, background 0.2s; margin-bottom: 24px;"
+    onmouseenter="this.style.borderColor='var(--brand-accent)'; this.style.background='var(--surface-1)'"
+    onmouseleave="this.style.borderColor='#dcd7d3'; this.style.background='transparent'">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#8a8f98" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+      <polyline points="17 8 12 3 7 8"/>
+      <line x1="12" y1="3" x2="12" y2="15"/>
+    </svg>
+    <span style="font-size: 14px; font-weight: 500; color: var(--text-secondary);">Drop files here or <span style="color: var(--brand); text-decoration: underline; text-underline-offset: 2px;">browse</span></span>
+    <span style="font-size: 12px; color: var(--text-tertiary);">PDF, DOCX, URL, Figma, Keynote, Notion</span>
+  </div>
+
+  <!-- OR divider -->
+  <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
+    <div style="flex: 1; height: 1px; background: var(--border-standard);"></div>
+    <span style="font-size: 12px; color: var(--text-tertiary); font-weight: 500;">or</span>
+    <div style="flex: 1; height: 1px; background: var(--border-standard);"></div>
+  </div>
+
+  <!-- Paste URL -->
+  <div style="display: flex; gap: 8px; margin-bottom: 28px;">
+    <input type="text" placeholder="Paste your website URL" style="flex: 1; padding: 10px 14px; border: 1px solid var(--border-standard); border-radius: 8px; font-size: 14px; background: white; font-family: inherit; outline: none; color: var(--text-primary);">
+    <button style="background: transparent; color: var(--text-secondary); border: 1px solid var(--border-standard); border-radius: 8px; padding: 10px 20px; font-size: 14px; font-weight: 510; cursor: pointer; font-family: inherit; white-space: nowrap;">Crawl</button>
+  </div>
+
+  <!-- Uploaded files -->
+  <div style="margin-bottom: 28px;">
+    <div style="font-size: 13px; font-weight: 510; color: var(--text-secondary); margin-bottom: 12px;">Uploaded files</div>
+
+    <!-- File 1 -->
+    <div style="display: flex; align-items: center; gap: 12px; padding: 10px 12px; border: 1px solid var(--border-subtle); border-radius: 8px; margin-bottom: 8px;">
+      <div style="background: #fef2f2; color: #dc2626; font-size: 10px; font-weight: 600; padding: 4px 8px; border-radius: 4px; letter-spacing: 0.02em;">PDF</div>
+      <div style="flex: 1; min-width: 0;">
+        <div style="font-size: 13px; font-weight: 500; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Brand-Book-2024.pdf</div>
+        <div style="font-size: 11px; color: var(--text-tertiary);">28 pages</div>
+      </div>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 6L9 17l-5-5"/>
+      </svg>
+      <button style="background: none; border: none; cursor: pointer; padding: 2px; color: var(--text-quaternary); font-size: 16px; line-height: 1;" title="Remove">&times;</button>
+    </div>
+
+    <!-- File 2 -->
+    <div style="display: flex; align-items: center; gap: 12px; padding: 10px 12px; border: 1px solid var(--border-subtle); border-radius: 8px;">
+      <div style="background: #eff6ff; color: #2563eb; font-size: 10px; font-weight: 600; padding: 4px 8px; border-radius: 4px; letter-spacing: 0.02em;">DOC</div>
+      <div style="flex: 1; min-width: 0;">
+        <div style="font-size: 13px; font-weight: 500; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Voice-Guide-v3.docx</div>
+        <div style="font-size: 11px; color: var(--text-tertiary);">2.1 MB</div>
+      </div>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 6L9 17l-5-5"/>
+      </svg>
+      <button style="background: none; border: none; cursor: pointer; padding: 2px; color: var(--text-quaternary); font-size: 16px; line-height: 1;" title="Remove">&times;</button>
+    </div>
+  </div>
+
+  <!-- Continue button -->
+  <a href="onboarding_5_channels.html" style="text-decoration: none;">
+    <button style="background: #292827; color: white; border-radius: 8px; padding: 12px 24px; font-size: 14px; font-weight: 510; width: 100%; border: none; cursor: pointer; font-family: inherit; transition: background 0.15s;"
+      onmouseenter="this.style.background='var(--brand-hover)'"
+      onmouseleave="this.style.background='#292827'">Continue</button>
+  </a>
+
+  <!-- Skip -->
+  <div style="text-align: center; margin-top: 16px;">
+    <a href="onboarding_5_channels.html" style="color: var(--text-quaternary); font-size: 13px; text-decoration: none;">Skip for now</a>
+  </div>
+
+</div>
+
+</body>
+</html>

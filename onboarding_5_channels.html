@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connect Your Channels — KittyKat</title>
+<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<style>
+  :root {
+    --bg-canvas: #ffffff; --bg-panel: #fafafa; --bg-surface: #f5f5f4; --bg-elevated: #eeedeb;
+    --text-primary: #292827; --text-secondary: #4a4946; --text-tertiary: #8a8f98; --text-quaternary: #9ca3af;
+    --brand: #292827; --brand-accent: #57534e; --brand-hover: #3d3d3a;
+    --border-subtle: #f0eee6; --border-standard: #dcd7d3; --border-solid: #dcd7d3;
+    --surface-1: #fafafa; --surface-2: #f5f5f4; --surface-3: #eeedeb;
+    --status-green: #059669; --status-amber: #d97706; --status-red: #dc2626;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter var', Inter, -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif;
+    font-feature-settings: 'cv01', 'ss03';
+    background: var(--bg-canvas);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+  }
+</style>
+</head>
+<body>
+
+<!-- Logo -->
+<div style="position: fixed; top: 24px; left: 24px; font-size: 15px; font-weight: 510; color: var(--text-primary); letter-spacing: -0.01em;">KittyKat</div>
+
+<!-- Progress bar -->
+<div style="position: fixed; top: 24px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 8px;">
+  <div style="display: flex; align-items: center; gap: 4px;">
+    <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--brand);"></div>
+    <span style="font-size: 11px; font-weight: 500; color: var(--text-primary); margin-right: 4px;">Sign up</span>
+  </div>
+  <div style="width: 20px; height: 1px; background: var(--border-standard);"></div>
+  <div style="display: flex; align-items: center; gap: 4px;">
+    <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--brand);"></div>
+    <span style="font-size: 11px; font-weight: 500; color: var(--text-primary); margin-right: 4px;">Workspace</span>
+  </div>
+  <div style="width: 20px; height: 1px; background: var(--border-standard);"></div>
+  <div style="display: flex; align-items: center; gap: 4px;">
+    <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--brand);"></div>
+    <span style="font-size: 11px; font-weight: 500; color: var(--text-primary); margin-right: 4px;">Role</span>
+  </div>
+  <div style="width: 20px; height: 1px; background: var(--border-standard);"></div>
+  <div style="display: flex; align-items: center; gap: 4px;">
+    <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--brand);"></div>
+    <span style="font-size: 11px; font-weight: 500; color: var(--text-primary); margin-right: 4px;">Brand</span>
+  </div>
+  <div style="width: 20px; height: 1px; background: var(--border-standard);"></div>
+  <div style="display: flex; align-items: center; gap: 4px;">
+    <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 0 3px rgba(41,40,39,0.15);"></div>
+    <span style="font-size: 11px; font-weight: 600; color: var(--text-primary); margin-right: 4px;">Channels</span>
+  </div>
+  <div style="width: 20px; height: 1px; background: var(--border-standard);"></div>
+  <div style="display: flex; align-items: center; gap: 4px;">
+    <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--border-standard);"></div>
+    <span style="font-size: 11px; font-weight: 500; color: var(--text-quaternary);">Team</span>
+  </div>
+</div>
+
+<!-- Main Card -->
+<div style="max-width: 540px; width: 100%; padding: 40px; background: white; border: 1px solid var(--border-standard); border-radius: 12px;">
+
+  <h1 style="font-size: 22px; font-weight: 600; color: var(--text-primary); margin-bottom: 8px;">Connect your channels</h1>
+  <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 28px;">Link your ad platforms and analytics to track performance automatically.</p>
+
+  <!-- Integration grid -->
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 28px;">
+
+    <!-- Meta Ads -->
+    <div style="background: var(--surface-1); border: 1px solid var(--border-standard); border-radius: 8px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="background: rgba(0,0,0,0.05); color: #292827; width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; flex-shrink: 0;">M</div>
+        <div style="min-width: 0;">
+          <div style="font-size: 13px; font-weight: 510; color: var(--text-primary);">Meta Ads</div>
+          <div style="font-size: 11px; color: var(--text-tertiary); line-height: 1.3;">Facebook & Instagram campaigns</div>
+        </div>
+      </div>
+      <button onclick="toggleConnect(this)" style="background: transparent; color: var(--text-tertiary); border: 1px solid var(--border-standard); border-radius: 6px; padding: 6px 12px; font-size: 12px; font-weight: 510; cursor: pointer; font-family: inherit; width: 100%; transition: all 0.15s;">Connect</button>
+    </div>
+
+    <!-- Google Ads -->
+    <div style="background: var(--surface-1); border: 1px solid var(--border-standard); border-radius: 8px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="background: rgba(0,0,0,0.05); color: #292827; width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; flex-shrink: 0;">G</div>
+        <div style="min-width: 0;">
+          <div style="font-size: 13px; font-weight: 510; color: var(--text-primary);">Google Ads</div>
+          <div style="font-size: 11px; color: var(--text-tertiary); line-height: 1.3;">Search, display, and YouTube</div>
+        </div>
+      </div>
+      <button onclick="toggleConnect(this)" style="background: transparent; color: var(--text-tertiary); border: 1px solid var(--border-standard); border-radius: 6px; padding: 6px 12px; font-size: 12px; font-weight: 510; cursor: pointer; font-family: inherit; width: 100%; transition: all 0.15s;">Connect</button>
+    </div>
+
+    <!-- TikTok Ads -->
+    <div style="background: var(--surface-1); border: 1px solid var(--border-standard); border-radius: 8px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="background: rgba(0,0,0,0.05); color: #292827; width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; flex-shrink: 0;">T</div>
+        <div style="min-width: 0;">
+          <div style="font-size: 13px; font-weight: 510; color: var(--text-primary);">TikTok Ads</div>
+          <div style="font-size: 11px; color: var(--text-tertiary); line-height: 1.3;">TikTok campaign data</div>
+        </div>
+      </div>
+      <button onclick="toggleConnect(this)" style="background: transparent; color: var(--text-tertiary); border: 1px solid var(--border-standard); border-radius: 6px; padding: 6px 12px; font-size: 12px; font-weight: 510; cursor: pointer; font-family: inherit; width: 100%; transition: all 0.15s;">Connect</button>
+    </div>
+
+    <!-- Pinterest Ads -->
+    <div style="background: var(--surface-1); border: 1px solid var(--border-standard); border-radius: 8px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="background: rgba(0,0,0,0.05); color: #292827; width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; flex-shrink: 0;">P</div>
+        <div style="min-width: 0;">
+          <div style="font-size: 13px; font-weight: 510; color: var(--text-primary);">Pinterest Ads</div>
+          <div style="font-size: 11px; color: var(--text-tertiary); line-height: 1.3;">Pinterest ad performance</div>
+        </div>
+      </div>
+      <button onclick="toggleConnect(this)" style="background: transparent; color: var(--text-tertiary); border: 1px solid var(--border-standard); border-radius: 6px; padding: 6px 12px; font-size: 12px; font-weight: 510; cursor: pointer; font-family: inherit; width: 100%; transition: all 0.15s;">Connect</button>
+    </div>
+
+    <!-- Google Analytics 4 -->
+    <div style="background: var(--surface-1); border: 1px solid var(--border-standard); border-radius: 8px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="background: rgba(0,0,0,0.05); color: #292827; width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; flex-shrink: 0;">A</div>
+        <div style="min-width: 0;">
+          <div style="font-size: 13px; font-weight: 510; color: var(--text-primary);">Google Analytics 4</div>
+          <div style="font-size: 11px; color: var(--text-tertiary); line-height: 1.3;">Website traffic and events</div>
+        </div>
+      </div>
+      <button onclick="toggleConnect(this)" style="background: transparent; color: var(--text-tertiary); border: 1px solid var(--border-standard); border-radius: 6px; padding: 6px 12px; font-size: 12px; font-weight: 510; cursor: pointer; font-family: inherit; width: 100%; transition: all 0.15s;">Connect</button>
+    </div>
+
+    <!-- Shopify -->
+    <div style="background: var(--surface-1); border: 1px solid var(--border-standard); border-radius: 8px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="background: rgba(0,0,0,0.05); color: #292827; width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; flex-shrink: 0;">S</div>
+        <div style="min-width: 0;">
+          <div style="font-size: 13px; font-weight: 510; color: var(--text-primary);">Shopify</div>
+          <div style="font-size: 11px; color: var(--text-tertiary); line-height: 1.3;">E-commerce and revenue data</div>
+        </div>
+      </div>
+      <button onclick="toggleConnect(this)" style="background: transparent; color: var(--text-tertiary); border: 1px solid var(--border-standard); border-radius: 6px; padding: 6px 12px; font-size: 12px; font-weight: 510; cursor: pointer; font-family: inherit; width: 100%; transition: all 0.15s;">Connect</button>
+    </div>
+
+  </div>
+
+  <!-- Continue button -->
+  <a href="onboarding_6_invite.html" style="text-decoration: none;">
+    <button style="background: #292827; color: white; border-radius: 8px; padding: 12px 24px; font-size: 14px; font-weight: 510; width: 100%; border: none; cursor: pointer; font-family: inherit; transition: background 0.15s;"
+      onmouseenter="this.style.background='var(--brand-hover)'"
+      onmouseleave="this.style.background='#292827'">Continue</button>
+  </a>
+
+  <!-- Skip -->
+  <div style="text-align: center; margin-top: 16px;">
+    <a href="onboarding_6_invite.html" style="color: var(--text-quaternary); font-size: 13px; text-decoration: none;">Skip for now</a>
+  </div>
+
+</div>
+
+<script>
+function toggleConnect(btn) {
+  if (btn.dataset.connected === 'true') {
+    btn.dataset.connected = 'false';
+    btn.innerHTML = 'Connect';
+    btn.style.background = 'transparent';
+    btn.style.color = 'var(--text-tertiary)';
+    btn.style.borderColor = 'var(--border-standard)';
+  } else {
+    btn.dataset.connected = 'true';
+    btn.innerHTML = '<span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:6px;height:6px;border-radius:50%;background:#059669;"></span> Connected</span>';
+    btn.style.background = 'rgba(5,150,105,0.06)';
+    btn.style.color = '#059669';
+    btn.style.borderColor = 'rgba(5,150,105,0.2)';
+  }
+}
+</script>
+
+</body>
+</html>

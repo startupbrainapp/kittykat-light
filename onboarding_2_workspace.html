@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Set up your workspace — KittyKat</title>
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <style>
+    :root {
+      --bg-canvas: #ffffff; --bg-panel: #fafafa; --bg-surface: #f5f5f4; --bg-elevated: #eeedeb;
+      --text-primary: #292827; --text-secondary: #4a4946; --text-tertiary: #8a8f98; --text-quaternary: #9ca3af;
+      --brand: #292827; --brand-accent: #57534e; --brand-hover: #3d3d3a;
+      --border-subtle: #f0eee6; --border-standard: #dcd7d3; --border-solid: #dcd7d3;
+      --surface-1: #fafafa; --surface-2: #f5f5f4; --surface-3: #eeedeb;
+      --status-green: #059669; --status-amber: #d97706; --status-red: #dc2626;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter var', Inter, -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif;
+      font-feature-settings: 'cv01', 'ss03';
+      background: var(--bg-canvas);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .logo {
+      position: fixed;
+      top: 24px;
+      left: 24px;
+      font-size: 15px;
+      font-weight: 510;
+      color: var(--text-primary);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .container {
+      max-width: 480px;
+      width: 100%;
+      padding: 0 20px;
+    }
+
+    .progress-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 32px;
+      justify-content: center;
+    }
+
+    .progress-step {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .progress-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--border-standard);
+      transition: background 0.2s;
+    }
+
+    .progress-dot.active {
+      background: var(--brand);
+      width: 10px;
+      height: 10px;
+    }
+
+    .progress-dot.completed {
+      background: var(--brand);
+    }
+
+    .progress-label {
+      font-size: 11px;
+      font-weight: 450;
+      color: var(--text-quaternary);
+      white-space: nowrap;
+    }
+
+    .progress-label.active {
+      color: var(--text-primary);
+      font-weight: 510;
+    }
+
+    .progress-label.completed {
+      color: var(--text-secondary);
+    }
+
+    .progress-connector {
+      width: 20px;
+      height: 1px;
+      background: var(--border-standard);
+      flex-shrink: 0;
+    }
+
+    .card {
+      max-width: 480px;
+      width: 100%;
+      padding: 40px;
+      background: white;
+      border: 1px solid var(--border-standard);
+      border-radius: 12px;
+    }
+
+    .card-title {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .card-subtitle {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+      line-height: 1.5;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 510;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+
+    .form-input, .form-select {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid var(--border-standard);
+      border-radius: 8px;
+      font-size: 14px;
+      background: white;
+      color: var(--text-primary);
+      font-family: inherit;
+      transition: border-color 0.15s;
+    }
+
+    .form-input:focus, .form-select:focus {
+      border-color: #292827;
+      outline: none;
+    }
+
+    .form-input::placeholder {
+      color: var(--text-quaternary);
+    }
+
+    .form-select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M3 4.5L6 7.5L9 4.5' stroke='%238a8f98' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+      cursor: pointer;
+    }
+
+    .upload-zone {
+      width: 100%;
+      height: 80px;
+      border: 2px dashed var(--border-standard);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      background: white;
+    }
+
+    .upload-zone:hover {
+      border-color: var(--brand-accent);
+      background: var(--surface-1);
+    }
+
+    .upload-zone.dragover {
+      border-color: var(--brand);
+      background: var(--surface-2);
+    }
+
+    .upload-icon {
+      color: var(--text-tertiary);
+    }
+
+    .upload-text {
+      font-size: 13px;
+      color: var(--text-tertiary);
+    }
+
+    .btn-primary {
+      background: #292827;
+      color: white;
+      border-radius: 8px;
+      padding: 12px 24px;
+      font-size: 14px;
+      font-weight: 510;
+      width: 100%;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.15s;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .btn-primary:hover {
+      background: var(--brand-hover);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-tertiary);
+      border: none;
+      font-size: 14px;
+      font-weight: 450;
+      cursor: pointer;
+      font-family: inherit;
+      padding: 8px 0;
+      text-decoration: none;
+    }
+
+    .btn-secondary:hover {
+      color: var(--text-secondary);
+    }
+
+    .bottom-actions {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <a href="home.html" class="logo">KittyKat</a>
+
+  <div class="container">
+    <div class="progress-bar">
+      <div class="progress-step">
+        <div class="progress-dot completed"></div>
+        <span class="progress-label completed">Sign up</span>
+      </div>
+      <div class="progress-connector"></div>
+      <div class="progress-step">
+        <div class="progress-dot active"></div>
+        <span class="progress-label active">Workspace</span>
+      </div>
+      <div class="progress-connector"></div>
+      <div class="progress-step">
+        <div class="progress-dot"></div>
+        <span class="progress-label">Role</span>
+      </div>
+      <div class="progress-connector"></div>
+      <div class="progress-step">
+        <div class="progress-dot"></div>
+        <span class="progress-label">Brand</span>
+      </div>
+      <div class="progress-connector"></div>
+      <div class="progress-step">
+        <div class="progress-dot"></div>
+        <span class="progress-label">Channels</span>
+      </div>
+      <div class="progress-connector"></div>
+      <div class="progress-step">
+        <div class="progress-dot"></div>
+        <span class="progress-label">Team</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h1 class="card-title">Set up your workspace</h1>
+      <p class="card-subtitle">Tell us about your brand.</p>
+
+      <form onsubmit="event.preventDefault(); window.location.href='onboarding_3_role.html';">
+        <div class="form-group">
+          <label class="form-label" for="brandname">Brand name</label>
+          <input type="text" id="brandname" class="form-input" placeholder="e.g. BAPE" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="industry">Industry</label>
+          <select id="industry" class="form-select" required>
+            <option value="" disabled selected>Select your industry</option>
+            <option value="fashion">Fashion</option>
+            <option value="beauty">Beauty</option>
+            <option value="footwear">Footwear</option>
+            <option value="accessories">Accessories</option>
+            <option value="luxury">Luxury</option>
+            <option value="sportswear">Sportswear</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Logo</label>
+          <div class="upload-zone" id="uploadZone" onclick="document.getElementById('logoFile').click();">
+            <svg class="upload-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 4V14M10 4L6.5 7.5M10 4L13.5 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M3 14V15C3 15.5523 3.44772 16 4 16H16C16.5523 16 17 15.5523 17 15V14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="upload-text">Drop your logo or click to upload</span>
+          </div>
+          <input type="file" id="logoFile" accept="image/*">
+        </div>
+
+        <button type="submit" class="btn-primary">Continue</button>
+      </form>
+
+      <div class="bottom-actions">
+        <a href="onboarding_1_signup.html" class="btn-secondary">Back</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const uploadZone = document.getElementById('uploadZone');
+    const logoFile = document.getElementById('logoFile');
+
+    uploadZone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      uploadZone.classList.add('dragover');
+    });
+
+    uploadZone.addEventListener('dragleave', () => {
+      uploadZone.classList.remove('dragover');
+    });
+
+    uploadZone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      uploadZone.classList.remove('dragover');
+      if (e.dataTransfer.files.length) {
+        logoFile.files = e.dataTransfer.files;
+        uploadZone.querySelector('.upload-text').textContent = e.dataTransfer.files[0].name;
+      }
+    });
+
+    logoFile.addEventListener('change', () => {
+      if (logoFile.files.length) {
+        uploadZone.querySelector('.upload-text').textContent = logoFile.files[0].name;
+      }
+    });
+  </script>
+</body>
+</html>

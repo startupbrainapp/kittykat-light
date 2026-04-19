@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invite Your Team — KittyKat</title>
+<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<style>
+  :root {
+    --bg-canvas: #ffffff; --bg-panel: #fafafa; --bg-surface: #f5f5f4; --bg-elevated: #eeedeb;
+    --text-primary: #292827; --text-secondary: #4a4946; --text-tertiary: #8a8f98; --text-quaternary: #9ca3af;
+    --brand: #292827; --brand-accent: #57534e; --brand-hover: #3d3d3a;
+    --border-subtle: #f0eee6; --border-standard: #dcd7d3; --border-solid: #dcd7d3;
+    --surface-1: #fafafa; --surface-2: #f5f5f4; --surface-3: #eeedeb;
+    --status-green: #059669; --status-amber: #d97706; --status-red: #dc2626;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter var', Inter, -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif;
+    font-feature-settings: 'cv01', 'ss03';
+    background: var(--bg-canvas);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+  }
+</style>
+</head>
+<body>
+
+<!-- Logo -->
+<div style="position: fixed; top: 24px; left: 24px; font-size: 15px; font-weight: 510; color: var(--text-primary); letter-spacing: -0.01em;">KittyKat</div>
+
+<!-- Progress bar -->
+<div style="position: fixed; top: 24px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 8px;">
+  <div style="display: flex; align-items: center; gap: 4px;">
+    <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--brand);"></div>
+    <span style="font-size: 11px; font-weight: 500; color: var(--text-primary); margin-right: 4px;">Sign up</span>
+  </div>
+  <div style="width: 20px; height: 1px; background: var(--border-standard);"></div>
+  <div style="display: flex; align-items: center; gap: 4px;">
+    <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--brand);"></div>
+    <span style="font-size: 11px; font-weight: 500; color: var(--text-primary); margin-right: 4px;">Workspace</span>
+  </div>
+  <div style="width: 20px; height: 1px; background: var(--border-standard);"></div>
+  <div style="display: flex; align-items: center; gap: 4px;">
+    <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--brand);"></div>
+    <span style="font-size: 11px; font-weight: 500; color: var(--text-primary); margin-right: 4px;">Role</span>
+  </div>
+  <div style="width: 20px; height: 1px; background: var(--border-standard);"></div>
+  <div style="display: flex; align-items: center; gap: 4px;">
+    <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--brand);"></div>
+    <span style="font-size: 11px; font-weight: 500; color: var(--text-primary); margin-right: 4px;">Brand</span>
+  </div>
+  <div style="width: 20px; height: 1px; background: var(--border-standard);"></div>
+  <div style="display: flex; align-items: center; gap: 4px;">
+    <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--brand);"></div>
+    <span style="font-size: 11px; font-weight: 500; color: var(--text-primary); margin-right: 4px;">Channels</span>
+  </div>
+  <div style="width: 20px; height: 1px; background: var(--border-standard);"></div>
+  <div style="display: flex; align-items: center; gap: 4px;">
+    <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 0 3px rgba(41,40,39,0.15);"></div>
+    <span style="font-size: 11px; font-weight: 600; color: var(--text-primary);">Team</span>
+  </div>
+</div>
+
+<!-- Main Card -->
+<div style="max-width: 540px; width: 100%; padding: 40px; background: white; border: 1px solid var(--border-standard); border-radius: 12px;">
+
+  <h1 style="font-size: 22px; font-weight: 600; color: var(--text-primary); margin-bottom: 8px;">Invite your team</h1>
+  <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 28px;">Bring your team in. You can always add more people later.</p>
+
+  <!-- Invite row -->
+  <div style="display: flex; gap: 8px; margin-bottom: 24px;">
+    <input type="email" placeholder="Email address" style="flex: 1; padding: 10px 14px; border: 1px solid var(--border-standard); border-radius: 8px; font-size: 14px; background: white; font-family: inherit; outline: none; color: var(--text-primary); min-width: 0;">
+    <select style="padding: 10px 12px; border: 1px solid var(--border-standard); border-radius: 8px; font-size: 13px; background: white; font-family: inherit; outline: none; color: var(--text-secondary); cursor: pointer; appearance: auto; min-width: 130px;">
+      <option>CMO</option>
+      <option>Creative Lead</option>
+      <option>Regional Manager</option>
+      <option>Designer</option>
+      <option>Analyst</option>
+    </select>
+    <button style="background: #292827; color: white; border: none; border-radius: 8px; padding: 10px 18px; font-size: 13px; font-weight: 510; cursor: pointer; font-family: inherit; white-space: nowrap; transition: background 0.15s;"
+      onmouseenter="this.style.background='var(--brand-hover)'"
+      onmouseleave="this.style.background='#292827'">Add</button>
+  </div>
+
+  <!-- Invited members -->
+  <div style="margin-bottom: 28px;">
+    <div style="font-size: 13px; font-weight: 510; color: var(--text-secondary); margin-bottom: 12px;">Invited members</div>
+
+    <!-- Member 1 -->
+    <div style="display: flex; align-items: center; gap: 12px; padding: 10px 12px; border: 1px solid var(--border-subtle); border-radius: 8px; margin-bottom: 8px;">
+      <div style="flex: 1; min-width: 0;">
+        <div style="font-size: 13px; font-weight: 500; color: var(--text-primary);">marcus@company.com</div>
+        <div style="font-size: 11px; color: var(--text-tertiary);">Creative Lead</div>
+      </div>
+      <span style="display: inline-flex; align-items: center; gap: 5px; background: rgba(217,119,6,0.08); color: #d97706; font-size: 11px; font-weight: 510; padding: 3px 10px; border-radius: 100px;">
+        <span style="width: 5px; height: 5px; border-radius: 50%; background: #d97706;"></span>
+        Pending
+      </span>
+      <button style="background: none; border: none; cursor: pointer; padding: 2px; color: var(--text-quaternary); font-size: 16px; line-height: 1;" title="Remove">&times;</button>
+    </div>
+
+    <!-- Member 2 -->
+    <div style="display: flex; align-items: center; gap: 12px; padding: 10px 12px; border: 1px solid var(--border-subtle); border-radius: 8px; margin-bottom: 12px;">
+      <div style="flex: 1; min-width: 0;">
+        <div style="font-size: 13px; font-weight: 500; color: var(--text-primary);">yuki@company.com</div>
+        <div style="font-size: 11px; color: var(--text-tertiary);">Regional Manager</div>
+      </div>
+      <span style="display: inline-flex; align-items: center; gap: 5px; background: rgba(217,119,6,0.08); color: #d97706; font-size: 11px; font-weight: 510; padding: 3px 10px; border-radius: 100px;">
+        <span style="width: 5px; height: 5px; border-radius: 50%; background: #d97706;"></span>
+        Pending
+      </span>
+      <button style="background: none; border: none; cursor: pointer; padding: 2px; color: var(--text-quaternary); font-size: 16px; line-height: 1;" title="Remove">&times;</button>
+    </div>
+
+    <!-- Add another -->
+    <button style="background: none; border: none; cursor: pointer; font-family: inherit; font-size: 13px; font-weight: 500; color: var(--text-tertiary); padding: 0; display: flex; align-items: center; gap: 4px;"
+      onmouseenter="this.style.color='var(--text-secondary)'"
+      onmouseleave="this.style.color='var(--text-tertiary)'">
+      <span style="font-size: 15px;">+</span> Add another
+    </button>
+  </div>
+
+  <!-- Launch button -->
+  <a href="home.html" style="text-decoration: none;">
+    <button style="background: #292827; color: white; border-radius: 8px; padding: 14px 24px; font-size: 15px; font-weight: 600; width: 100%; border: none; cursor: pointer; font-family: inherit; transition: background 0.15s; letter-spacing: -0.01em;"
+      onmouseenter="this.style.background='var(--brand-hover)'"
+      onmouseleave="this.style.background='#292827'">Launch KittyKat</button>
+  </a>
+
+  <!-- Skip -->
+  <div style="text-align: center; margin-top: 16px;">
+    <a href="home.html" style="color: var(--text-quaternary); font-size: 13px; text-decoration: none;">Skip for now</a>
+  </div>
+
+</div>
+
+<!-- Celebration message -->
+<p style="margin-top: 20px; font-size: 13px; color: var(--text-tertiary);">You're all set! Your workspace is ready.</p>
+
+</body>
+</html>

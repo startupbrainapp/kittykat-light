@@ -522,6 +522,63 @@
     color: var(--text-quaternary);
     letter-spacing: -0.13px;
   }
+
+  /* Add Source Modal & Sync */
+  .ds-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.25); z-index: 200; opacity: 0; pointer-events: none; transition: opacity 0.15s; }
+  .ds-backdrop.open { opacity: 1; pointer-events: auto; }
+  .ds-modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.96); width: 520px; max-width: 90vw; background: #fff; border: 1px solid var(--border-standard); border-radius: 12px; box-shadow: 0 16px 48px rgba(0,0,0,0.12); z-index: 201; opacity: 0; pointer-events: none; transition: opacity 0.15s, transform 0.15s; }
+  .ds-modal.open { opacity: 1; pointer-events: auto; transform: translate(-50%, -50%) scale(1); }
+  .ds-header { display: flex; align-items: center; justify-content: space-between; padding: 18px 24px 0; }
+  .ds-title { font-size: 16px; font-weight: 510; color: var(--text-primary); letter-spacing: -0.21px; }
+  .ds-close { width: 28px; height: 28px; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; border-radius: 6px; color: var(--text-tertiary); }
+  .ds-close:hover { background: var(--surface-2); color: var(--text-primary); }
+  .ds-body { padding: 20px 24px; }
+  .ds-label { font-size: 11px; font-weight: 510; color: var(--text-quaternary); text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 6px; }
+  .ds-input { width: 100%; padding: 10px 14px; border: 1px solid var(--border-standard); border-radius: 8px; font-size: 14px; color: var(--text-primary); background: white; font-family: inherit; font-feature-settings: 'cv01','ss03'; }
+  .ds-input:focus { border-color: #292827; outline: none; }
+  .ds-select { width: 100%; padding: 10px 14px; border: 1px solid var(--border-standard); border-radius: 8px; font-size: 14px; color: var(--text-primary); background: white; font-family: inherit; appearance: none; background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2.5 3.5L5 6.5L7.5 3.5' stroke='%238a8f98' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; }
+  .ds-select:focus { border-color: #292827; outline: none; }
+  .ds-group { margin-bottom: 16px; }
+  .ds-hint { font-size: 11px; color: var(--text-quaternary); margin-top: 4px; }
+  .ds-source-types { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 16px; }
+  .ds-source-type { padding: 12px; border: 1px solid var(--border-standard); border-radius: 8px; cursor: pointer; text-align: center; transition: all 0.12s; }
+  .ds-source-type:hover { background: var(--surface-2); border-color: #ccc8c2; }
+  .ds-source-type.selected { border-color: #292827; background: rgba(0,0,0,0.03); }
+  .ds-source-type-icon { width: 32px; height: 32px; border-radius: 6px; background: rgba(0,0,0,0.05); display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; color: #292827; }
+  .ds-source-type-name { font-size: 12px; font-weight: 510; color: var(--text-primary); letter-spacing: -0.13px; }
+  .ds-source-type-desc { font-size: 10px; color: var(--text-tertiary); margin-top: 2px; }
+  .ds-footer { display: flex; justify-content: flex-end; gap: 8px; padding: 0 24px 20px; }
+  .ds-btn-primary { padding: 10px 20px; border-radius: 8px; font-size: 13px; font-weight: 510; background: #292827; color: white; border: none; cursor: pointer; font-family: inherit; }
+  .ds-btn-primary:hover { background: #3d3d3a; }
+  .ds-btn-ghost { padding: 10px 20px; border-radius: 8px; font-size: 13px; font-weight: 510; background: transparent; color: var(--text-tertiary); border: none; cursor: pointer; font-family: inherit; }
+
+  /* Sync toast */
+  .sync-toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(80px); background: #292827; color: white; padding: 10px 20px; border-radius: 8px; font-size: 13px; font-weight: 510; letter-spacing: -0.13px; z-index: 300; transition: transform 0.3s cubic-bezier(0.2,0.8,0.2,1); display: flex; align-items: center; gap: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+  .sync-toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* Command Palette */
+  .cmd-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.25); z-index: 999; opacity: 0; pointer-events: none; transition: opacity 0.15s; }
+  .cmd-backdrop.open { opacity: 1; pointer-events: auto; }
+  .cmd-dialog { position: fixed; top: 20%; left: 50%; transform: translateX(-50%) scale(0.96); width: 560px; max-width: 90vw; background: #ffffff; border: 1px solid #dcd7d3; border-radius: 12px; box-shadow: 0 16px 48px rgba(0,0,0,0.12); z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.15s, transform 0.15s; overflow: hidden; }
+  .cmd-backdrop.open + .cmd-dialog, .cmd-dialog.open { opacity: 1; pointer-events: auto; transform: translateX(-50%) scale(1); }
+  .cmd-input-wrap { display: flex; align-items: center; gap: 10px; padding: 14px 18px; border-bottom: 1px solid #f0eee6; }
+  .cmd-input-wrap svg { color: #9ca3af; flex-shrink: 0; }
+  .cmd-input { flex: 1; border: none; outline: none; font-size: 15px; font-weight: 400; color: #292827; background: transparent; font-family: inherit; font-feature-settings: 'cv01','ss03'; letter-spacing: -0.165px; }
+  .cmd-input::placeholder { color: #9ca3af; }
+  .cmd-hint { font-size: 11px; color: #9ca3af; background: #f5f5f4; border: 1px solid #dcd7d3; border-radius: 4px; padding: 1px 5px; font-weight: 510; flex-shrink: 0; }
+  .cmd-results { max-height: 320px; overflow-y: auto; padding: 6px; }
+  .cmd-group-label { font-size: 10px; font-weight: 510; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.5px; padding: 8px 12px 4px; }
+  .cmd-item { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 6px; cursor: pointer; transition: background 0.08s; }
+  .cmd-item:hover, .cmd-item.active { background: #f5f5f4; }
+  .cmd-item-icon { width: 28px; height: 28px; border-radius: 6px; background: rgba(0,0,0,0.04); display: flex; align-items: center; justify-content: center; color: #292827; flex-shrink: 0; }
+  .cmd-item-text { flex: 1; }
+  .cmd-item-name { font-size: 13px; font-weight: 510; color: #292827; letter-spacing: -0.13px; }
+  .cmd-item-desc { font-size: 11px; color: #8a8f98; letter-spacing: -0.13px; }
+  .cmd-item-shortcut { font-size: 10px; color: #9ca3af; font-weight: 510; }
+  .cmd-footer { display: flex; align-items: center; gap: 12px; padding: 8px 14px; border-top: 1px solid #f0eee6; background: #fafafa; }
+  .cmd-footer-hint { font-size: 10px; color: #9ca3af; display: flex; align-items: center; gap: 4px; }
+  .cmd-footer-key { background: #eeedeb; border: 1px solid #dcd7d3; border-radius: 3px; padding: 0px 4px; font-size: 10px; font-weight: 510; color: #57534e; }
+
 </style>
 </head>
 <body>
@@ -1025,6 +1082,191 @@
 
   // Load default tab
   document.getElementById('tab-content').innerHTML = tabContent.own;
+</script>
+
+
+<!-- Add Source Modal -->
+<div class="ds-backdrop" id="dsBackdrop"></div>
+<div class="ds-modal" id="dsModal">
+  <div class="ds-header">
+    <div class="ds-title">Add data source</div>
+    <button class="ds-close" id="dsClose"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 3l8 8M3 11l8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+  </div>
+  <div class="ds-body">
+    <div class="ds-label" style="margin-bottom: 10px;">Source type</div>
+    <div class="ds-source-types" id="dsTypes">
+      <div class="ds-source-type" onclick="selectSourceType(this)">
+        <div class="ds-source-type-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4h5l1.5 2H14v8H2V4z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg></div>
+        <div class="ds-source-type-name">File Upload</div>
+        <div class="ds-source-type-desc">CSV, images, PDFs</div>
+      </div>
+      <div class="ds-source-type" onclick="selectSourceType(this)">
+        <div class="ds-source-type-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M3 8h10M8 2c-2 2-2 10 0 12M8 2c2 2 2 10 0 12" stroke="currentColor" stroke-width="1.2"/></svg></div>
+        <div class="ds-source-type-name">Website URL</div>
+        <div class="ds-source-type-desc">Crawl & extract</div>
+      </div>
+      <div class="ds-source-type" onclick="selectSourceType(this)">
+        <div class="ds-source-type-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2l5 2.5L8 7 3 4.5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M3 8l5 2.5L13 8M3 11.5l5 2.5 5-2.5" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg></div>
+        <div class="ds-source-type-name">API</div>
+        <div class="ds-source-type-desc">Connect a service</div>
+      </div>
+      <div class="ds-source-type" onclick="selectSourceType(this)">
+        <div class="ds-source-type-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.2"/><path d="M5 5h6M5 8h4M5 11h5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+        <div class="ds-source-type-name">Figma</div>
+        <div class="ds-source-type-desc">Sync design files</div>
+      </div>
+      <div class="ds-source-type" onclick="selectSourceType(this)">
+        <div class="ds-source-type-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 2h8l2 2v10H2V4l2-2z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M5 8h6M5 10.5h4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+        <div class="ds-source-type-name">Notion</div>
+        <div class="ds-source-type-desc">Import pages</div>
+      </div>
+      <div class="ds-source-type" onclick="selectSourceType(this)">
+        <div class="ds-source-type-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="3" y="3" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.2"/><path d="M3 6h10" stroke="currentColor" stroke-width="1.2"/><circle cx="5" cy="4.5" r="0.5" fill="currentColor"/><circle cx="7" cy="4.5" r="0.5" fill="currentColor"/></svg></div>
+        <div class="ds-source-type-name">Google Drive</div>
+        <div class="ds-source-type-desc">Sync folders</div>
+      </div>
+    </div>
+
+    <div id="dsFields" style="display: none;">
+      <div class="ds-group">
+        <div class="ds-label">Name</div>
+        <input class="ds-input" placeholder="e.g. Brand Guidelines Folder" autocomplete="off">
+      </div>
+      <div class="ds-group">
+        <div class="ds-label">URL or path</div>
+        <input class="ds-input" placeholder="Paste URL or select files..." autocomplete="off">
+        <div class="ds-hint">We'll crawl and index the content automatically</div>
+      </div>
+      <div class="ds-group">
+        <div class="ds-label">Sync frequency</div>
+        <select class="ds-select">
+          <option>Manual</option>
+          <option selected>Every hour</option>
+          <option>Every 6 hours</option>
+          <option>Daily</option>
+          <option>Weekly</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="ds-footer">
+    <button class="ds-btn-ghost" onclick="closeAddSource()">Cancel</button>
+    <button class="ds-btn-primary" onclick="closeAddSource()">Add source</button>
+  </div>
+</div>
+
+<!-- Sync Toast -->
+<div class="sync-toast" id="syncToast">
+  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="animation: spin 1s linear infinite;"><path d="M7 1v2M7 11v2M1 7h2M11 7h2M2.8 2.8l1.4 1.4M9.8 9.8l1.4 1.4M2.8 11.2l1.4-1.4M9.8 4.2l1.4-1.4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+  Syncing all sources...
+</div>
+<style>@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }</style>
+
+<script>
+function openAddSource() {
+  document.getElementById('dsBackdrop').classList.add('open');
+  document.getElementById('dsModal').classList.add('open');
+}
+function closeAddSource() {
+  document.getElementById('dsBackdrop').classList.remove('open');
+  document.getElementById('dsModal').classList.remove('open');
+  document.getElementById('dsFields').style.display = 'none';
+  document.querySelectorAll('.ds-source-type').forEach(t => t.classList.remove('selected'));
+}
+function selectSourceType(el) {
+  document.querySelectorAll('.ds-source-type').forEach(t => t.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('dsFields').style.display = 'block';
+}
+document.getElementById('dsBackdrop').addEventListener('click', closeAddSource);
+document.getElementById('dsClose').addEventListener('click', closeAddSource);
+
+function syncAll() {
+  const toast = document.getElementById('syncToast');
+  toast.classList.add('show');
+  setTimeout(() => {
+    toast.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5" stroke="#059669" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> All sources synced successfully';
+    setTimeout(() => toast.classList.remove('show'), 2500);
+  }, 2000);
+}
+
+// Wire buttons
+document.querySelectorAll('.btn-primary').forEach(b => { if (b.textContent.includes('Add Source')) b.onclick = openAddSource; });
+document.querySelectorAll('.btn-ghost').forEach(b => { if (b.textContent.includes('Sync All')) b.onclick = syncAll; });
+</script>
+
+<!-- Command Palette -->
+<div class="cmd-backdrop" id="cmdBackdrop"></div>
+<div class="cmd-dialog" id="cmdDialog">
+  <div class="cmd-input-wrap">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.3"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+    <input class="cmd-input" id="cmdInput" placeholder="Search pages, briefs, assets..." autocomplete="off">
+    <span class="cmd-hint">ESC</span>
+  </div>
+  <div class="cmd-results" id="cmdResults">
+    <div class="cmd-group-label">Pages</div>
+    <a class="cmd-item" href="home.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 6.5L8 2l6 4.5V14H10v-3H6v3H2V6.5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Home</div></div></a>
+    <a class="cmd-item" href="current_brand.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.2"/><circle cx="8" cy="8" r="2.5" fill="currentColor"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Brand</div></div></a>
+    <a class="cmd-item" href="visual_search.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.2"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Visual Vault</div></div></a>
+    <a class="cmd-item" href="trend_matching.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 12l4-4 3 3 5-5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Opportunities</div></div></a>
+    <a class="cmd-item" href="brand_sandbox.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 2l1.5 3.5L13 6l-2.5 2.5.5 3.5L8 10l-3 2 .5-3.5L3 6l3.5-.5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Brand Sandbox</div></div></a>
+    <a class="cmd-item" href="clusters.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.2"/><rect x="9" y="2" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.2"/><rect x="2" y="9" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.2"/><rect x="9" y="9" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.2"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Thematic Intelligence</div></div></a>
+    <a class="cmd-item" href="briefs.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l2 2v10H3V2z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Briefs</div></div></a>
+    <a class="cmd-item" href="creator_studio.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M4 11l3-3 2 2 3-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Creator Studio</div></div></a>
+    <a class="cmd-item" href="asset_manager.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 4h5l1.5 2H14v8H2V4z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Asset Manager</div></div></a>
+    <a class="cmd-item" href="reviews.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Reviews</div></div></a>
+    <a class="cmd-item" href="roas_dashboard.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><polyline points="2,12 6,7 9,10 14,4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">ROAS Dashboard</div></div></a>
+    <a class="cmd-item" href="reports.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 2h8l2 2v10H3V2z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Reports</div></div></a>
+    <a class="cmd-item" href="competitive_intel.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.2"/><circle cx="8" cy="8" r="2" stroke="currentColor" stroke-width="1.2"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Competitive Intel</div></div></a>
+    <div class="cmd-group-label">Briefs</div>
+    <a class="cmd-item" href="brief_detail.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l2 2v10H3V2z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Sakura Camo Hero Pattern</div><div class="cmd-item-desc">SS26 · Hana Matsuri · In Production</div></div></a>
+    <a class="cmd-item" href="briefs.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l2 2v10H3V2z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">30yr Retrospective · Hero Film</div><div class="cmd-item-desc">Heritage Storytelling · Shipped</div></div></a>
+    <div class="cmd-group-label">Actions</div>
+    <a class="cmd-item" href="briefs.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">New brief</div></div></a>
+    <a class="cmd-item" href="creator_studio.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Generate creative</div></div></a>
+    <a class="cmd-item" href="visual_search.html"><div class="cmd-item-icon"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="cmd-item-text"><div class="cmd-item-name">Upload assets</div></div></a>
+  </div>
+  <div class="cmd-footer">
+    <span class="cmd-footer-hint"><span class="cmd-footer-key">&uarr;</span><span class="cmd-footer-key">&darr;</span> navigate</span>
+    <span class="cmd-footer-hint"><span class="cmd-footer-key">&crarr;</span> open</span>
+    <span class="cmd-footer-hint"><span class="cmd-footer-key">esc</span> close</span>
+  </div>
+</div>
+
+<script>
+(function(){
+  const bd = document.getElementById('cmdBackdrop');
+  const dg = document.getElementById('cmdDialog');
+  const ip = document.getElementById('cmdInput');
+  const rs = document.getElementById('cmdResults');
+  function openCmd() { bd.classList.add('open'); dg.classList.add('open'); setTimeout(() => ip.focus(), 50); }
+  function closeCmd() { bd.classList.remove('open'); dg.classList.remove('open'); ip.value = ''; filterItems(''); }
+  bd.addEventListener('click', closeCmd);
+  document.addEventListener('keydown', e => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); dg.classList.contains('open') ? closeCmd() : openCmd(); }
+    if (e.key === 'Escape' && dg.classList.contains('open')) closeCmd();
+  });
+  function filterItems(q) {
+    const items = rs.querySelectorAll('.cmd-item');
+    const labels = rs.querySelectorAll('.cmd-group-label');
+    const lq = q.toLowerCase();
+    items.forEach(it => {
+      const name = it.querySelector('.cmd-item-name')?.textContent?.toLowerCase() || '';
+      const desc = it.querySelector('.cmd-item-desc')?.textContent?.toLowerCase() || '';
+      it.style.display = (!q || name.includes(lq) || desc.includes(lq)) ? 'flex' : 'none';
+    });
+    labels.forEach(l => {
+      let next = l.nextElementSibling;
+      let hasVisible = false;
+      while (next && !next.classList.contains('cmd-group-label')) {
+        if (next.style.display !== 'none') hasVisible = true;
+        next = next.nextElementSibling;
+      }
+      l.style.display = hasVisible ? 'block' : 'none';
+    });
+  }
+  ip.addEventListener('input', () => filterItems(ip.value));
+})();
 </script>
 
 </body>
